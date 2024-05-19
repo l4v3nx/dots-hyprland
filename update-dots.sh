@@ -17,7 +17,7 @@ RESET="\033[0m"
 
 # Define paths to update
 folders=(".config" ".local")
-excludes=(".config/hypr/custom" ".config/ags/user_options.js" ".config/hypr/hyprland.conf" ".config/ags/modules/.commonwidgets/statusicons.js" ".config/ags/modules/bar/normal/music.js" ".config/ags/modules/cheatsheet/data_keybinds.js" ".config/ags/modules/indicators/musiccontrols.js" ".config/ags/scss/_lib_mixins.scss" ".config/ags/scss/_bar.scss" ".config/foot/foot.ini" ".config/fuzzel/fuzzel.ini" ".config/hypr/hypridle.conf" ".config/hypr/hyprlock.conf" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/ags/modules/sideright/quicktoggles.js")
+excludes=(".config/hypr/custom" ".config/ags/user_options.js" ".config/hypr/hyprland.conf" ".config/ags/modules/.commonwidgets/statusicons.js" ".config/ags/modules/cheatsheet/data_keybinds.js" ".config/ags/scss/_lib_mixins.scss" ".config/foot/foot.ini" ".config/hypr/hypridle.conf" ".config/hypr/hyprlock.conf" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/ags/modules/bar/normal/music.js" ".config/ags/modules/indicators/musiccontrols.js" ".config/hypr/hyprlock.conf" ".config/hypr/hyprland/colors.conf" ".config/fuzzel/fuzzel.ini")
 
 get_checksum() {
     # Get the checksum of a specific file
