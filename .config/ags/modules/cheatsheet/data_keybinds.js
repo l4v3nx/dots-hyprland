@@ -19,8 +19,8 @@ export const keybindList = [[
         "binds": [
             { "keys": ["󰖳", "Alt", "+", "#"], "action": "Move window to workspace #" },
             { "keys": ["󰖳", "Alt", "+", "S"], "action": "Move window to special workspace" },
-            { "keys": ["󰖳", "Alt", "+", "PageUp"], "action": "Move window to workspace on the left" },
-            { "keys": ["󰖳", "Alt", "+", "PageDown"], "action": "Move window to workspace on the right" }
+            { "keys": ["󰖳", "Alt", "+", "←"], "action": "Move window to workspace on the left" },
+            { "keys": ["󰖳", "Alt", "+", "→"], "action": "Move window to workspace on the right" }
         ],
         "id": 2
     },
@@ -59,10 +59,10 @@ export const keybindList = [[
 
             { "keys": ["Ctrl", "󰖳", "+", "T"], "action": "Change wallpaper+colorscheme" },
 
-            // { "keys": ["󰖳", "+", "B"], "action": "Toggle left sidebar" },
-            // { "keys": ["󰖳", "+", "N"], "action": "Toggle right sidebar" },
+            // { "keys": ["󰖳", "Shift", "+", "B"], "action": "Toggle left sidebar" },
+            // { "keys": ["󰖳", "Shift", "+", "N"], "action": "Toggle right sidebar" },
             // { "keys": ["󰖳", "+", "G"], "action": "Toggle volume mixer" },
-            // { "keys": ["󰖳", "+", "M"], "action": "Toggle useless audio visualizer" },
+            // { "keys": ["󰖳", "Shift", "+", "M"], "action": "Toggle useless audio visualizer" },
             // { "keys": ["(right)Ctrl"], "action": "Dismiss notification & close menus" }
         ],
         "id": 4
@@ -74,11 +74,12 @@ export const keybindList = [[
             { "keys": ["PrtSc"], "action": "Screenshot  >>  clipboard" },
             { "keys": ["Ctrl", "PrtSc"], "action": "Screenshot  >>  file + clipboard" },
             { "keys": ["󰖳", "Shift", "+", "S"], "action": "Screen snip  >>  clipboard" },
-            { "keys": ["󰖳", "Shift", "+", "T"], "action": "Image to text  >>  clipboard" },
+            { "keys": ["󰖳", "Shift", "+", "T"], "action": "Image to text (English)  >>  clipboard" },
+            { "keys": ["󰖳", "Shift", "+", "R"], "action": "Image to text (Russian)  >>  clipboard" },
             { "keys": ["󰖳", "Shift", "+", "C"], "action": "Color picker" },
             { "keys": ["󰖳", "Alt", "+", "R"], "action": "Record region" },
             { "keys": ["Ctrl", "Alt", "+", "R"], "action": "Record region with sound" },
-            { "keys": ["󰖳", "Shift", "Alt", "+", "R"], "action": "Record screen with sound" }
+            { "keys": ["Shift", "Alt", "+", "R"], "action": "Record screen with sound" }
         ],
         "id": 5
     },
@@ -88,10 +89,9 @@ export const keybindList = [[
         "icon": "apps",
         "name": "Apps",
         "binds": [
-            { "keys": ["󰖳", "+", "T"], "action": "Launch terminal: foot" },
+            { "keys": ["󰖳", "+", "D"], "action": "Launch terminal: foot" },
             { "keys": ["󰖳", "+", "W"], "action": "Launch browser: Firefox" },
             { "keys": ["󰖳", "+", "C"], "action": "Launch editor: vscode" },
-            { "keys": ["󰖳", "+", "X"], "action": "Launch editor: GNOME Text Editor" },
             { "keys": ["󰖳", "+", "I"], "action": "Launch settings: GNOME Control center" }
         ],
         "id": 6
