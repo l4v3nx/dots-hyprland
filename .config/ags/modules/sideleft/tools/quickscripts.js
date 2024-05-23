@@ -53,6 +53,18 @@ const scripts = [
         command: `flatpak uninstall --unused`,
         enabled: hasFlatpak,
     },
+    {
+        icon: 'vpn-key',
+        name: 'Turn on AmneziaWG tunnel',
+        command: `sudo awg-quick up awg-nl`,
+        enabled: true,
+    },
+    {
+        icon: 'vpn-key-off',
+        name: 'Turn off AmneziaWG tunnel',
+        command: `sudo awg-quick down awg-nl`,
+        enabled: true,
+    },
 ];
 
 export default () => SidebarModule({
@@ -68,7 +80,7 @@ export default () => SidebarModule({
                 className: 'spacing-h-5 txt',
                 children: [
                     Icon({
-                        className: 'sidebar-module-btn-icon txt-large',
+                        className: 'sidebar-module-btn-arrow txt-large',
                         icon: script.icon,
                     }),
                     Label({
