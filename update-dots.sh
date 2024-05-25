@@ -17,7 +17,7 @@ RESET="\033[0m"
 
 # Define paths to update
 folders=(".config" ".local")
-excludes=(".config/hypr/custom" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/hypr/hyprland/colors.conf" ".config/fuzzel/fuzzel.ini" ".config/anyrun/" ".config/foot/foot.ini")
+excludes=(".config/hypr/custom" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/hypr/hyprland/colors.conf" ".config/fuzzel/fuzzel.ini" ".config/anyrun/" ".config/foot/foot.ini" ".config/fish")
 
 get_checksum() {
     # Get the checksum of a specific file
