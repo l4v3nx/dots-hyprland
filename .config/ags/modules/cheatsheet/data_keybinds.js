@@ -8,8 +8,6 @@ export const keybindList = [[
             { "keys": ["󰖳", "+", "(Scroll ↑↓)"], "action": "Go to workspace -1/+1" },
             { "keys": ["Ctrl", "󰖳", "+", "←"], "action": "Go to workspace on the left" },
             { "keys": ["Ctrl", "󰖳", "+", "→"], "action": "Go to workspace on the right" },
-            { "keys": ["󰖳", "+", "PageUp"], "action": "Go to workspace on the left" },
-            { "keys": ["󰖳", "+", "PageDown"], "action": "Go to workspace on the right" }
         ],
         "id": 1
     },
@@ -33,7 +31,7 @@ export const keybindList = [[
             { "keys": ["󰖳", "+", ";"], "action": "Split ratio -" },
             { "keys": ["󰖳", "+", "'"], "action": "Split ratio +" },
             { "keys": ["󰖳", "+", "Lmb"], "action": "Move window" },
-            { "keys": ["󰖳", "+", "Rmb"], "action": "Resize window" },
+            { "keys": ["󰖳", "+", "Rmb", "OR", "󰖳", "Alt", "+", "Lmb"], "action": "Resize window" },
             { "keys": ["󰖳", "Alt", "+", "Space"], "action": "Float window" },
             { "keys": ["󰖳", "+", "F"], "action": "Fullscreen" },
             { "keys": ["󰖳", "Alt", "+", "F"], "action": "Fake fullscreen" }
@@ -46,16 +44,18 @@ export const keybindList = [[
         "icon": "widgets",
         "name": "Widgets (AGS)",
         "binds": [
-            { "keys": ["󰖳", "OR", "󰖳", "+", "Tab"], "action": "Toggle overview/launcher" },
+            { "keys": ["󰖳", "+", "Tab"], "action": "Toggle overview/launcher" },
             { "keys": ["Ctrl", "󰖳", "+", "R"], "action": "Restart AGS" },
+            { "keys": ["Ctrl", "󰖳", "Alt", "+", "R"], "action": "Restart AGS and reload Hyprland config" },
             { "keys": ["󰖳", "+", "/"], "action": "Toggle this cheatsheet" },
-            { "keys": ["󰖳", "+", "N"], "action": "Toggle system sidebar" },
-            { "keys": ["󰖳", "+", "B", "OR", "󰖳", "+", "O"], "action": "Toggle utilities sidebar" },
             { "keys": ["󰖳", "+", "K"], "action": "Toggle virtual keyboard" },
+            { "keys": ["󰖳", "Shift", "+", "B"], "action": "Toggle utilities sidebar" },
+            { "keys": ["󰖳", "Shift", "+", "N"], "action": "Toggle music controls" },
+            { "keys": ["󰖳", "Shift", "+", "M"], "action": "Toggle system sidebar" },
             { "keys": ["Ctrl", "Alt", "+", "Del"], "action": "Power/Session menu" },
 
             { "keys": ["Esc"], "action": "Exit a window" },
-            { "keys": ["rightCtrl"], "action": "Dismiss/close sidebar" },
+            // { "keys": ["rightCtrl"], "action": "Dismiss/close sidebar" },
 
             { "keys": ["Ctrl", "󰖳", "+", "T"], "action": "Change wallpaper+colorscheme" },
 
@@ -91,7 +91,7 @@ export const keybindList = [[
         "binds": [
             { "keys": ["󰖳", "+", "D"], "action": "Launch terminal: foot" },
             { "keys": ["󰖳", "+", "W"], "action": "Launch browser: Firefox" },
-            { "keys": ["󰖳", "+", "C"], "action": "Launch editor: vscode" },
+            { "keys": ["󰖳", "+", "X"], "action": "Launch editor: vscode" },
             { "keys": ["󰖳", "+", "I"], "action": "Launch settings: GNOME Control center" }
         ],
         "id": 6
@@ -102,6 +102,9 @@ export const keybindList = [[
         "binds": [
             { "keys": ["󰖳", "+", "V"], "action": "Clipboard history  >>  clipboard" },
             { "keys": ["󰖳", "+", "."], "action": "Emoji picker  >>  clipboard" },
+            { "keys": ["󰖳", "+", "B"], "action": "Media: previous" },
+            { "keys": ["󰖳", "+", "N"], "action": "Media: play-pause" },
+            { "keys": ["󰖳", "+", "M"], "action": "Media: next" }
         ],
         "id": 7
     },
