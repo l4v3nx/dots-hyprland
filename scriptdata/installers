@@ -41,6 +41,7 @@ install-bibata (){
   tar -xf $file
   x sudo mkdir -p /usr/local/share/icons
   x sudo cp -r $name /usr/local/share/icons
+  x gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
   x cd $base
 }
 
