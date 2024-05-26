@@ -255,6 +255,9 @@ v rsync -av ".local/bin/" "$HOME/.local/bin/"
 # Dark mode by default
 v gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
+# Set default font
+v gsettings set org.gnome.desktop.interface font-name 'Lexend Medium 11'
+
 # Prevent hyprland from not fully loaded
 sleep 1
 try hyprctl reload
