@@ -157,30 +157,6 @@ case $SKIP_AGS in
     ;;
 esac
 
-if $(fc-list|grep -q Rubik); then
-  echo -e "\e[33m[$0]: Font \"Rubik\" already exists, no need to install.\e[0m"
-  echo -e "\e[34mYou can reinstall it in order to update to the latest version anyway.\e[0m"
-  ask_Rubik=$ask
-else ask_Rubik=true
-fi
-if $ask_Rubik;then showfun install-Rubik;v install-Rubik;fi
-
-if $(fc-list|grep -q Gabarito); then
-  echo -e "\e[33m[$0]: Font \"Gabarito\" already exists, no need to install.\e[0m"
-  echo -e "\e[34mYou can reinstall it in order to update to the latest version anyway.\e[0m"
-  ask_Gabarito=$ask
-else ask_Gabarito=true
-fi
-if $ask_Gabarito;then showfun install-Gabarito;v install-Gabarito;fi
-
-if $(test -d /usr/local/share/icons/OneUI); then
-  echo -e "\e[33m[$0]: Icon pack \"OneUI\" already exists, no need to install.\e[0m"
-  echo -e "\e[34mYou can reinstall it in order to update to the latest version anyway.\e[0m"
-  ask_OneUI=$ask
-else ask_OneUI=true
-fi
-if $ask_OneUI;then showfun install-OneUI;v install-OneUI;fi
-
 if $(test -d /usr/local/share/icons/Bibata-Modern-Classic); then
   echo -e "\e[33m[$0]: Cursor theme \"Bibata-Modern-Classic\" already exists, no need to install.\e[0m"
   echo -e "\e[34mYou can reinstall it in order to update to the latest version anyway.\e[0m"
