@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+CONFIG_DIR="$XDG_CONFIG_HOME/ags"
+
 switch() {
 	imgpath=$1
 	screensizey=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2 | head -1)
@@ -32,4 +35,4 @@ else
 fi
 
 # Generate colors for ags n stuff
-"$HOME"/.config/ags/scripts/color_generation/colorgen.sh "${imgpath}" --apply --smart
+"$CONFIG_DIR"/scripts/color_generation/colorgen.sh "${imgpath}" --apply --smart
