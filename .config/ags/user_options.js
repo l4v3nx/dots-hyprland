@@ -5,7 +5,15 @@
 
 const userConfigOptions = {
     'sidebar': {
-        'imageAllowNsfw': true,
+        'image': {
+            'allowNsfw': true,
+        },
+        'pages': {
+    	    'order': ["apis", "tools"],
+    	    'apis': {
+                'order': ["gpt", "waifu", "booru", "gemini"],
+    	    }
+	},
     },
     'ai': {
         'defaultGPTProvider': "oxygen4o",
@@ -48,12 +56,6 @@ const userConfigOptions = {
             'prevTab': "Home",
         }
     },
-    'pages': {
-    	'order': ["apis", "tools"],
-    	'apis': {
-        	'order': ["gpt", "waifu", "booru", "gemini"],
-    	}
-	},
 }
 
 export default userConfigOptions;
