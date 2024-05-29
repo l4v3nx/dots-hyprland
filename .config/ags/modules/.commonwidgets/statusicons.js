@@ -294,9 +294,9 @@ export const StatusIcons = (props = {}) => Widget.Box({
     child: Widget.Box({
         className: 'spacing-h-15',
         children: [
+            optionalKeyboardLayoutInstance,
         	SpeakerMuteIndicator(),
             MicMuteIndicator(),
-            optionalKeyboardLayoutInstance,
             NotificationIndicator(),
             NetworkIndicator(),
             Widget.Box({
