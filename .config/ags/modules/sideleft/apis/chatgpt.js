@@ -269,6 +269,7 @@ export const chatGPTCommands = Box({
     className: 'spacing-h-5',
     children: [
         Box({ hexpand: true }),
+        CommandButton('/test'),
         CommandButton('/key'),
         CommandButton('/model'),
         CommandButton('/clear'),
