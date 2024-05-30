@@ -28,9 +28,6 @@ const userConfigOptions = {
     'appearance': {
         'fakeScreenRounding': false,
     },
-    'music': {
-        'preferredPlayer': "",
-    },
     'dock': {
         'enabled': false,
         'pinnedApps': ['firefox', 'org.gnome.Nautilus'],
