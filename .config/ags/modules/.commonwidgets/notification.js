@@ -85,7 +85,7 @@ export default ({
     isPopup = false,
     props = {},
 } = {}) => {
-    const popupTimeout = notifObject.timeout || (notifObject.urgency == 'critical' ? 8000 : 3000);
+    const popupTimeout = notifObject.timeout || (notifObject.urgency == 'critical' ? 8000 : 5000);
     const command = (isPopup ?
         () => notifObject.dismiss() :
         () => notifObject.close()
