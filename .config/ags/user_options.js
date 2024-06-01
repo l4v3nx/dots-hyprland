@@ -34,20 +34,6 @@ const userConfigOptions = {
         'monitorExclusivity': true, // Dock will move to other monitor along with focus if enabled
     },
     'keybinds': {
-        'sidebar': {
-            'apis': {
-                'nextTab': "End",
-                'prevTab': "Home",
-            },
-            'options': { // Right sidebar
-                'nextTab': "End",
-                'prevTab': "Home",
-            },
-            'pin': "Ctrl+p",
-            'cycleTab': "Ctrl+Tab",
-            'nextTab': "Ctrl+End",
-            'prevTab': "Ctrl+Home",
-        },
         'cheatsheet': {
             'nextTab': "End",
             'prevTab': "Home",
