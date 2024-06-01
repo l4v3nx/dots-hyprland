@@ -52,6 +52,7 @@ export const keybindList = [[
             { "keys": ["󰖳", "Shift", "+", "B"], "action": "Toggle utilities sidebar" },
             { "keys": ["󰖳", "Shift", "+", "N"], "action": "Toggle music controls" },
             { "keys": ["󰖳", "Shift", "+", "M"], "action": "Toggle system sidebar" },
+            { "keys": ["Ctrl", "Alt", "+", "/"], "action": "Toggle focus mode" },
             { "keys": ["Ctrl", "Alt", "+", "Del"], "action": "Power/Session menu" },
 
             { "keys": ["Esc"], "action": "Exit a window" },
