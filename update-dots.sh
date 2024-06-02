@@ -59,7 +59,7 @@ fi
 
 # End of Greetings
 
-current_branch=$(git rev-parse --abbrev-ref HEAD)
+current_branch=main
 
 # fetch the latest version of the repository
 if ! git fetch; then
