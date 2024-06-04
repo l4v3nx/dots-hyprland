@@ -18,7 +18,7 @@ MAGENTA="\033[0;35m"
 RESET="\033[0m"
 
 # Define paths to update
-folders=(".config" ".local/bin" ".local/share" ".local/state")
+folders=(".config" ".local/bin")
 excludes=(".config/anyrun" ".config/fish/fish_variables" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/hypr/hyprland/colors.conf" ".config/fuzzel/fuzzel.ini" ".config/ags/scss/_material.scss" ".config/hypr/hyprlock.conf")
 
 get_checksum() {
