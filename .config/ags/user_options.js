@@ -26,7 +26,7 @@ const userConfigOptions = {
         'terminal': "foot", // This is only for shell actions
     },
     'appearance': {
-        'fakeScreenRounding': false,
+        'fakeScreenRounding': 2,
     },
     'dock': {
         'enabled': false,
