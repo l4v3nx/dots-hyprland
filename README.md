@@ -30,15 +30,15 @@
 </details>
 <details> 
   <summary>Instructions</summary>
-    
-   - **Automatic**, but guided and transparent, installation for Arch(-based) Linux:
-   ```bash
-   bash <(curl -s "https://end-4.github.io/dots-hyprland-wiki/setup.sh")
-   ```
+
    - **Manual** installation, other distros and more:
-     - See the [Wiki](https://end-4.github.io/dots-hyprland-wiki/en/i-i/01setup/)
-     - (_Available in: English, Vietnamese, and Simplified Chinese. Translations are welcome._)
     
+   ```bash
+   t=~/.cache/dots-hyprland   # Let's not trash your home folder
+   git clone https://github.com/l4v3nx/dots-hyprland.git "$t" --filter=blob:none
+   "$t"/install.sh
+   ```
+   
    - **Default keybinds**: Parts similar to Windows and GNOME. Hit Super+/ for a list.
      <details> 
        <summary>Here's an image, just in case:</summary>
@@ -60,14 +60,14 @@
   | [Fuzzel](https://mark.stosberg.com/fuzzel-a-great-dmenu-and-rofi-altenrative-for-wayland/) | For clipboard and emoji picker |
 
 
-  - For a more comprehensive list of dependencies, see [scriptdata/dependencies.conf](https://github.com/end-4/dots-hyprland/blob/main/scriptdata/dependencies.conf)
+  - For a more comprehensive list of dependencies, see [scriptdata/dependencies.conf](https://github.com/l4v3nx/dots-hyprland/blob/main/scriptdata/dependencies.conf)
 </details>
 
 <details> 
   <summary>Help improve these dotfiles!</summary>
     
    - Join the [discussions](https://github.com/end-4/dots-hyprland/discussions)
-   - If you'd like to suggest fixes or a new widget, feel free to [open an issue](https://github.com/end-4/dots-hyprland/issues/new/choose)
+   - If you'd like to suggest fixes or a new widget, feel free to [open an issue](https://github.com/end-4/dots-hyprland/issues/new/choose) in these dots' base repo
 </details>
 
 <div align="center">
