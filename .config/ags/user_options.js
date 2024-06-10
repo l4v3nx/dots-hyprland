@@ -13,7 +13,13 @@ const userConfigOptions = {
     	    'apis': {
                 'order': ["gpt", "waifu", "booru", "gemini"],
     	    }
-	},
+	    },
+    },
+    'search': {
+        'enableFeatures': {
+            'directorySearch': false,
+            'aiSearch': false,
+        },
     },
     'ai': {
         'defaultGPTProvider': "oxygen4o",
