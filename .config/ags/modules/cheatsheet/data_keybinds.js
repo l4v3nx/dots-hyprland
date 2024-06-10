@@ -54,17 +54,9 @@ export const keybindList = [[
             { "keys": ["󰖳", "Shift", "+", "M"], "action": "Toggle system sidebar" },
             { "keys": ["Ctrl", "Alt", "+", "/"], "action": "Toggle focus mode" },
             { "keys": ["Ctrl", "Alt", "+", "Del"], "action": "Power/Session menu" },
-
-            { "keys": ["Esc"], "action": "Exit a window" },
             // { "keys": ["rightCtrl"], "action": "Dismiss/close sidebar" },
-
             { "keys": ["Ctrl", "󰖳", "+", "T"], "action": "Change wallpaper+colorscheme" },
-
-            // { "keys": ["󰖳", "Shift", "+", "B"], "action": "Toggle left sidebar" },
-            // { "keys": ["󰖳", "Shift", "+", "N"], "action": "Toggle right sidebar" },
-            // { "keys": ["󰖳", "+", "G"], "action": "Toggle volume mixer" },
-            // { "keys": ["󰖳", "Shift", "+", "M"], "action": "Toggle useless audio visualizer" },
-            // { "keys": ["(right)Ctrl"], "action": "Dismiss notification & close menus" }
+            { "keys": ["Esc"], "action": "Exit a window" }
         ],
         "id": 4
     },
@@ -75,12 +67,12 @@ export const keybindList = [[
             { "keys": ["PrtSc"], "action": "Screenshot  >>  clipboard" },
             { "keys": ["Ctrl", "PrtSc"], "action": "Screenshot  >>  file + clipboard" },
             { "keys": ["󰖳", "Shift", "+", "S"], "action": "Screen snip  >>  clipboard" },
-            { "keys": ["󰖳", "Shift", "+", "T"], "action": "Image to text (English)  >>  clipboard" },
-            { "keys": ["󰖳", "Shift", "+", "R"], "action": "Image to text (Russian)  >>  clipboard" },
-            { "keys": ["󰖳", "Shift", "+", "C"], "action": "Color picker" },
+            { "keys": ["󰖳", "Shift", "+", "T"], "action": "Screen snip to text (English)  >>  clipboard" },
+            { "keys": ["󰖳", "Shift", "+", "R"], "action": "Screen snip to text (Russian)  >>  clipboard" },
+            { "keys": ["󰖳", "Shift", "+", "C"], "action": "Pick color (hex)  >>  clipboard" },
             { "keys": ["󰖳", "Alt", "+", "R"], "action": "Record region" },
-            { "keys": ["Ctrl", "Alt", "+", "R"], "action": "Record region with sound" },
-            { "keys": ["Shift", "Alt", "+", "R"], "action": "Record screen with sound" }
+            { "keys": ["Ctrl", "Alt", "+", "R"], "action": "Record region (no sound)" },
+            { "keys": ["Shift", "Alt", "+", "R"], "action": "Record screen (with sound)" }
         ],
         "id": 5
     },
@@ -91,9 +83,11 @@ export const keybindList = [[
         "name": "Apps",
         "binds": [
             { "keys": ["󰖳", "+", "D"], "action": "Launch terminal: foot" },
+            { "keys": ["󰖳", "+", "E"], "action": "Launch file manager: Nautilus (GNOME Files)" },
             { "keys": ["󰖳", "+", "W"], "action": "Launch browser: Firefox" },
-            { "keys": ["󰖳", "+", "X"], "action": "Launch editor: vscode" },
-            { "keys": ["󰖳", "+", "I"], "action": "Launch settings: GNOME Control center" }
+            { "keys": ["󰖳", "+", "X"], "action": "Launch editor: Visual Studio Code" },
+            { "keys": ["󰖳", "+", "I"], "action": "Launch settings: GNOME Control center" },
+            { "keys": ["Ctrl", "󰖳", "+", "V"], "action": "Launch volume mixer: pavucontrol" }
         ],
         "id": 6
     },
@@ -103,9 +97,9 @@ export const keybindList = [[
         "binds": [
             { "keys": ["󰖳", "+", "V"], "action": "Clipboard history  >>  clipboard" },
             { "keys": ["󰖳", "+", "."], "action": "Emoji picker  >>  clipboard" },
-            { "keys": ["󰖳", "+", "B"], "action": "Media: previous" },
-            { "keys": ["󰖳", "+", "N"], "action": "Media: play-pause" },
-            { "keys": ["󰖳", "+", "M"], "action": "Media: next" }
+            { "keys": ["󰖳", "+", "B"], "action": "Previous track" },
+            { "keys": ["󰖳", "+", "N"], "action": "Play/pause media" },
+            { "keys": ["󰖳", "+", "M"], "action": "Next track" }
         ],
         "id": 7
     },
@@ -113,6 +107,7 @@ export const keybindList = [[
         "icon": "terminal",
         "name": "Launcher actions",
         "binds": [
+            { "keys": ["Ctrl", "󰖳", "+", "/"], "action": "Toggle fallback launcher: anyrun" },
             { "keys": [">raw"], "action": "Toggle mouse acceleration" },
             { "keys": [">img"], "action": "Select wallpaper and generate colorscheme" },
             { "keys": [">light"], "action": "Switch to light theme" },
