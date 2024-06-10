@@ -5,7 +5,7 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import { IconTabContainer } from "../.commonwidgets/tabcontainer.js";
 const { Box, Label, Scrollable } = Widget;
 
-const HYPRLAND_KEYBIND_CONFIG_FILE = `${GLib.get_user_config_dir()}/hypr/hyprland/keybinds.conf`;
+const HYPRLAND_KEYBIND_CONFIG_FILE = `${GLib.get_user_config_dir()}/hypr/custom/keybinds.conf`;
 const KEYBIND_SECTIONS_PER_PAGE = 3;
 const keybindList = JSON.parse(
     Utils.exec(

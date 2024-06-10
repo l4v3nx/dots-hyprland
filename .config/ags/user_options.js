@@ -33,12 +33,6 @@ const userConfigOptions = {
         'pinnedApps': ['firefox', 'org.gnome.Nautilus'],
         'monitorExclusivity': true, // Dock will move to other monitor along with focus if enabled
     },
-    'keybinds': {
-        'cheatsheet': {
-            'nextTab': "End",
-            'prevTab': "Home",
-        }
-    },
 }
 
 export default userConfigOptions;
