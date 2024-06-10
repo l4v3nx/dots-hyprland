@@ -33,6 +33,7 @@ export const keybindList = [[
             { "keys": ["󰖳", "+", "Lmb"], "action": "Move window" },
             { "keys": ["󰖳", "+", "Rmb", "OR", "󰖳", "Alt", "+", "Lmb"], "action": "Resize window" },
             { "keys": ["󰖳", "Alt", "+", "Space"], "action": "Float window" },
+            { "keys": ["Ctrl", "󰖳", "+", "\\"], "action": "Make floating window smaller" },
             { "keys": ["󰖳", "+", "F"], "action": "Fullscreen" },
             { "keys": ["󰖳", "Alt", "+", "F"], "action": "Fake fullscreen" }
         ],
