@@ -26,6 +26,8 @@ export const keybindList = [[
         "icon": "move_group",
         "name": "Windows",
         "binds": [
+            { "keys": ["󰖳", "+", "Q"], "action": "Close window" },
+            { "keys": ["󰖳", "Shift", "+", "Q"], "action": "Pick and kill a window" },
             { "keys": ["󰖳", "+", "←↑→↓"], "action": "Focus window in direction" },
             { "keys": ["󰖳", "Shift", "+", "←↑→↓"], "action": "Swap window in direction" },
             { "keys": ["󰖳", "+", ";"], "action": "Split ratio -" },
