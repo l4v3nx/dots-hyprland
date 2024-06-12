@@ -84,9 +84,9 @@ def autogenerate_comment(dispatcher: str, params: str = "") -> str:
 
         case "workspace":
             if params == "+1":
-                return "Workspace: focus right"
+                return "Go to workspace on the right"
             elif params == "-1":
-                return "Workspace: focus left"
+                return "Go to workspace on the left"
             return "Focus workspace {}".format(params)
 
         case "movefocus":
@@ -111,16 +111,16 @@ def autogenerate_comment(dispatcher: str, params: str = "") -> str:
 
         case "movetoworkspace":
             if params == "+1":
-                return "Window: move to right workspace (non-silent)"
+                return "Move window to workspace on the right (non-silent)"
             elif params == "-1":
-                return "Window: move to left workspace (non-silent)"
+                return "Move window to workspace on the left (non-silent)"
             return "Window: move to workspace {} (non-silent)".format(params)
 
         case "movetoworkspacesilent":
             if params == "+1":
-                return "Window: move to right workspace"
+                return "Move window to workspace on the right"
             elif params == "-1":
-                return "Window: move to right workspace"
+                return "Move window to workspace on the left"
             return "Window: move to workspace {}".format(params)
 
         case "togglespecialworkspace":
