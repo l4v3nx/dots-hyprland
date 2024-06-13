@@ -10,6 +10,7 @@ depends=(
 	python-psutil
 	hypridle-git
 	hyprlock-git
+	hyprutils
 	wlogout
 	wl-clipboard
 	hyprpicker-git
