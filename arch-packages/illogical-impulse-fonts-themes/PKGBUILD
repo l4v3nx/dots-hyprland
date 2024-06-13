@@ -6,13 +6,14 @@ arch=(any)
 license=(None)
 depends=(
 	adw-gtk3-git
-	qt5ct
+	qt5ct-kde
 	qt5-wayland
 	fontconfig
 	ttf-readex-pro
 	ttf-jetbrains-mono-nerd
 	ttf-material-symbols-variable-git
 	ttf-space-mono-nerd
+	lexend-fonts-git
 	fish
 	foot
 	starship

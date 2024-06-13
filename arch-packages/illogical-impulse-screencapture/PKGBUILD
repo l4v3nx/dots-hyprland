@@ -10,6 +10,7 @@ depends=(
 	grim
 	tesseract
 	tesseract-data-eng
+	tesseract-data-rus
 	slurp
 )
 
