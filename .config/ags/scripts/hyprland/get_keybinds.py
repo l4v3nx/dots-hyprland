@@ -49,7 +49,7 @@ def autogenerate_comment(dispatcher: str, params: str = "") -> str:
             if(params == ""):
                 return "Move window"
             else:
-                return "Window: move in {} direction".format({
+                return "Move window in {} direction".format({
                     "l": "left",
                     "r": "right",
                     "u": "up",
@@ -57,7 +57,7 @@ def autogenerate_comment(dispatcher: str, params: str = "") -> str:
                 }.get(params, "null"))
 
         case "pin":
-            return "Window: pin (show on all workspaces)"
+            return "Pin window (show on all workspaces)"
 
         case "splitratio":
             return "Window split ratio {}".format(params)
@@ -85,13 +85,13 @@ def autogenerate_comment(dispatcher: str, params: str = "") -> str:
 
         case "workspace":
             if params == "+1":
-                return "Workspace: focus right"
+                return "Go to workspace on the right"
             elif params == "-1":
-                return "Workspace: focus left"
+                return "Go to workspace on the left"
             return "Focus workspace {}".format(params)
 
         case "movefocus":
-            return "Window: move focus {}".format(
+            return "Focus window in {} direction".format(
                 {
                     "l": "left",
                     "r": "right",
@@ -112,20 +112,20 @@ def autogenerate_comment(dispatcher: str, params: str = "") -> str:
 
         case "movetoworkspace":
             if params == "+1":
-                return "Window: move to right workspace (non-silent)"
+                return "Move window to workspace on the right (non-silent)"
             elif params == "-1":
-                return "Window: move to left workspace (non-silent)"
+                return "Move window to workspace on the left (non-silent)"
             return "Window: move to workspace {} (non-silent)".format(params)
 
         case "movetoworkspacesilent":
             if params == "+1":
-                return "Window: move to right workspace"
+                return "Move window to workspace on the right"
             elif params == "-1":
-                return "Window: move to right workspace"
+                return "Move window to workspace on the left"
             return "Window: move to workspace {}".format(params)
 
         case "togglespecialworkspace":
-            return "Workspace: toggle special"
+            return "Toggle special workspace"
 
         case "exec":
             return "Execute: {}".format(params)
