@@ -11,6 +11,7 @@ depends=(
 	cliphist
 	cmake
 	curl
+	glib2-devel
 	fuzzel
 	rsync
 	wget
