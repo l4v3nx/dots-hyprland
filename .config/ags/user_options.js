@@ -4,6 +4,29 @@
 //   options listed in this file will override the default ones in the above file
 
 const userConfigOptions = {
+    'ai': {
+        'defaultGPTProvider': "oxygen4o",
+    },
+    'appearance': {
+        'fakeScreenRounding': 2,
+    },
+    'apps': {
+        'bluetooth': "blueman-manager",
+        'imageViewer': "eog",
+        'settings': "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center",
+        'taskManager': "htop",
+        'terminal': "foot", // This is only for shell actions
+    },
+    'cheatsheet': {
+        'keybinds': {
+            'configPath': "~/.config/hypr/custom/keybinds.conf"
+        }
+    },
+    'dock': {
+        'enabled': false,
+        'pinnedApps': ['firefox', 'org.gnome.Nautilus'],
+        'monitorExclusivity': true, // Dock will move to other monitor along with focus if enabled
+    },
     'sidebar': {
         'image': {
             'allowNsfw': true,
@@ -20,24 +43,6 @@ const userConfigOptions = {
             'directorySearch': false,
             'aiSearch': false,
         },
-    },
-    'ai': {
-        'defaultGPTProvider': "oxygen4o",
-    },
-    'apps': {
-        'bluetooth': "blueman-manager",
-        'imageViewer': "eog",
-        'settings': "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center",
-        'taskManager': "htop",
-        'terminal': "foot", // This is only for shell actions
-    },
-    'appearance': {
-        'fakeScreenRounding': 2,
-    },
-    'dock': {
-        'enabled': false,
-        'pinnedApps': ['firefox', 'org.gnome.Nautilus'],
-        'monitorExclusivity': true, // Dock will move to other monitor along with focus if enabled
     },
     'keybinds': {
         'cheatsheet': {
