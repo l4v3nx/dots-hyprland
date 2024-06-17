@@ -103,6 +103,19 @@ install-local-pkgbuild() {
 	x popd
 }
 
+# Why need cleanbuild? see https://github.com/end-4/dots-hyprland/issues/389#issuecomment-2040671585
+# Why install deps by running a seperate command? see pinned comment of https://aur.archlinux.org/packages/hyprland-git
+case $SKIP_HYPR_AUR in
+  true) sleep 0;;
+  *)
+	  hyprland_installflags="-S"
+	  $ask || hyprland_installflags="$hyprland_installflags --noconfirm"
+    v yay $hyprland_installflags --asdeps hyprutils-git hyprlang-git hyprcursor-git hyprwayland-scanner-git
+    v yay $hyprland_installflags --answerclean=a hyprland-git
+    ;;
+esac
+
+
 # Install core dependencies from the meta-packages
 metapkgs=(./arch-packages/illogical-impulse-{audio,backlight,basic,fonts-themes,gnome,gtk,microtex,portal,python,screencapture,widgets})
 metapkgs+=(./arch-packages/illogical-impulse-ags)
@@ -125,19 +138,6 @@ case $SKIP_PYMYC_AUR in
 	  pymycinstallflags=""
 	  $ask && showfun install-local-pkgbuild || pymycinstallflags="$pymycinstallflags --noconfirm"
 	  v install-local-pkgbuild "./arch-packages/illogical-impulse-pymyc-aur" "$pymycinstallflags"
-    ;;
-esac
-
-
-# Why need cleanbuild? see https://github.com/end-4/dots-hyprland/issues/389#issuecomment-2040671585
-# Why install deps by running a seperate command? see pinned comment of https://aur.archlinux.org/packages/hyprland-git
-case $SKIP_HYPR_AUR in
-  true) sleep 0;;
-  *)
-	  hyprland_installflags="-S"
-	  $ask || hyprland_installflags="$hyprland_installflags --noconfirm"
-    v yay $hyprland_installflags --asdeps hyprutils-git hyprlang-git hyprcursor-git hyprwayland-scanner-git
-    v yay $hyprland_installflags --answerclean=a hyprland-git
     ;;
 esac
 
