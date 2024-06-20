@@ -26,6 +26,7 @@ const userConfigOptions = {
         'enabled': true,
         'pinnedApps': ['org.gnome.Settings', 'org.gnome.Software', 'org.gnome.tweaks', 'org.gnome.Nautilus', 'firefox', 'foot', 'code-url-handler', 'steam', 'io.github.kukuruzka165.materialgram', 'org.telegram.desktop', 'spotify-launcher', 'com.obsproject.Studio', 'vesktop'],
         'monitorExclusivity': true, // Dock will move to other monitor along with focus if enabled
+        'trigger': [], // client_added, client_move, workspace_active, client_active
     },
     'sidebar': {
         'image': {
