@@ -23,8 +23,8 @@ const userConfigOptions = {
         }
     },
     'dock': {
-        'enabled': false,
-        'pinnedApps': ['firefox', 'org.gnome.Nautilus'],
+        'enabled': true,
+        'pinnedApps': ['org.gnome.Settings', 'org.gnome.Software', 'org.gnome.tweaks', 'org.gnome.Nautilus', 'firefox', 'foot', 'code-url-handler', 'steam', 'io.github.kukuruzka165.materialgram', 'org.telegram.desktop', 'spotify-launcher', 'com.obsproject.Studio', 'vesktop'],
         'monitorExclusivity': true, // Dock will move to other monitor along with focus if enabled
     },
     'sidebar': {

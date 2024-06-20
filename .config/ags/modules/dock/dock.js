@@ -234,11 +234,11 @@ export default (monitor = 0) => {
     const dockContent = Box({
         className: 'dock-bg spacing-h-5',
         children: [
-            PinButton(),
+            LauncherButton(),
+            // PinButton(),
             PinnedApps(),
             DockSeparator(),
             Taskbar(),
-            LauncherButton(),
         ]
     })
     const dockRevealer = Revealer({
