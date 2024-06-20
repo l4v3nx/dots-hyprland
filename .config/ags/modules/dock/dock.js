@@ -237,8 +237,8 @@ export default (monitor = 0) => {
             LauncherButton(),
             // PinButton(),
             PinnedApps(),
-            DockSeparator(),
-            Taskbar(),
+            // DockSeparator(),
+            // Taskbar(),
         ]
     })
     const dockRevealer = Revealer({
