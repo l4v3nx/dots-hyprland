@@ -9,7 +9,7 @@ const userConfigOptions = {
 	    'proxyUrl': "http://127.0.0.1:8080",
     },
     'appearance': {
-        'fakeScreenRounding': 2,
+        'fakeScreenRounding': 0,
     },
     'apps': {
         'bluetooth': "blueman-manager",
