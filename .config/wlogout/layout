@@ -1,20 +1,14 @@
 {
-    "label" : "lock",
-    "action" : "loginctl lock-session",
-    "text" : "lock",
-    "keybind" : "l"
-}
-{
-    "label" : "hibernate",
-    "action" : "systemctl hibernate || loginctl hibernate",
-    "text" : "save",
-    "keybind" : "h"
-}
-{
     "label" : "logout",
     "action" : "pkill Hyprland || pkill sway || pkill niri || loginctl terminate-user $USER",
     "text" : "logout",
     "keybind" : "e"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot || loginctl reboot",
+    "text" : "restart_alt",
+    "keybind" : "r"
 }
 {
     "label" : "shutdown",
@@ -29,8 +23,14 @@
     "keybind" : "u"
 }
 {
-    "label" : "reboot",
-    "action" : "systemctl reboot || loginctl reboot",
-    "text" : "restart_alt",
-    "keybind" : "r"
+    "label" : "lock",
+    "action" : "loginctl lock-session",
+    "text" : "lock",
+    "keybind" : "l"
+}
+{
+    "label" : "hibernate",
+    "action" : "systemctl hibernate || loginctl hibernate",
+    "text" : "downloading",
+    "keybind" : "h"
 }
