@@ -26,4 +26,8 @@ if [[ $enable_battery == true ]]; then
   fi
 fi
 
-echo ''
+if [[ $DESKTOP_SESSION == "sway" ]]; then
+  echo -n ", $(swaymsg -t get_inputs | jq -r '.. | select(type == "object" and .xkb_active_layout_name) | .xkb_active_layout_name' | head -n 1)"
+elif [[ $DESKTOP_SESSION == "hyprland" ]]; then
+  echo -n ", $(hyprctl -j devices | jq -r '.keyboards[] | select(.main) | .active_keymap')"
+fi
