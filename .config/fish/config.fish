@@ -17,9 +17,20 @@ if test -f ~/.cache/ags/user/generated/terminal/sequences.txt
     cat ~/.cache/ags/user/generated/terminal/sequences.txt
 end
 
-alias pamcan=pacman
 
-# function fish_prompt
-#   set_color cyan; echo (pwd)
-#   set_color green; echo '> '
-# end
+abbr --add pamcan pacman
+
+abbr yain 'yay -S'
+abbr yaind 'yay -S --asdeps'
+abbr yainloc 'yay -U'
+abbr yarep 'yay -Si'
+abbr yareps 'yay -Ss'
+abbr yaloc 'yay -Qii'
+abbr yalocs 'yay -Qs'
+abbr yals 'yay -Ql'
+abbr yamir 'yay -Syy'
+abbr yaown 'yay -Qo'
+abbr yare 'yay -Rn'
+abbr yarem 'yay -Rnsu'
+abbr yasu 'yay -Syu --noconfirm'
+abbr yaupg 'yay -Syu'
