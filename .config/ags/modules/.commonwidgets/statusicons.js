@@ -303,10 +303,10 @@ export const StatusIcons = (props = {}, monitor = 0) => Widget.Box({
     child: Widget.Box({
         className: 'spacing-h-15',
         children: [
+            NotificationIndicator(),
             optionalKeyboardLayoutInstances[monitor],
             SpeakerMuteIndicator(),
             MicMuteIndicator(),
-            NotificationIndicator(),
             NetworkIndicator(),
             Widget.Box({
                 className: 'spacing-h-5',
