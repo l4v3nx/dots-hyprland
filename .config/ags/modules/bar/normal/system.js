@@ -75,14 +75,14 @@ const Utilities = () => {
             name: "Screen snip",
             icon: "screenshot_region",
             onClicked: () => {
-                Utils.execAsync(`${App.configDir}/scripts/grimblast.sh copy area`).catch(print);
+                execAsync(`${App.configDir}/scripts/grimblast.sh copy area`).catch(print);
             }
         },
         picker: {
             name: "Color picker",
             icon: "colorize",
             onClicked: () => {
-                Utils.execAsync(['hyprpicker', '-a']).catch(print);
+                execAsync(['hyprpicker', '-a']).catch(print);
             }
         },
         keyboard: {
@@ -92,6 +92,13 @@ const Utilities = () => {
                 toggleWindowOnAllMonitors('osk');
             }
         },
+        camera: {
+            name: "Toggle camera",
+            icon: "photo_camera",
+            onClicked: () => {
+                execAsync('snapshot').catch(print);
+            }
+        }
     };
 
     const utilityButtons = userOptions.bar.utilities

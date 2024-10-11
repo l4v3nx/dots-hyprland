@@ -6,7 +6,7 @@
 const userConfigOptions = {
     'ai': {
         'defaultGPTProvider': "oxygen4o",
-	    'proxyUrl': "http://127.0.0.1:8080",
+        'proxyUrl': "http://127.0.0.1:8080",
     },
     'appearance': {
         'fakeScreenRounding': 0,
@@ -34,11 +34,11 @@ const userConfigOptions = {
             'allowNsfw': true,
         },
         'pages': {
-    	    'order': ["apis", "tools"],
-    	    'apis': {
+            'order': ["apis", "tools"],
+            'apis': {
                 'order': ["gpt", "waifu", "booru", "gemini"],
-    	    }
-	    },
+            }
+        },
     },
     'search': {
         'enableFeatures': {
@@ -56,6 +56,9 @@ const userConfigOptions = {
             'prevTab': "Ctrl+Home",
         }
     },
+    'bar': {
+        'utilities': ['snip', 'picker', 'keyboard', 'camera'],
+    }
 }
 
 export default userConfigOptions;
