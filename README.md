@@ -43,7 +43,7 @@
      <details> 
        <summary>Here's an image, just in case:</summary>
     
-       ![image](https://github.com/l4v3nx/dots-hyprland/assets/58698398/f3178851-cc23-4830-af8d-23831d30c623)
+       ![image](https://github.com/user-attachments/assets/6b9b0a84-53f9-4313-9bb7-f6eb3c26e59a)
 
      </details>
 
