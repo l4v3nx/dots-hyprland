@@ -5,7 +5,7 @@
 
 <div align="center"> 
 
-![](https://img.shields.io/github/last-commit/end-4/dots-hyprland?&style=for-the-badge&color=FFB1C8&logoColor=D9E0EE&labelColor=292324)
+![](https://img.shields.io/github/last-commit/l4v3nx/dots-hyprland?&style=for-the-badge&color=FFB1C8&logoColor=D9E0EE&labelColor=292324)
 ![](https://img.shields.io/github/stars/end-4/dots-hyprland?style=for-the-badge&logo=andela&color=FFB686&logoColor=D9E0EE&labelColor=292324)
 [![](https://img.shields.io/github/repo-size/end-4/dots-hyprland?color=CAC992&label=SIZE&logo=googledrive&style=for-the-badge&logoColor=D9E0EE&labelColor=292324)](https://github.com/end-4/hyprland)
 ![](https://img.shields.io/badge/issues-skill-green?style=for-the-badge&color=CCE8E9&logoColor=D9E0EE&labelColor=292324) 
@@ -30,20 +30,20 @@
 </details>
 <details> 
   <summary>Instructions</summary>
-    
-   - **Automatic**, but guided and transparent, installation for Arch(-based) Linux:
-   ```bash
-   bash <(curl -s "https://end-4.github.io/dots-hyprland-wiki/setup.sh")
-   ```
+
    - **Manual** installation, other distros and more:
-     - See the [Wiki](https://end-4.github.io/dots-hyprland-wiki/en/i-i/01setup/)
-     - (_Available in: English, Vietnamese, and Simplified Chinese. Translations are welcome._)
     
+   ```bash
+   t=~/.cache/dots-hyprland   # Let's not trash your home folder
+   git clone https://github.com/l4v3nx/dots-hyprland.git "$t" --filter=blob:none
+   "$t"/install.sh
+   ```
+   
    - **Default keybinds**: Parts similar to Windows and GNOME. Hit Super+/ for a list.
      <details> 
        <summary>Here's an image, just in case:</summary>
     
-       ![image](https://github.com/end-4/dots-hyprland/assets/97237370/4c3d27b4-9ac5-4e55-9cae-c5c1f497890f)
+       ![image](https://github.com/user-attachments/assets/6b9b0a84-53f9-4313-9bb7-f6eb3c26e59a)
 
      </details>
 
@@ -60,14 +60,14 @@
   | [Fuzzel](https://mark.stosberg.com/fuzzel-a-great-dmenu-and-rofi-altenrative-for-wayland/) | For clipboard and emoji picker |
 
 
-  - For a more comprehensive list of dependencies, see [scriptdata/dependencies.conf](https://github.com/end-4/dots-hyprland/blob/main/scriptdata/dependencies.conf)
+  - For a more comprehensive list of dependencies, see [scriptdata/dependencies.conf](https://github.com/l4v3nx/dots-hyprland/blob/main/scriptdata/dependencies.conf)
 </details>
 
 <details> 
   <summary>Help improve these dotfiles!</summary>
     
    - Join the [discussions](https://github.com/end-4/dots-hyprland/discussions)
-   - If you'd like to suggest fixes or a new widget, feel free to [open an issue](https://github.com/end-4/dots-hyprland/issues/new/choose)
+   - If you'd like to suggest fixes or a new widget, feel free to [open an issue](https://github.com/end-4/dots-hyprland/issues/new/choose) in these dots' base repo
 </details>
 
 <div align="center">
@@ -93,35 +93,6 @@
 **Easy window management**
 <!--! ![image](https://github.com/end-4/dots-hyprland/assets/97237370/354431f6-8939-487f-9292-0bac71cf9ca8) -->
 ![image](https://github.com/end-4/dots-hyprland/assets/97237370/14e9725c-789f-4412-87b6-cce9504db109)
-
-> [!WARNING]
-> - Only the above is maintained
-> - Stuff below:
->   - Currently, they do NOT work (see [#99](https://github.com/end-4/dots-hyprland/issues/99))
->   - The pics are here mainly for your viewing pleasure
->   - The files are still available, feel free to grab them from the [`archive`](https://github.com/end-4/dots-hyprland/tree/archive) branch if you're willing to see some spaghetti and troubleshoot
-
-- stuff below have showcase videos. click image to view.
-
-### [m3ww](https://github.com/end-4/dots-hyprland/tree/archive)
-   <a href="https://streamable.com/85ch8x">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/09533e64-b6d7-47eb-a840-ee90c6776adf" alt="Material Eww!">
-   </a>
-
-### [NovelKnock](https://github.com/end-4/dots-hyprland/tree/archive)
-   <a href="https://streamable.com/7vo61k">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/42903d03-bf6f-49d4-be7f-dd77e6cb389d" alt="Desktop Preview">
-   </a>
-
-### [Hybrid](https://github.com/end-4/dots-hyprland/tree/archive)
-   <a href="https://streamable.com/4oogot">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/190deb1e-f6f5-46ce-8cf0-9b39944c079d" alt="click the circles!">
-   </a>
-
-### [Windoes](https://github.com/end-4/dots-hyprland/tree/archive)
-   <a href="https://streamable.com/5qx614">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/b15317b1-f295-49f5-b90c-fb6328b8d886" alt="Desktop Preview">
-   </a>
 
 <div align="center">
     <h2>• thank you •</h2>

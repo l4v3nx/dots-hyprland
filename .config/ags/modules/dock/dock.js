@@ -69,7 +69,7 @@ const LauncherButton = () => Widget.Button({
         child: MaterialIcon('apps', 'hugerass')
     }),
     onClicked: (self) => {
-        App.toggleWindow('overview');
+        execAsync('fuzzel').catch(print);
     },
     setup: setupCursorHover,
 })
@@ -234,11 +234,11 @@ export default (monitor = 0) => {
     const dockContent = Box({
         className: 'dock-bg spacing-h-5',
         children: [
-            PinButton(),
-            PinnedApps(),
-            DockSeparator(),
-            Taskbar(),
             LauncherButton(),
+            // PinButton(),
+            PinnedApps(),
+            // DockSeparator(),
+            // Taskbar(),
         ]
     })
     const dockRevealer = Revealer({

@@ -18,8 +18,8 @@ MAGENTA="\033[0;35m"
 RESET="\033[0m"
 
 # Define paths to update
-folders=(".config" ".local/bin" ".local/share" ".local/state")
-excludes=(".config/hypr/custom" ".config/ags/user_options.js" ".config/hypr/hyprland.conf")
+folders=(".config" ".local/bin")
+excludes=(".config/fish/fish_variables" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/hypr/hyprland/colors.conf" ".config/fuzzel/fuzzel.ini" ".config/ags/scss/_material.scss" ".config/hypr/hyprlock.conf")
 
 get_checksum() {
     # Get the checksum of a specific file
@@ -82,7 +82,7 @@ fi
 
 # End of Greetings
 
-current_branch=$(git rev-parse --abbrev-ref HEAD)
+current_branch=main
 
 # fetch the latest version of the repository
 if ! git fetch; then
