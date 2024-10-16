@@ -64,6 +64,35 @@ apply_fuzzel() {
     cp "$CACHE_DIR"/user/generated/fuzzel/fuzzel.ini "$XDG_CONFIG_HOME"/fuzzel/fuzzel.ini
 }
 
+apply_kitty() {
+	if ! which kitty &>/dev/null; then
+		echo "Kitty is not installed. Skipping that."
+		return
+	fi
+
+	# Check if scripts/templates/kitty/dots-hyprland.conf exists
+	if [ ! -f "scripts/templates/kitty/dots-hyprland.conf" ]; then
+		echo "Template file not found for kitty. Skipping that."
+		return
+	fi
+
+	# Copy template
+	mkdir -p "$CACHE_DIR"/user/generated/kitty
+	cp "scripts/templates/kitty/dots-hyprland.conf" "$CACHE_DIR"/user/generated/kitty/dots-hyprland.conf
+
+	# Apply colors
+	for i in "${!colorlist[@]}"; do
+		sed -i "s/${colorlist[$i]} #/${colorvalues[$i]#\#}/g" "$CACHE_DIR"/user/generated/kitty/dots-hyprland.conf
+	done
+
+	# Make sure that kitty.conf has 'include current-theme.conf' in it
+	mkdir -p "$XDG_CONFIG_HOME"/kitty
+	cp "$CACHE_DIR"/user/generated/kitty/dots-hyprland.conf "$XDG_CONFIG_HOME"/kitty/current-theme.conf
+
+	# Reload theme in all open kitty terminals
+	kill -SIGUSR1 $(pgrep kitty)
+}
+
 apply_mako() {
     # Check if scripts/templates/fuzzel/fuzzel.ini exists
     if [ ! -f "scripts/templates/mako/config" ]; then
@@ -193,6 +222,7 @@ apply_ags &
 apply_hyprland &
 apply_hyprlock &
 apply_lightdark &
+apply_kitty &
 apply_gtk &
 apply_fuzzel &
 apply_mako &
