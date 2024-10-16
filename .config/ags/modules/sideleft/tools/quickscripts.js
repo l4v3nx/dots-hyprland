@@ -12,6 +12,12 @@ import { distroID, isArchDistro, isDebianDistro, hasFlatpak } from '../../.miscu
 
 const scripts = [
   {
+    icon: 'memory',
+    name: 'Run htop',
+    command: 'htop',
+    enabled: true,
+  },
+  {
     icon: 'desktop-symbolic',
     name: 'Change screen resolution',
     command: `bash ${App.configDir}/modules/sideleft/tools/changeres.sh`,
