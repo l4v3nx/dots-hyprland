@@ -72,22 +72,22 @@ const UtilButton = ({ name, icon, onClicked }) => Button({
 const Utilities = () => {
     const availableUtilities = {
         snip: {
-            name: "Screen snip",
-            icon: "screenshot_region",
+            name: getString('Screen snip'),
+            icon: 'screenshot_region',
             onClicked: () => {
                 execAsync(`${App.configDir}/scripts/grimblast.sh copy area`).catch(print);
             }
         },
         picker: {
-            name: "Color picker",
-            icon: "colorize",
+            name: getString('Color picker'),
+            icon: 'colorize',
             onClicked: () => {
                 execAsync(['hyprpicker', '-a']).catch(print);
             }
         },
         keyboard: {
-            name: "Toggle on-screen keyboard",
-            icon: "keyboard",
+            name: getString('Toggle on-screen keyboard'),
+            icon: 'keyboard',
             onClicked: () => {
                 toggleWindowOnAllMonitors('osk');
             }
