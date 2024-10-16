@@ -93,8 +93,8 @@ const Utilities = () => {
             }
         },
         camera: {
-            name: "Toggle camera",
-            icon: "photo_camera",
+            name: getString('Toggle camera'),
+            icon: 'photo_camera',
             onClicked: () => {
                 execAsync('snapshot').catch(print);
             }

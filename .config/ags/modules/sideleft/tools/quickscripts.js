@@ -18,7 +18,7 @@ import {
 const scripts = [
     {
         icon: "memory",
-        name: "Run htop",
+        name: getString("Run htop"),
         command: "htop",
         enabled: true,
     },
@@ -72,13 +72,13 @@ const scripts = [
     },
     {
         icon: "vpn-key",
-        name: "Turn on AmneziaWG tunnel",
+        name: getString("Turn on AmneziaWG tunnel"),
         command: `sudo awg-quick up config; sleep 1; exit 0`,
         enabled: true,
     },
     {
         icon: "vpn-key-off",
-        name: "Turn off AmneziaWG tunnel",
+        name: getString("Turn off AmneziaWG tunnel"),
         command: `sudo awg-quick down config; sleep 1; exit 0`,
         enabled: true,
     },
