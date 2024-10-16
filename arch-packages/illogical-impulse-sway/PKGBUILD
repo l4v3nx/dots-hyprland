@@ -1,0 +1,16 @@
+pkgname=illogical-impulse-sway
+pkgver=1.0
+pkgrel=1
+pkgdesc='Illogical Impulse Sway Dependencies'
+arch=(any)
+license=(None)
+depends=(
+	swayfx-git
+	mako
+	dex
+	xorg-xrandr
+	sway-audio-idle-inhibit-git
+	swayosd-git
+	waybar
+	ttf-material-design-icons-extended
+)
