@@ -23,7 +23,7 @@ abbr --add pamcan pacman
 abbr yain 'yay -S'
 abbr yaind 'yay -S --asdeps'
 abbr yainloc 'yay -U'
-abbr yarep 'yay -Si'
+abbr yarep 'yay -Sii'
 abbr yareps 'yay -Ss'
 abbr yaloc 'yay -Qii'
 abbr yalocs 'yay -Qs'
