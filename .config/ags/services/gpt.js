@@ -6,7 +6,7 @@ import GLib from 'gi://GLib';
 import Soup from 'gi://Soup?version=3.0';
 import { fileExists } from '../modules/.miscutils/files.js';
 
-const PROVIDERS = Object.assign({ // There's this list hmm https://github.com/zukixa/cool-ai-stuff/
+const PROVIDERS = Object.assign(userOptions.sidebar.ai.extraGptModels, { // There's this list hmm https://github.com/zukixa/cool-ai-stuff/
     'llama-3.2': {
         'name': 'OpenRouter (Llama-3.2-11B-Vision-Instruct)',
         'logo_name': 'openrouter-symbolic',
@@ -34,7 +34,16 @@ const PROVIDERS = Object.assign({ // There's this list hmm https://github.com/zu
         'key_file': 'zuki_key.txt',
         'model': 'gpt-4o-mini',
     },
-}, userOptions.sidebar.ai.extraGptModels)
+    'hentai': {
+        'name': 'HentAI (GPT-4o)',
+        'logo_name': 'ai-hentai',
+        'description': getString("Stable alternative API made by one of the Zukijourney devs.\nNote: Keys are IP-locked so it's buggy sometimes\nPricing: Free: 10/min, 800/day.\nRequires you to join their Discord for a key"),
+        'base_url': 'https://proxy.blackgaypornis.fun/v1/chat/completions',
+        'key_get_url': 'https://discord.gg/hentai-zj-1127138833612427274',
+        'key_file': 'hentai_key.txt',
+        'model': 'gpt-4o',
+    },
+})
 
 // Custom prompt
 const initMessages =

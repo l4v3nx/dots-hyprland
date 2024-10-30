@@ -95,7 +95,7 @@ let configOptions = {
                 'openai': {
                     'name': 'OpenAI',
                     'logo_name': 'openai-symbolic',
-                    'description': getString('Official OpenAI API.\nPricing: Free for the first $5 or 3 months, whichever is less.'),
+                    'description': 'Official OpenAI API.\nPricing: Free for the first $5 or 3 months, whichever is less',
                     'base_url': 'https://api.openai.com/v1/chat/completions',
                     'key_get_url': 'https://platform.openai.com/api-keys',
                     'key_file': 'openai_key.txt',
