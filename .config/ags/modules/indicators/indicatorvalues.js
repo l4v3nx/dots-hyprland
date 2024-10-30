@@ -55,7 +55,14 @@ export default (monitor = 0) => {
         extraClassName: 'osd-brightness',
         extraProgressClassName: 'osd-brightness-progress',
         labelSetup: (self) => self.hook(Brightness[monitor], self => {
-            self.label = `${Math.round(Brightness[monitor].screen_value * 100)}`;
+            const updateValue = Math.round(Brightness[monitor].screen_value * 100);
+            if (updateValue === 0) {
+                self.className = 'osd-value-icon icon-material';
+                self.label = 'brightness_empty';
+            } else {
+                self.className = 'osd-value-txt';
+                self.label = `${updateValue}`;
+            }
         }, 'notify::screen-value'),
         progressSetup: (self) => self.hook(Brightness[monitor], (progress) => {
             const updateValue = Brightness[monitor].screen_value;
@@ -68,7 +75,7 @@ export default (monitor = 0) => {
         name: 'Volume',
         extraClassName: 'osd-volume',
         extraProgressClassName: 'osd-volume-progress',
-        attribute: { headphones: undefined , device: undefined},
+        attribute: { headphones: undefined, device: undefined },
         nameSetup: (self) => Utils.timeout(1, () => {
             const updateAudioDevice = (self) => {
                 const usingHeadphones = (Audio.speaker?.stream?.port)?.toLowerCase().includes('headphone');
@@ -91,7 +98,7 @@ export default (monitor = 0) => {
                 }
             }
             volumeIndicator.attribute.device = newDevice;
-            if(updateValue === 0) {
+            if (updateValue === 0) {
                 label.className = 'osd-value-icon icon-material';
                 label.label = 'volume_off';
             } else {
