@@ -7,15 +7,6 @@ import Soup from 'gi://Soup?version=3.0';
 import { fileExists } from '../modules/.miscutils/files.js';
 
 const PROVIDERS = Object.assign({ // There's this list hmm https://github.com/zukixa/cool-ai-stuff/
-    'openai': {
-        'name': 'OpenAI',
-        'logo_name': 'openai-symbolic',
-        'description': getString('Official OpenAI API.\nPricing: Free for the first $5 or 3 months, whichever is less.'),
-        'base_url': 'https://api.openai.com/v1/chat/completions',
-        'key_get_url': 'https://platform.openai.com/api-keys',
-        'key_file': 'openai_key.txt',
-        'model': 'gpt-3.5-turbo',
-    },
     'llama-3.2': {
         'name': 'OpenRouter (Llama-3.2-11B-Vision-Instruct)',
         'logo_name': 'openrouter-symbolic',
@@ -33,15 +24,6 @@ const PROVIDERS = Object.assign({ // There's this list hmm https://github.com/zu
         'key_get_url': 'https://openrouter.ai/keys',
         'key_file': 'openrouter_key.txt',
         'model': 'liquid/lfm-40b:free',
-    },
-    'oxygen4o': {
-        'name': 'Oxygen (GPT-4o)',
-        'logo_name': 'ai-oxygen-symbolic',
-        'description': getString('An API from Tornado Softwares\nPricing: Free: 100/day'),
-        'base_url': 'https://app.oxyapi.uk/v1/chat/completions',
-        'key_get_url': 'https://www.oxyapi.uk/dashboard/keys',
-        'key_file': 'oxygen_key.txt',
-        'model': 'gpt-4o',
     },
     'zukijourney': {
         'name': 'zukijourney (GPT-4o-mini)',

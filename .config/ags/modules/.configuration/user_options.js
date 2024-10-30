@@ -92,13 +92,13 @@ let configOptions = {
     'sidebar': {
         'ai': {
             'extraGptModels': {
-                'oxygen3': {
-                    'name': 'Oxygen (GPT-3.5)',
-                    'logo_name': 'ai-oxygen-symbolic',
-                    'description': 'An API from Tornado Softwares\nPricing: Free: 100/day',
-                    'base_url': 'https://app.oxyapi.uk/v1/chat/completions',
-                    'key_get_url': 'https://www.oxyapi.uk/dashboard/keys',
-                    'key_file': 'oxygen_key.txt',
+                'openai': {
+                    'name': 'OpenAI',
+                    'logo_name': 'openai-symbolic',
+                    'description': getString('Official OpenAI API.\nPricing: Free for the first $5 or 3 months, whichever is less.'),
+                    'base_url': 'https://api.openai.com/v1/chat/completions',
+                    'key_get_url': 'https://platform.openai.com/api-keys',
+                    'key_file': 'openai_key.txt',
                     'model': 'gpt-3.5-turbo',
                 },
             }
