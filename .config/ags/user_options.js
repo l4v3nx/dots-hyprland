@@ -9,6 +9,10 @@ const userConfigOptions = {
     },
     appearance: {
         fakeScreenRounding: 0,
+        onHoverTray: { // Appears the tray only on mouse hover
+            enabled: false,
+            delay: 1500, // Delay, in milliseconds, before the tray disappears again
+        },
     },
     apps: {
         imageViewer: "eog",
