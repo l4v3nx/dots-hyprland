@@ -5,8 +5,7 @@
 
 const userConfigOptions = {
     ai: {
-        defaultGPTProvider: "oxygen4o",
-        proxyUrl: "http://127.0.0.1:8080",
+        defaultGPTProvider: "liquid",
     },
     appearance: {
         fakeScreenRounding: 0,
