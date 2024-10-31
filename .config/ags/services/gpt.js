@@ -8,7 +8,7 @@ import { fileExists } from '../modules/.miscutils/files.js';
 
 const PROVIDERS = Object.assign(userOptions.sidebar.ai.extraGptModels, { // There's this list hmm https://github.com/zukixa/cool-ai-stuff/
     'llama-3.2': {
-        'name': 'OpenRouter (Llama-3.2-11B-Vision-Instruct)',
+        'name': 'OpenRouter (llama-3.2-11b-vision-instruct)',
         'logo_name': 'openrouter-symbolic',
         'description': getString('A unified interface for LLMs'),
         'base_url': 'https://openrouter.ai/api/v1/chat/completions',
@@ -17,7 +17,7 @@ const PROVIDERS = Object.assign(userOptions.sidebar.ai.extraGptModels, { // Ther
         'model': 'meta-llama/llama-3.2-11b-vision-instruct:free',
     },
     'liquid': {
-        'name': 'OpenRouter (Liquid: LFM 40B MoE)',
+        'name': 'OpenRouter (lfm-40b)',
         'logo_name': 'openrouter-symbolic',
         'description': getString('A unified interface for LLMs'),
         'base_url': 'https://openrouter.ai/api/v1/chat/completions',
@@ -26,7 +26,7 @@ const PROVIDERS = Object.assign(userOptions.sidebar.ai.extraGptModels, { // Ther
         'model': 'liquid/lfm-40b:free',
     },
     'zukijourney': {
-        'name': 'zukijourney (GPT-4o-mini)',
+        'name': 'zukijourney (gpt-4o-mini)',
         'logo_name': 'ai-zukijourney',
         'description': getString("An API from @zukixa on GitHub.\nNote: Keys are IP-locked so it's buggy sometimes\nPricing: Free: 10/min, 800/day.\nRequires you to join their Discord for a key"),
         'base_url': 'https://api.zukijourney.com/v1/chat/completions',
@@ -35,7 +35,7 @@ const PROVIDERS = Object.assign(userOptions.sidebar.ai.extraGptModels, { // Ther
         'model': 'gpt-4o-mini',
     },
     'hentai': {
-        'name': 'HentAI (GPT-4o)',
+        'name': 'HentAI (gpt-4o)',
         'logo_name': 'ai-hentai',
         'description': getString("Stable alternative API made by one of the Zukijourney devs.\nNote: Keys are IP-locked so it's buggy sometimes\nPricing: Free: 10/min, 800/day.\nRequires you to join their Discord for a key"),
         'base_url': 'https://proxy.blackgaypornis.fun/v1/chat/completions',

@@ -97,7 +97,7 @@ let configOptions = {
         'ai': {
             'extraGptModels': {
                 'openai': {
-                    'name': 'OpenAI',
+                    'name': 'OpenAI (gpt-3.5-turbo)',
                     'logo_name': 'openai-symbolic',
                     'description': 'Official OpenAI API.\nPricing: Free for the first $5 or 3 months, whichever is less',
                     'base_url': 'https://api.openai.com/v1/chat/completions',
