@@ -1,7 +1,7 @@
-pkgbase = ii-aylurs-gtk-shell-git
-	pkgdesc = Aylurs's Gtk Shell (AGS), version fixed for illogical-impulse dotfiles
-	pkgver = 1.8.2.r2.g1115022
-	pkgrel = 1
+pkgbase = illogical-impulse-ags
+	pkgdesc = Aylurs's Gtk Shell (AGS), version fixed for illogical-impulse dotfiles.
+	pkgver = r549.60180a1
+	pkgrel = 2
 	url = https://github.com/Aylur/ags
 	arch = x86_64
 	license = GPL3
@@ -18,7 +18,8 @@ pkgbase = ii-aylurs-gtk-shell-git
 	depends = gtk-layer-shell
 	depends = libpulse
 	depends = pam
-	optdepends = gnome-bluetooth-3.0: required for bluetooth service
+	depends = gnome-bluetooth-3.0
+	depends = gammastep
 	optdepends = greetd: required for greetd service
 	optdepends = libdbusmenu-gtk3: required for systemtray service
 	optdepends = libsoup3: required for the Utils.fetch feature
@@ -27,10 +28,11 @@ pkgbase = ii-aylurs-gtk-shell-git
 	optdepends = power-profiles-daemon: required for powerprofiles service
 	optdepends = upower: required for battery service
 	conflicts = aylurs-gtk-shell
+	conflicts = aylurs-gtk-shell-git
 	backup = etc/pam.d/ags
-	source = git+https://github.com/Aylur/ags
+	source = git+https://github.com/Aylur/ags.git#commit=60180a184cfb32b61a1d871c058b31a3b9b0743d
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = aylurs-gtk-shell-git
+pkgname = illogical-impulse-ags
