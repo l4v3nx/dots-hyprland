@@ -49,7 +49,7 @@ const userConfigOptions = {
         pages: {
             order: ["apis", "tools"],
             apis: {
-                order: ["gpt"],
+                order: ["gpt"], // To get anime back, revert 5264ec3
             },
         },
     },
