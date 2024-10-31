@@ -49,7 +49,7 @@ const userConfigOptions = {
         pages: {
             order: ["apis", "tools"],
             apis: {
-                order: ["gpt", "waifu", "booru", "gemini"],
+                order: ["gpt"],
             },
         },
     },
