@@ -36,3 +36,4 @@ abbr yasu 'yay -Syu --noconfirm'
 abbr yaupg 'yay -Syu'
 
 abbr ls 'ls -ll'
+abbr sz 'du -ah'
