@@ -130,7 +130,7 @@ esac
 metapkgs=(./arch-packages/illogical-impulse-{audio,backlight,basic,fonts-themes,gnome,gtk,portal,python,screencapture,widgets})
 metapkgs+=(./arch-packages/illogical-impulse-ags)
 metapkgs+=(./arch-packages/illogical-impulse-microtex-git)
-metapkgs+=(./arch-packages/illogical-impulse-oneui4-icons-git)
+# metapkgs+=(./arch-packages/illogical-impulse-oneui4-icons-git)
 [[ -f /usr/share/icons/Bibata-Modern-Classic/index.theme ]] ||
 	metapkgs+=(./arch-packages/illogical-impulse-bibata-modern-classic-bin)
 try sudo pacman -R illogical-impulse-microtex
