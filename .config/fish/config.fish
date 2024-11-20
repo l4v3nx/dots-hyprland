@@ -34,6 +34,8 @@ abbr yare 'yay -Rn'
 abbr yarem 'yay -Rnsu'
 abbr yasu 'yay -Syu --noconfirm'
 abbr yaupg 'yay -Syu'
+abbr yarmorph 'yay -Rns (yay -Qdtq)'
+abbr yalist 'yay -Qe'
 
 abbr ls 'ls -ll'
 abbr sz 'du -ah'
