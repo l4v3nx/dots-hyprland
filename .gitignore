@@ -7,3 +7,5 @@
 __pycache__/
 *.py[cod]
 .editorconfig
+.config/ags/user_options.js
+.config/fish/*
