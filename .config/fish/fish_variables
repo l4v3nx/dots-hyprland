@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export CARGO_HOME:/home/l4v3nx/\x2ecache/cargo
 SETUVAR --export EDITOR:nvim
 SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25
 SETUVAR FZF_DISABLE_KEYBINDINGS:0
@@ -8,6 +9,7 @@ SETUVAR FZF_PREVIEW_DIR_CMD:ls
 SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR --export GIT_EDITOR:nvim\x20\x2bstartinsert
+SETUVAR --export --path GOPATH:/home/l4v3nx/\x2ecache/go
 SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:3400
 SETUVAR autovenv_announce:yes
