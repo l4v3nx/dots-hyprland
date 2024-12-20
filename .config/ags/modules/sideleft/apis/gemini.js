@@ -1,4 +1,4 @@
-const { Gtk } = imports.gi;
+const { Gtk, Pango } = imports.gi;
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
@@ -143,6 +143,7 @@ export const GoogleAiInstructions = () => Box({
                 wrap: true,
                 className: 'txt sidebar-chat-welcome-txt',
                 justify: Gtk.Justification.CENTER,
+                wrapMode: Pango.WrapMode.WORD_CHAR,
                 label: 'A Google AI API key is required\nYou can grab one <u>here</u>, then enter it below',
                 // setup: self => self.set_markup("This is a <a href=\"https://www.github.com\">test link</a>")
             }),

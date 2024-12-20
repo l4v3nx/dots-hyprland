@@ -1,5 +1,5 @@
 // This file is for the actual widget for each single notification
-const { GLib, Gdk, Gtk } = imports.gi;
+const { GLib, Gdk, Gtk, Pango } = imports.gi;
 import Widget from 'resource:///com/github/Aylur/ags/widget.js'
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
 const { Box, EventBox, Icon, Overlay, Label, Button, Revealer } = Widget;
@@ -169,6 +169,7 @@ export default ({
             maxWidthChars: 1,
             truncate: 'end',
             label: notifObject.body.split("\n")[0],
+            wrapMode: Pango.WrapMode.WORD_CHAR,
         }),
     });
     const notifTextExpanded = Revealer({
@@ -188,6 +189,7 @@ export default ({
                     maxWidthChars: 1,
                     wrap: true,
                     label: notifObject.body,
+                    wrapMode: Pango.WrapMode.WORD_CHAR,
                 }),
                 Box({
                     className: 'notif-actions spacing-h-5',
@@ -199,6 +201,7 @@ export default ({
                             setup: setupCursorHover,
                             child: Label({
                                 label: getString('Close'),
+                                wrapMode: Pango.WrapMode.WORD_CHAR,
                             }),
                         }),
                         ...notifObject.actions.map(action => Widget.Button({
@@ -208,6 +211,7 @@ export default ({
                             setup: setupCursorHover,
                             child: Label({
                                 label: action.label,
+                                wrapMode: Pango.WrapMode.WORD_CHAR,
                             }),
                         }))
                     ],
@@ -242,6 +246,7 @@ export default ({
         ellipsize: 3,
         useMarkup: notifObject.summary.startsWith('<'),
         label: notifObject.summary,
+        wrapMode: Pango.WrapMode.WORD_CHAR,
     });
     const initTimeString = getFriendlyNotifTimeString(notifObject.time);
     const notifTextBody = Label({
@@ -256,6 +261,7 @@ export default ({
             });
             self.connect('destroy', () => { if (id) GLib.source_remove(id) });
         } : () => { },
+        wrapMode: Pango.WrapMode.WORD_CHAR,
     });
     const notifText = Box({
         valign: Gtk.Align.CENTER,

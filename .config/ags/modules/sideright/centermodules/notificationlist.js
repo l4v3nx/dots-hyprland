@@ -1,6 +1,7 @@
 // This file is for the notification list on the sidebar
 // For the popup notifications, see onscreendisplay.js
 // The actual widget for each single notification is in ags/modules/.commonwidgets/notification.js
+const { Pango } = imports.gi;
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
 const { Box, Button, Label, Revealer, Scrollable, Stack } = Widget;
@@ -22,7 +23,7 @@ export default (props) => {
                     className: 'spacing-v-5 txt-subtext',
                     children: [
                         MaterialIcon('notifications_active', 'gigantic'),
-                        Label({ label: getString('No notifications'), className: 'txt-small' }),
+                        Label({ label: getString('No notifications'), className: 'txt-small', wrapMode: Pango.WrapMode.WORD_CHAR, }),
                     ]
                 }),
             ]
@@ -77,6 +78,7 @@ export default (props) => {
                 Label({
                     className: 'txt-small',
                     label: name,
+                    wrapMode: Pango.WrapMode.WORD_CHAR,
                 })
             ]
         }),
@@ -127,6 +129,7 @@ export default (props) => {
             .hook(Notifications, (box, id) => self.attribute.updateCount(self), 'dismissed')
             .hook(Notifications, (box, id) => self.attribute.updateCount(self), 'closed')
         ,
+        wrapMode: Pango.WrapMode.WORD_CHAR,
     });
     const listTitle = Box({
         vpack: 'start',
