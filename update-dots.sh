@@ -81,7 +81,8 @@ if [[ $REPLY =~ ^[Nn]$ ]]; then
 fi
 
 # End of Greetings
-
+printf "Pulling Git submodules...\n"
+git submodule update --remote
 current_branch=main
 
 # fetch the latest version of the repository
