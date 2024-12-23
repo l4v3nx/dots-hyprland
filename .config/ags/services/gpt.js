@@ -38,7 +38,7 @@ const PROVIDERS = Object.assign(userOptions.sidebar.ai.extraGptModels, { // Ther
         'name': 'HentAI (gpt-4o)',
         'logo_name': 'ai-hentai',
         'description': getString("Stable alternative API made by one of the Zukijourney devs.\nNote: Keys are IP-locked so it's buggy sometimes\nPricing: Free: 10/min, 800/day.\nRequires you to join their Discord for a key"),
-        'base_url': 'https://proxy.blackgaypornis.fun/v1/chat/completions',
+        'base_url': 'https://api.v0id.nl/v1/chat/completions',
         'key_get_url': 'https://discord.gg/hentai-zj-1127138833612427274',
         'key_file': 'hentai_key.txt',
         'model': 'gpt-4o',

@@ -36,7 +36,7 @@ const userConfigOptions = {
             "code",
             "ayugram-desktop",
             "telegram-desktop",
-            "spotify",
+            "spotify-launcher",
             "com.obsproject.Studio",
             "vesktop",
         ],
