@@ -88,6 +88,7 @@
     "Now": "Now",
     "Yesterday": "Yesterday",
     "No audio source": "No audio source",
+    "Power profiles daemon is not detected.\n  Install either power-profiles-daemon\n\t\t\tor tuned-ppd": "Power profiles daemon is not detected.\n  Install either power-profiles-daemon\n\t\t\tor tuned-ppd",
     "Remove device": "Remove device",
     "Connected": "Connected",
     "Paired": "Paired",

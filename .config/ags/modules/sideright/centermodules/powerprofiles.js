@@ -1,6 +1,7 @@
+const { Pango } = imports.gi;
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import PowerProfiles from "resource:///com/github/Aylur/ags/service/powerprofiles.js";
-const { Box, Button, Entry, Icon, Label, Revealer, Scrollable, Slider, Stack, Overlay } = Widget;
+const { Box, Button, Label, Scrollable, Stack } = Widget;
 import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
 
 const PROFILES_META = {
@@ -60,32 +61,56 @@ const PowerProfile = (profile) => {
 }
 
 export default (props) => {
-    const profile_list = Box({
+    const profileList = Box({
         vertical: true,
         className: 'spacing-v-10',
         children: [
-            Overlay({
-                passThrough: true,
-                child: Scrollable({
-                    vexpand: true,
-                    child: Box({
-                        vertical: true,
-                        attribute: {
-                            'updateProfiles': (self) => {
-                                self.children = PowerProfiles.profiles.map(n => PowerProfile(n)).reverse();
-                            },
+            Scrollable({
+                vexpand: true,
+                child: Box({
+                    vertical: true,
+                    attribute: {
+                        'updateProfiles': (self) => {
+                            self.children = PowerProfiles.profiles.map(n => PowerProfile(n)).reverse();
                         },
-                        className: 'spacing-v-5 margin-bottom-15',
-                        setup: (self) => self.hook(PowerProfiles, self.attribute.updateProfiles),
-                    }),
+                    },
+                    className: 'spacing-v-5 margin-bottom-15',
+                    setup: (self) => self.hook(PowerProfiles, self.attribute.updateProfiles),
                 }),
-                overlays: [
-                    Box({
-                        className: 'sidebar-centermodules-scrollgradient-bottom'
-                    }),
-                ],
             }),
         ],
+    });
+
+    const profileEmpty = Box({
+        homogeneous: true,
+        children: [
+            Box({
+                vertical: true,
+                vpack: 'center',
+                className: 'txt spacing-v-10',
+                children: [
+                    Box({
+                        vertical: true,
+                        className: 'spacing-v-5 txt-subtext',
+                        children: [
+                            MaterialIcon('error', 'gigantic'),
+                            Label({ label: getString('Power profiles daemon is not detected.\n  Install either power-profiles-daemon\n\t\t\tor tuned-ppd'), className: 'txt-small', wrapMode: Pango.WrapMode.WORD_CHAR, }),
+                        ],
+                    }),
+                ]
+            })]
+    });
+
+    const listContents = Stack({
+        transition: 'crossfade',
+        transitionDuration: userOptions.animations.durationLarge,
+        children: {
+            'empty': profileEmpty,
+            'list': profileList,
+        },
+        setup: (self) => self.hook(PowerProfiles, (self) => {
+            self.shown = (PowerProfiles.active_profile == undefined || PowerProfiles.active_profile == '' ? 'empty' : 'list')
+        }),
     });
 
     return Box({
@@ -93,7 +118,7 @@ export default (props) => {
         className: 'spacing-v-10',
         vertical: true,
         children: [
-            profile_list
+            listContents,
         ],
     });
 }
