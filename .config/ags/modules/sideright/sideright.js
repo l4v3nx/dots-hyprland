@@ -39,7 +39,7 @@ const centerWidgets = [
         contentWidget: ModuleAudioControls,
     },
     {
-        name: 'Power Profiles',
+        name: getString('Power Profiles'),
         materialIcon: 'speed',
         contentWidget: ModulePowerProfiles,
     },

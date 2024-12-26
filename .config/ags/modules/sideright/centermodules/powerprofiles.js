@@ -6,19 +6,19 @@ import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
 
 const PROFILES_META = {
     'power-saver': {
-        'label': "Power Saver",
+        'label': getString("Power Saver"),
         'icon': "access_time",
-        'describe': "Reduced performance and power usage",
+        'describe': getString("Reduced performance and power usage"),
     },
     'balanced': {
-        'label': "Balanced",
+        'label': getString("Balanced"),
         'icon': "balance",
-        'describe': "Standard performance and power usage",
+        'describe': getString("Standard performance and power usage"),
     },
     'performance': {
-        'label': "Performance",
+        'label': getString("Performance"),
         'icon': "bolt",
-        'describe': "High performance and power usage"
+        'describe': getString("High performance and power usage"),
     },
 };
 
