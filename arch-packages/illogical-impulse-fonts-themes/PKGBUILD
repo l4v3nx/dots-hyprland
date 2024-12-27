@@ -11,13 +11,11 @@ depends=(
 	lightly-qt5-git
 	lightly-qt6-git
 	fontconfig
-	ttf-readex-pro
 	ttf-jetbrains-mono-nerd
 	ttf-material-symbols-variable-git
 	ttf-nerd-fonts-symbols
 	ttf-space-mono-nerd
 	lexend-fonts-git
-	ttf-rubik-vf
 	fish
 	foot
 	starship
