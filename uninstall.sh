@@ -18,27 +18,21 @@ read -r
 set -e
 ##############################################################################################################################
 
-# Undo Step 3: Removing copied config and local folders
+# Undo Step 1: Removing copied config and local folders
 printf '\e[36mRemoving copied config and local folders...\n\e[97m'
 
-for i in ags fish fontconfig foot fuzzel hypr mpv wlogout "starship.toml" rubyshot; do
+for i in ags fish fontconfig foot fuzzel hypr mpv nvim wlogout "starship.toml"; do
 	v rm -rf "$XDG_CONFIG_HOME/$i"
 done
 
 v rm -rf "$XDG_BIN_HOME/fuzzel-emoji"
+v rm -rf "$XDG_BIN_HOME/rubyshot"
 v rm -rf "$XDG_CACHE_HOME/ags"
 v sudo rm -rf "$XDG_STATE_HOME/ags"
 
 ##############################################################################################################################
 
-# Undo Step 2: Uninstall AGS - Disabled for now, check issues
-# echo 'Uninstalling AGS...'
-# sudo meson uninstall -C ~/ags/build
-# rm -rf ~/ags
-
-##############################################################################################################################
-
-# Undo Step 1: Remove added user from video, i2c, and input groups and remove yay packages
+# Undo Step 2: Remove added user from video, i2c, and input groups
 printf '\e[36mRemoving user from video, i2c, and input groups and removing packages...\n\e[97m'
 user=$(whoami)
 v sudo gpasswd -d "$user" video
@@ -49,7 +43,7 @@ v sudo rm /etc/modules-load.d/i2c-dev.conf
 ##############################################################################################################################
 read -p "Do you want to uninstall packages used by the dotfiles?\nCtrl+C to exit, or press Enter to proceed"
 
-# Removing installed yay packages and dependencies
-v yay -Rns hyprland-git illogical-impulse-{audio,backlight,basic,fonts-themes,gnome,gtk,microtex-git,portal,pymyc-aur,python,screencapture,widgets} #plasma-browser-integration
+# Undo Step 3: Remove yay packages
+v yay -Rns hyprland-git illogical-impulse-{ags,audio,backlight,basic,fonts-themes,gnome,gtk,microtex-git,portal,pymyc-aur,python,screencapture,sway,widgets} #plasma-browser-integration
 
 printf '\e[36mUninstall Complete.\n\e[97m'
