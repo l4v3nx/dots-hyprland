@@ -39,6 +39,7 @@ const userConfigOptions = {
             "spotify-launcher",
             "com.obsproject.Studio",
             "vesktop",
+            "libreoffice-writer",
         ],
         monitorExclusivity: true, // Dock will move to other monitor along with focus if enabled
         trigger: [], // client_added, client_move, workspace_active, client_active
@@ -59,6 +60,9 @@ const userConfigOptions = {
             directorySearch: false,
             aiSearch: false,
         },
+    },
+    weather: {
+        city: "Moscow",
     },
     keybinds: {
         cheatsheet: {
