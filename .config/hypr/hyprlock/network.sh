@@ -1,0 +1,1 @@
+../hyprlock-theme/hyprlock/network.sh

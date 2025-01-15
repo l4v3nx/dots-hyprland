@@ -8,5 +8,8 @@ depends=(
 	polkit-gnome
 	gnome-keyring
 	gnome-control-center
-	blueberry networkmanager
+	blueberry
+	bluez-utils
+	networkmanager
+	wireless_tools
 )
