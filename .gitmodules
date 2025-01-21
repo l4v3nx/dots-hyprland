@@ -1,9 +1,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/l4v3nx/nvim
-[submodule ".config/mpv"]
-	path = .config/mpv
-	url = https://github.com/l4v3nx/mpv-settings
 [submodule ".config/hypr/hyprlock-theme"]
 	path = .config/hypr/hyprlock-theme
 	url = https://github.com/l4v3nx/googlish-hyprlock-theme
