@@ -138,18 +138,20 @@ tooltip label {
   padding-right: 8px;
 }
 
-#pulseaudio.source {
-  padding-left: 0px;
+#pulseaudio {
+  padding-left: 2px;
 }
 
 #language {
   border-radius: 8px 0 0 8px;
   margin-left: 6px;
-  padding-right: 10px;
+  padding-right: 8px;
 }
 
 #custom-audio_idle_inhibitor {
   padding-right: 8px;
+  font-size: 14px;
+  padding-bottom: 1px;
 }
 
 #custom-power {
