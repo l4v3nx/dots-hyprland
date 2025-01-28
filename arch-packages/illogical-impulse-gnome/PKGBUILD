@@ -13,3 +13,4 @@ depends=(
 	networkmanager
 	wireless_tools
 )
+S

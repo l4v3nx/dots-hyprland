@@ -2,7 +2,7 @@
 pkgname=illogical-impulse-ags
 _pkgname=ags
 pkgver=r550.67b0e31
-pkgrel=1
+pkgrel=2
 pkgdesc="Aylurs's Gtk Shell (AGS), version fixed for illogical-impulse dotfiles."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
