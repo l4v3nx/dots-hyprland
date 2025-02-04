@@ -123,7 +123,7 @@ true) sleep 0 ;;
 *)
 	hyprland_installflags="-S"
 	$ask || hyprland_installflags="$hyprland_installflags --noconfirm"
-	v yay $hyprland_installflags --asdeps hyprutils-git hyprlang-git hyprcursor-git hyprwayland-scanner-git
+	# v yay $hyprland_installflags --asdeps hyprutils-git hyprlang-git hyprcursor-git hyprwayland-scanner-git
 	v yay $hyprland_installflags --answerclean=a hyprland-git
 	;;
 esac
