@@ -197,7 +197,7 @@ const BatteryModule = () => Stack({
                             const feelsLike = weather.current_condition[0][`FeelsLike${userOptions.weather.preferredUnit}`];
                             const weatherSymbol = WEATHER_SYMBOL[WWO_CODE[weatherCode]];
                             self.children[0].label = weatherSymbol;
-                            self.children[1].label = `${temperature}°${userOptions.weather.preferredUnit} • Feels like ${feelsLike}°${userOptions.weather.preferredUnit}`;
+                            self.children[1].label = `${temperature}°${userOptions.weather.preferredUnit} • ${getString('Feels like')} ${feelsLike}°${userOptions.weather.preferredUnit}`;
                             self.tooltipText = weatherDesc;
                         }).catch((err) => {
                             try { // Read from cache
@@ -210,7 +210,7 @@ const BatteryModule = () => Stack({
                                 const feelsLike = weather.current_condition[0][`FeelsLike${userOptions.weather.preferredUnit}`];
                                 const weatherSymbol = WEATHER_SYMBOL[WWO_CODE[weatherCode]];
                                 self.children[0].label = weatherSymbol;
-                                self.children[1].label = `${temperature}°${userOptions.weather.preferredUnit} • Feels like ${feelsLike}°${userOptions.weather.preferredUnit}`;
+                                self.children[1].label = `${temperature}°${userOptions.weather.preferredUnit} • ${getString('Feels like')} ${feelsLike}°${userOptions.weather.preferredUnit}`;
                                 self.tooltipText = weatherDesc;
                             } catch (err) {
                                 print(err);
