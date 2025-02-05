@@ -129,13 +129,13 @@ true) sleep 0 ;;
 esac
 
 # Install core dependencies from the meta-packages
-metapkgs=(./arch-packages/illogical-impulse-{audio,backlight,basic,fonts-themes,gnome,gtk,portal,python,screencapture,sway,widgets})
+metapkgs=(./arch-packages/illogical-impulse-{audio,python,backlight,basic,fonts-themes,gnome,gtk,portal,screencapture,sway,widgets})
 metapkgs+=(./arch-packages/illogical-impulse-ags)
 metapkgs+=(./arch-packages/illogical-impulse-microtex-git)
 # metapkgs+=(./arch-packages/illogical-impulse-oneui4-icons-git)
 [[ -f /usr/share/icons/Bibata-Modern-Classic/index.theme ]] ||
 	metapkgs+=(./arch-packages/illogical-impulse-bibata-modern-classic-bin)
-try sudo pacman -R illogical-impulse-microtex
+try sudo pacman -R illogical-impulse-{microtex,pymyc-aur}
 
 for i in "${metapkgs[@]}"; do
 	metainstallflags="--needed"
@@ -143,18 +143,9 @@ for i in "${metapkgs[@]}"; do
 	v install-local-pkgbuild "$i" "$metainstallflags"
 done
 
-# https://github.com/end-4/dots-hyprland/issues/428#issuecomment-2081690658
-# https://github.com/end-4/dots-hyprland/issues/428#issuecomment-2081701482
-# https://github.com/end-4/dots-hyprland/issues/428#issuecomment-2081707099
-case $SKIP_PYMYC_AUR in
-true) sleep 0 ;;
-*)
-	pymycinstallflags=""
-	$ask && showfun install-local-pkgbuild || pymycinstallflags="$pymycinstallflags --noconfirm"
-	v install-local-pkgbuild "./arch-packages/illogical-impulse-pymyc-aur" "$pymycinstallflags"
-	;;
-esac
-
+# These python packages are installed using uv, not pacman.
+showfun install-python-packages
+v install-python-packages
 ## Optional dependencies
 if pacman -Qs ^plasma-browser-integration$; then SKIP_PLASMAINTG=true; fi
 case $SKIP_PLASMAINTG in
@@ -316,6 +307,9 @@ y)
 	printf "\e[33mIf this is your first time installation, you must overwrite \"$XDG_CONFIG_HOME/hypr/hyprland.conf\" with \"$XDG_CONFIG_HOME/hypr/hyprland.conf.new\".\e[0m\n"
 	;;
 esac
+if [[ -z "${ILLOGICAL_IMPULSE_VIRTUAL_ENV}" ]]; then
+  printf "\n\e[31m[$0]: \!! Important \!! : Please ensure environment variable \e[0m \$ILLOGICAL_IMPULSE_VIRTUAL_ENV \e[31m is set to proper value (by default \"~/.local/state/ags/.venv\"), or AGS config will not work. We have already provided this configuration in ~/.config/hypr/hyprland/env.conf, but you need to ensure it is included in hyprland.conf, and also a restart is needed for applying it.\e[0m\n"
+fi
 
 if [[ ! -z "${warn_files[@]}" ]]; then
 	printf "\n\e[31m[$0]: \!! Important \!! : Please delete \e[0m ${warn_files[*]} \e[31m manually as soon as possible, since we\'re now using AUR package or local PKGBUILD to install them for Arch(based) Linux distros, and they'll take precedence over our installation, or at least take up more space.\e[0m\n"

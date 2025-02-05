@@ -30,7 +30,7 @@ let configOptions = {
         'layerSmoke': false,
         'layerSmokeStrength': 0.2,
         'barRoundCorners': 1, // 0: No, 1: Yes
-        'fakeScreenRounding': 1, // 0: None | 1: Always | 2: When not fullscreen
+        'fakeScreenRounding': 2, // 0: None | 1: Always | 2: When not fullscreen
         'onHoverTray': { // Appears the tray only on mouse hover
             'enabled': false,
             'delay': 5000, // Delay, in milliseconds, before the tray disappears again
@@ -242,27 +242,17 @@ let configOptions = {
 }
 
 // Override defaults with user's options
-let optionsOkay = true;
-function overrideConfigRecursive(userOverrides, configOptions = {}, check = true) {
+function overrideConfigRecursive(userOverrides, configOptions = {}) {
     for (const [key, value] of Object.entries(userOverrides)) {
-        if (configOptions[key] === undefined && check) {
-            optionsOkay = false;
+        if (typeof value === 'object' && !(value instanceof Array)) {
+            overrideConfigRecursive(value, configOptions[key]);
         }
-        else if (typeof value === 'object' && !(value instanceof Array)) {
-            if (key === "substitutions" || key === "regexSubstitutions" || key === "extraGptModels") {
-                overrideConfigRecursive(value, configOptions[key], false);
-            } else overrideConfigRecursive(value, configOptions[key]);
-        } else {
+        else {
             configOptions[key] = value;
         }
     }
 }
 overrideConfigRecursive(userOverrides, configOptions);
-if (!optionsOkay) Utils.timeout(2000, () => Utils.execAsync(['notify-send',
-    'Update your user options',
-    'One or more config options don\'t exist',
-    '-a', 'ags',
-]).catch(print))
 
 globalThis['userOptions'] = configOptions;
 export default configOptions;
