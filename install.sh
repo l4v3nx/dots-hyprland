@@ -100,18 +100,6 @@ install-local-pkgbuild() {
 	x popd
 }
 
-# Why need cleanbuild? see https://github.com/end-4/dots-hyprland/issues/389#issuecomment-2040671585
-# Why install deps by running a seperate command? see pinned comment of https://aur.archlinux.org/packages/hyprland-git
-case $SKIP_HYPR_AUR in
-true) sleep 0 ;;
-*)
-	hyprland_installflags="-S"
-	$ask || hyprland_installflags="$hyprland_installflags --noconfirm"
-	# v yay $hyprland_installflags --asdeps hyprutils-git hyprlang-git hyprcursor-git hyprwayland-scanner-git
-	v yay $hyprland_installflags --answerclean=a hyprland-git
-	;;
-esac
-
 # Install core dependencies from the meta-packages
 metapkgs=(./arch-packages/illogical-impulse-{audio,python,backlight,basic,fonts-themes,gnome,gtk,portal,screencapture,sway,widgets})
 metapkgs+=(./arch-packages/illogical-impulse-ags)
@@ -154,7 +142,6 @@ v sudo usermod -aG video,i2c,input "$(whoami)"
 v bash -c "echo i2c-dev | sudo tee /etc/modules-load.d/i2c-dev.conf"
 v systemctl --user enable ydotool --now
 v gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-
 
 #####################################################################################
 printf "\e[36m[$0]: 2. Copying + Configuring\e[0m\n"
@@ -211,9 +198,9 @@ esac
 case $SKIP_HYPRLAND in
 true) sleep 0 ;;
 *)
-    v rsync -av --delete --exclude '/custom' --exclude '/hyprlock.conf' --exclude '/hypridle.conf' --exclude '/hyprland.conf' .config/hypr/ "$XDG_CONFIG_HOME"/hypr/
+	v rsync -av --delete --exclude '/custom' --exclude '/hyprlock.conf' --exclude '/hypridle.conf' --exclude '/hyprland.conf' .config/hypr/ "$XDG_CONFIG_HOME"/hypr/
 	t="$XDG_CONFIG_HOME/hypr/hyprland.conf"
-    if [ -f $t_0 ];then
+	if [ -f $t_0 ]; then
 		echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
 		v cp -f .config/hypr/hyprland.conf $t.new
 		existed_hypr_conf=y
@@ -222,26 +209,26 @@ true) sleep 0 ;;
 		v cp .config/hypr/hyprland.conf $t
 		existed_hypr_conf=n
 	fi
-    t="$XDG_CONFIG_HOME/hypr/hypridle.conf"
-    if [ -f $t ];then
-      echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
-      v cp -f .config/hypr/hypridle.conf $t.new
-      existed_hypridle_conf=y
-    else
-      echo -e "\e[33m[$0]: \"$t\" does not exist yet.\e[0m"
-      v cp .config/hypr/hypridle.conf $t
-      existed_hypridle_conf=n
-    fi
-    t="$XDG_CONFIG_HOME/hypr/hyprlock.conf"
-    if [ -f $t ];then
-      echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
-      v cp -f .config/hypr/hyprlock.conf $t.new
-      existed_hyprlock_conf=y
-    else
-      echo -e "\e[33m[$0]: \"$t\" does not exist yet.\e[0m"
-      v cp .config/hypr/hyprlock.conf $t
-      existed_hyprlock_conf=n
-    fi
+	t="$XDG_CONFIG_HOME/hypr/hypridle.conf"
+	if [ -f $t ]; then
+		echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
+		v cp -f .config/hypr/hypridle.conf $t.new
+		existed_hypridle_conf=y
+	else
+		echo -e "\e[33m[$0]: \"$t\" does not exist yet.\e[0m"
+		v cp .config/hypr/hypridle.conf $t
+		existed_hypridle_conf=n
+	fi
+	t="$XDG_CONFIG_HOME/hypr/hyprlock.conf"
+	if [ -f $t ]; then
+		echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
+		v cp -f .config/hypr/hyprlock.conf $t.new
+		existed_hyprlock_conf=y
+	else
+		echo -e "\e[33m[$0]: \"$t\" does not exist yet.\e[0m"
+		v cp .config/hypr/hyprlock.conf $t
+		existed_hyprlock_conf=n
+	fi
 	t="$XDG_CONFIG_HOME/hypr/custom"
 	if [ -d $t ]; then
 		echo -e "\e[34m[$0]: \"$t\" already exists, will not do anything.\e[0m"
@@ -308,18 +295,23 @@ y)
 	printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hyprland.conf\" already existed before and we didn't overwrite it. \e[0m\n"
 	printf "\e[33mPlease use \"$XDG_CONFIG_HOME/hypr/hyprland.conf.new\" as a reference for a proper format.\e[0m\n"
 	printf "\e[33mIf this is your first time installation, you must overwrite \"$XDG_CONFIG_HOME/hypr/hyprland.conf\" with \"$XDG_CONFIG_HOME/hypr/hyprland.conf.new\".\e[0m\n"
-;;esac
+	;;
+esac
 case $existed_hypridle_conf in
-  y) printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hypridle.conf\" already existed before and we didn't overwrite it. \e[0m\n"
-     printf "\e[33mPlease use \"$XDG_CONFIG_HOME/hypr/hypridle.conf.new\" as a reference for a proper format.\e[0m\n"
-;;esac
+y)
+	printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hypridle.conf\" already existed before and we didn't overwrite it. \e[0m\n"
+	printf "\e[33mPlease use \"$XDG_CONFIG_HOME/hypr/hypridle.conf.new\" as a reference for a proper format.\e[0m\n"
+	;;
+esac
 case $existed_hyprlock_conf in
-  y) printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hyprlock.conf\" already existed before and we didn't overwrite it. \e[0m\n"
-     printf "\e[33mPlease use \"$XDG_CONFIG_HOME/hypr/hyprlock.conf.new\" as a reference for a proper format.\e[0m\n"
-;;esac
+y)
+	printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hyprlock.conf\" already existed before and we didn't overwrite it. \e[0m\n"
+	printf "\e[33mPlease use \"$XDG_CONFIG_HOME/hypr/hyprlock.conf.new\" as a reference for a proper format.\e[0m\n"
+	;;
+esac
 
 if [[ -z "${ILLOGICAL_IMPULSE_VIRTUAL_ENV}" ]]; then
-  printf "\n\e[31m[$0]: \!! Important \!! : Please ensure environment variable \e[0m \$ILLOGICAL_IMPULSE_VIRTUAL_ENV \e[31m is set to proper value (by default \"~/.local/state/ags/.venv\"), or AGS config will not work. We have already provided this configuration in ~/.config/hypr/hyprland/env.conf, but you need to ensure it is included in hyprland.conf, and also a restart is needed for applying it.\e[0m\n"
+	printf "\n\e[31m[$0]: \!! Important \!! : Please ensure environment variable \e[0m \$ILLOGICAL_IMPULSE_VIRTUAL_ENV \e[31m is set to proper value (by default \"~/.local/state/ags/.venv\"), or AGS config will not work. We have already provided this configuration in ~/.config/hypr/hyprland/env.conf, but you need to ensure it is included in hyprland.conf, and also a restart is needed for applying it.\e[0m\n"
 fi
 
 if [[ ! -z "${warn_files[@]}" ]]; then
