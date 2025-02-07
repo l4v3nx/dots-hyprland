@@ -82,24 +82,8 @@ if ((${#pkglist[@]} != 0)); then
 	fi
 fi
 
-# Convert old dependencies to non explicit dependencies so that they can be orphaned if not in meta packages
-set-explicit-to-implicit() {
-	remove_bashcomments_emptylines ./scriptdata/previous_dependencies.conf ./cache/old_deps_stripped.conf
-	readarray -t old_deps_list <./cache/old_deps_stripped.conf
-	pacman -Qeq >./cache/pacman_explicit_packages
-	readarray -t explicitly_installed <./cache/pacman_explicit_packages
-
-	echo "Attempting to set previously explicitly installed deps as implicit..."
-	for i in "${explicitly_installed[@]}"; do for j in "${old_deps_list[@]}"; do
-		[ "$i" = "$j" ] && yay -D --asdeps "$i"
-	done; done
-
-	return 0
-}
-
-$ask && echo "Attempt to set previously explicitly installed deps as implicit? "
-$ask && showfun set-explicit-to-implicit
-v set-explicit-to-implicit
+showfun handle-deprecated-dependencies
+v handle-deprecated-dependencies
 
 # https://github.com/end-4/dots-hyprland/issues/581
 # yay -Bi is kinda hit or miss, instead cd into the relevant directory and manually source and install deps
@@ -131,11 +115,11 @@ esac
 # Install core dependencies from the meta-packages
 metapkgs=(./arch-packages/illogical-impulse-{audio,python,backlight,basic,fonts-themes,gnome,gtk,portal,screencapture,sway,widgets})
 metapkgs+=(./arch-packages/illogical-impulse-ags)
+metapkgs+=(./arch-packages/illogical-impulse-hyprland)
 metapkgs+=(./arch-packages/illogical-impulse-microtex-git)
 # metapkgs+=(./arch-packages/illogical-impulse-oneui4-icons-git)
 [[ -f /usr/share/icons/Bibata-Modern-Classic/index.theme ]] ||
 	metapkgs+=(./arch-packages/illogical-impulse-bibata-modern-classic-bin)
-try sudo pacman -R illogical-impulse-{microtex,pymyc-aur}
 
 for i in "${metapkgs[@]}"; do
 	metainstallflags="--needed"
@@ -169,6 +153,8 @@ esac
 v sudo usermod -aG video,i2c,input "$(whoami)"
 v bash -c "echo i2c-dev | sudo tee /etc/modules-load.d/i2c-dev.conf"
 v systemctl --user enable ydotool --now
+v gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 
 #####################################################################################
 printf "\e[36m[$0]: 2. Copying + Configuring\e[0m\n"
@@ -225,9 +211,9 @@ esac
 case $SKIP_HYPRLAND in
 true) sleep 0 ;;
 *)
-	v rsync -av --delete --exclude '/custom' --exclude '/hyprland.conf' .config/hypr/ "$XDG_CONFIG_HOME"/hypr/
+    v rsync -av --delete --exclude '/custom' --exclude '/hyprlock.conf' --exclude '/hypridle.conf' --exclude '/hyprland.conf' .config/hypr/ "$XDG_CONFIG_HOME"/hypr/
 	t="$XDG_CONFIG_HOME/hypr/hyprland.conf"
-	if [ -f $t ]; then
+    if [ -f $t_0 ];then
 		echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
 		v cp -f .config/hypr/hyprland.conf $t.new
 		existed_hypr_conf=y
@@ -236,6 +222,26 @@ true) sleep 0 ;;
 		v cp .config/hypr/hyprland.conf $t
 		existed_hypr_conf=n
 	fi
+    t="$XDG_CONFIG_HOME/hypr/hypridle.conf"
+    if [ -f $t ];then
+      echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
+      v cp -f .config/hypr/hypridle.conf $t.new
+      existed_hypridle_conf=y
+    else
+      echo -e "\e[33m[$0]: \"$t\" does not exist yet.\e[0m"
+      v cp .config/hypr/hypridle.conf $t
+      existed_hypridle_conf=n
+    fi
+    t="$XDG_CONFIG_HOME/hypr/hyprlock.conf"
+    if [ -f $t ];then
+      echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
+      v cp -f .config/hypr/hyprlock.conf $t.new
+      existed_hyprlock_conf=y
+    else
+      echo -e "\e[33m[$0]: \"$t\" does not exist yet.\e[0m"
+      v cp .config/hypr/hyprlock.conf $t
+      existed_hyprlock_conf=n
+    fi
 	t="$XDG_CONFIG_HOME/hypr/custom"
 	if [ -d $t ]; then
 		echo -e "\e[34m[$0]: \"$t\" already exists, will not do anything.\e[0m"
@@ -249,9 +255,6 @@ esac
 # some foldes (eg. .local/bin) should be processed separately to avoid `--delete' for rsync,
 # since the files here come from different places, not only about one program.
 v rsync -av ".local/bin/" "$XDG_BIN_HOME"
-
-# Dark mode by default
-v gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Set default font
 v gsettings set org.gnome.desktop.interface font-name 'Lexend Medium 11'
@@ -305,8 +308,16 @@ y)
 	printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hyprland.conf\" already existed before and we didn't overwrite it. \e[0m\n"
 	printf "\e[33mPlease use \"$XDG_CONFIG_HOME/hypr/hyprland.conf.new\" as a reference for a proper format.\e[0m\n"
 	printf "\e[33mIf this is your first time installation, you must overwrite \"$XDG_CONFIG_HOME/hypr/hyprland.conf\" with \"$XDG_CONFIG_HOME/hypr/hyprland.conf.new\".\e[0m\n"
-	;;
-esac
+;;esac
+case $existed_hypridle_conf in
+  y) printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hypridle.conf\" already existed before and we didn't overwrite it. \e[0m\n"
+     printf "\e[33mPlease use \"$XDG_CONFIG_HOME/hypr/hypridle.conf.new\" as a reference for a proper format.\e[0m\n"
+;;esac
+case $existed_hyprlock_conf in
+  y) printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hyprlock.conf\" already existed before and we didn't overwrite it. \e[0m\n"
+     printf "\e[33mPlease use \"$XDG_CONFIG_HOME/hypr/hyprlock.conf.new\" as a reference for a proper format.\e[0m\n"
+;;esac
+
 if [[ -z "${ILLOGICAL_IMPULSE_VIRTUAL_ENV}" ]]; then
   printf "\n\e[31m[$0]: \!! Important \!! : Please ensure environment variable \e[0m \$ILLOGICAL_IMPULSE_VIRTUAL_ENV \e[31m is set to proper value (by default \"~/.local/state/ags/.venv\"), or AGS config will not work. We have already provided this configuration in ~/.config/hypr/hyprland/env.conf, but you need to ensure it is included in hyprland.conf, and also a restart is needed for applying it.\e[0m\n"
 fi
