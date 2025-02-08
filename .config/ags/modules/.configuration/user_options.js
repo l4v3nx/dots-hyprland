@@ -119,6 +119,9 @@ let configOptions = {
                 'order': ["gemini", "gpt", "waifu", "booru"],
             }
         },
+        'quickToggles': {
+            'order': ["wifi", "bluetooth", "nightlight", "gamemode", "idleinhibitor", "cloudflarewarp"],
+        }
     },
     'search': {
         'enableFeatures': {
