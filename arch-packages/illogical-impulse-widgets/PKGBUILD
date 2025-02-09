@@ -7,10 +7,9 @@ license=(None)
 depends=(
 	dart-sass
 	hypridle
- 	hyprutils
+	hyprutils
 	hyprlock
 	wlogout
 	wl-clipboard
-	hyprpicker
 	anyrun-git
 )
