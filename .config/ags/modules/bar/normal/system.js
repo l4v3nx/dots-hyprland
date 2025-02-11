@@ -96,7 +96,7 @@ const Utilities = () => {
             name: getString('Toggle camera'),
             icon: 'photo_camera',
             onClicked: () => {
-                execAsync('ffplay /dev/video0').catch(print);
+                execAsync('snapshot').catch(print);
             }
         }
     };
