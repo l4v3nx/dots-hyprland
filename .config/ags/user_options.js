@@ -42,6 +42,7 @@ const userConfigOptions = {
             "com.obsproject.Studio",
             "vesktop",
             "libreoffice-writer",
+            "moe.launcher.an-anime-game-launcher",
         ],
         monitorExclusivity: true, // Dock will move to other monitor along with focus if enabled
         trigger: [], // client_added, client_move, workspace_active, client_active
