@@ -28,9 +28,7 @@ const userConfigOptions = {
     dock: {
         enabled: true,
         pinnedApps: [
-            "org.gnome.Software",
             "org.gnome.Nautilus",
-            "org.gnome.Settings",
             "firefox",
             "foot",
             "steam-runtime",

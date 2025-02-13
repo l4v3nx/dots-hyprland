@@ -1,4 +1,5 @@
 const { Pango } = imports.gi;
+import App from 'resource:///com/github/Aylur/ags/app.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Network from "resource:///com/github/Aylur/ags/service/network.js";
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
@@ -58,6 +59,28 @@ const WifiNetwork = (accessPoint) => {
     })
 }
 
+const NetResource = (icon, command) => {
+    const resourceLabel = Label({
+        className: `txt-smaller txt-subtext`,
+    });
+    const widget = Button({
+        child: Box({
+            hpack: 'start',
+            className: `spacing-h-4`,
+            children: [
+                MaterialIcon(icon, 'very-small'),
+                resourceLabel,
+            ],
+            setup: (self) => self.poll(2000, () => execAsync(['bash', '-c', command])
+                .then((output) => {
+                    resourceLabel.label = output;
+                }).catch(print))
+            ,
+        })
+    });
+    return widget;
+}
+
 const CurrentNetwork = () => {
     let authLock = false;
     // console.log(Network.wifi);
@@ -83,6 +106,16 @@ const CurrentNetwork = () => {
                     self.label = Network.wifi?.ssid;
                 }),
             }),
+        ]
+    });
+    const networkBandwidth = Box({
+        vertical: true,
+        hexpand: true,
+        hpack: 'center',
+        className: 'sidebar-wifinetworks-bandwidth',
+        children: [
+            NetResource('arrow_warm_up', `${App.configDir}/scripts/network_scripts/network_bandwidth.py sent`),
+            NetResource('arrow_cool_down', `${App.configDir}/scripts/network_scripts/network_bandwidth.py recv`),
         ]
     });
     const networkStatus = Box({
@@ -142,6 +175,7 @@ const CurrentNetwork = () => {
                         children: [
                             MaterialIcon('language', 'hugerass'),
                             networkName,
+                            networkBandwidth,
                             networkStatus,
 
                         ]
