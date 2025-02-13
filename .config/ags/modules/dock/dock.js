@@ -69,7 +69,7 @@ const LauncherButton = () => Widget.Button({
         child: MaterialIcon('apps', 'hugerass')
     }),
     onClicked: (self) => {
-        execAsync('fuzzel').catch(print);
+        App.toggleWindow('overview');
     },
     setup: setupCursorHover,
 })
