@@ -1,11 +1,11 @@
 pkgname=illogical-impulse-sway
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Illogical Impulse Sway Dependencies'
 arch=(any)
 license=(None)
 depends=(
-	swayfx-git
+	swayfx
 	mako
 	dex
 	xorg-xrandr
