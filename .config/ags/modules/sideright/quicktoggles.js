@@ -256,7 +256,7 @@ export const ModuleReloadIcon = (props = {}) => Widget.Button({
     className: 'txt-small sidebar-iconbutton',
     tooltipText: getString('Reload Environment config'),
     onClicked: () => {
-        execAsync(['bash', '-c', 'hyprctl reload || swaymsg reload &']);
+        execAsync(['bash', '-c', 'hyprctl reload; agsv1 -q; agsv1 &']);
         App.closeWindow('sideright');
     },
     child: MaterialIcon('refresh', 'norm'),
