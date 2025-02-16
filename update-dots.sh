@@ -128,7 +128,7 @@ if [[ ${#modified_files[@]} -gt 0 ]]; then
 		echo -e "${BLUE}$file${RESET}"
 	done
 else
-	read -rp "${YELLOW}No files detected that have been customized since the last update. All files will be replaced. Are you sure you want to continue? [Y/n] ${RESET}" REPLY
+	read -rp $'\033[1;33mNo files detected that have been customized since the last update. All files will be replaced. Are you sure you want to continue? [Y/n] \033[0m' REPLY
 	echo
 	if [[ $REPLY =~ ^[Nn]$ ]]; then
 		echo -e "${RED}Exiting.${RESET}"
