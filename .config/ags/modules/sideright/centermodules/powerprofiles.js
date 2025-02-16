@@ -8,17 +8,17 @@ const PROFILES_META = {
     'power-saver': {
         'label': getString("Power Saver"),
         'icon': "access_time",
-        'describe': getString("Reduced performance and power usage"),
+        // 'describe': getString("Reduced performance and power usage"),
     },
     'balanced': {
         'label': getString("Balanced"),
         'icon': "balance",
-        'describe': getString("Standard performance and power usage"),
+        // 'describe': getString("Standard performance and power usage"),
     },
     'performance': {
         'label': getString("Performance"),
         'icon': "bolt",
-        'describe': getString("High performance and power usage"),
+        // 'describe': getString("High performance and power usage"),
     },
 };
 
@@ -32,17 +32,18 @@ const PowerProfile = (profile) => {
     const meta = PROFILES_META[profile['Profile']];
 
     const profileName = Box({
-        vertical: true,
+        vertical: false,
         children: [
             Label({
                 hpack: 'start',
+                className: 'txt-small',
                 label: meta.label
             }),
-            Label({
-                hpack: 'start',
-                className: 'txt-smaller txt-subtext',
-                label: meta.describe
-            })
+            // Label({
+            //     hpack: 'start',
+            //     className: 'txt-smaller txt-subtext',
+            //     label: meta.describe
+            // })
         ],
     });
 
