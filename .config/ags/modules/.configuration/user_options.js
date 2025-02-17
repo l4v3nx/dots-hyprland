@@ -241,7 +241,7 @@ let configOptions = {
         // Example for four monitors: ["normal", "focus", "normal", "nothing"]
         'modes': ["normal"],
         // Change Order to reorder, remove to hide
-        'utilities': ['snip', 'picker', 'keyboard']
+        'utilities': ['snip', 'picker', 'keyboard', 'camera', 'lock']
     },
 }
 

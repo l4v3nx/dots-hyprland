@@ -98,6 +98,13 @@ const Utilities = () => {
             onClicked: () => {
                 execAsync('snapshot').catch(print);
             }
+        },
+        lock: {
+            name: getString('Lock screen'),
+            icon: 'lock',
+            onClicked: () => {
+                execAsync(['loginctl', 'lock-session']).catch(print);
+            }
         }
     };
 

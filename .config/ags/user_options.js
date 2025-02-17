@@ -76,7 +76,7 @@ const userConfigOptions = {
         },
     },
     bar: {
-        utilities: ["snip", "picker", "keyboard", "camera"],
+        'utilities': ['snip', 'picker', 'keyboard', 'camera']
     },
 };
 
