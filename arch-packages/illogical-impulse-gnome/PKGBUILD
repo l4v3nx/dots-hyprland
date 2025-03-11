@@ -5,6 +5,7 @@ pkgdesc='Illogical Impulse GNOME Dependencies'
 arch=(any)
 license=(None)
 depends=(
+	polkit-gnome
 	gnome-keyring
 	gnome-control-center
 	blueberry
