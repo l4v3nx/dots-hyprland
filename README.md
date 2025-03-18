@@ -31,7 +31,9 @@
 <details> 
   <summary>Instructions</summary>
 
-   - **Manual** installation, other distros and more:
+
+   - **Prerequisite**: Your system works. That's it. You don't have to reinstall your system!
+   - **Manual** installation:
     
    ```bash
    t=~/.cache/dots-hyprland   # Let's not trash your home folder
