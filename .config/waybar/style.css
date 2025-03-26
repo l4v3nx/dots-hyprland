@@ -1,7 +1,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "Lexend", "Material Design Icons";
+  font-family: "Lexend", "JetBrainsMonoNL Nerd Font";
   font-size: 15px;
   font-weight: 500;
 }
@@ -40,7 +40,7 @@ tooltip label {
 }
 
 .modules-right>widget>* {
-  padding: 0 8px;
+  padding: 0 10px;
   color: @accent_bg_color;
   background-color: @headerbar_border_color;
 }
@@ -84,7 +84,17 @@ tooltip label {
 }
 
 #battery {
-  padding: 0 6px;
+  border-radius: 0 8px 8px 0;
+  margin-right: 6px;
+  padding-left: 6px;
+}
+
+#network {
+  border-radius: 8px 0 0 8px;
+}
+
+#network.ethernet {
+  padding-right: 12px;
 }
 
 #battery.critical:not(.charging) {
@@ -96,70 +106,84 @@ tooltip label {
 }
 
 #clock {
-  padding-right: 10px;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
   margin-right: 6px;
 }
 
 #mpris {
+  font-family: "Lexend";
   margin-left: 0px;
   margin-right: 6px;
-  padding: 0 8px;
+  padding: 0 10px;
   border-radius: 8px;
   color: @headerbar_border_color;
   background-color: @accent_bg_color;
 }
 
 #tray {
-  padding: 0 8px;
   padding-bottom: 8px;
   border-radius: 8px;
   background-color: @headerbar_border_color;
 }
 
-#bluetooth.on {
-  padding: 0 9px;
-}
-
-#bluetooth.disabled,
-#bluetooth.off {
-  padding: 0 6px;
+#bluetooth {
+  border-radius: 0 8px 8px 0;
+  margin-right: 6px;
 }
 
 #bluetooth.connected {
   padding-left: 6px;
-}
-
-#backlight {
-  padding-left: 0px;
-}
-
-#pulseaudio.muted {
-  padding-right: 8px;
+  padding-right: 13px;
 }
 
 #pulseaudio {
-  padding-left: 2px;
+  padding: 0;
 }
 
 #language {
-  border-radius: 8px 0 0 8px;
+  border-radius: 8px;
   margin-left: 6px;
+  margin-right: 6px;
+}
+
+#idle_inhibitor {
+  border-radius: 8px;
+  margin-right: 6px;
+}
+
+#idle_inhibitor.activated {
+  padding-right: 11px;
+}
+
+#idle_inhibitor.deactivated {
+  padding-right: 13px;
+}
+
+#power-profiles-daemon.performance {
+  padding-right: 2px;
+}
+
+#power-profiles-daemon.balanced {
   padding-right: 8px;
+}
+
+#power-profiles-daemon.power-saver {
+  padding-right: 4px;
 }
 
 #custom-audio_idle_inhibitor {
-  padding-right: 8px;
+  border-radius: 8px 0 0 8px;
+  padding-right: 6px;
+  padding-left: 10px;
   font-size: 14px;
-  padding-bottom: 1px;
 }
 
 #custom-power {
-  font-size: 18px;
-  padding: 0 8px;
-  padding-top: 2px;
+  padding: 0 10px;
+  padding-right: 14px;
   border-radius: 8px;
   margin-right: 8px;
   color: @headerbar_border_color;
   background-color: @accent_bg_color;
 }
+
