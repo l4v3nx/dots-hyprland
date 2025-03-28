@@ -153,9 +153,9 @@
     "menu": "on-click",
     "menu-file": "~/.config/waybar/power_menu.xml",
     "menu-actions": {
-      "shutdown": "shutdown",
-      "reboot": "reboot",
-      "suspend": "systemctl suspend",
+      "shutdown": "systemctl poweroff || loginctl poweroff",
+      "reboot": "systemctl reboot || loginctl reboot",
+      "suspend": "sleep 0.1 && systemctl suspend || loginctl suspend",
       "lock": "loginctl lock-session",
       "logout": "swaymsg exit"
     }
