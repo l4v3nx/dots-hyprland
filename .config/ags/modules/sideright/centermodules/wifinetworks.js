@@ -315,7 +315,7 @@ const CurrentNetwork = () => {
                         children: [
                             MaterialIcon('language', 'hugerass'),
                             networkName,
-                            // networkBandwidth,
+                            networkBandwidth,
                             // networkStatus,
                         ]
                     }),
