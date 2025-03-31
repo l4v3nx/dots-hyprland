@@ -70,18 +70,6 @@ const scripts = [
         command: `flatpak uninstall --unused`,
         enabled: hasFlatpak,
     },
-    {
-        icon: "vpn-key",
-        name: getString("Turn on AmneziaWG tunnel"),
-        command: `sudo awg-quick up config; sleep 1; exit 0`,
-        enabled: true,
-    },
-    {
-        icon: "vpn-key-off",
-        name: getString("Turn off AmneziaWG tunnel"),
-        command: `sudo awg-quick down config; sleep 1; exit 0`,
-        enabled: true,
-    },
 ];
 
 export default () =>
