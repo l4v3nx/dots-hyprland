@@ -19,7 +19,7 @@ RESET="\033[0m"
 
 # Define paths to update
 folders=(".config" ".local/bin")
-excludes=(".config/fish/fish_variables" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/qt6ct/qt6ct.conf" ".config/hypr/hyprland/colors.conf" ".config/hypr/custom/general.conf" ".config/fuzzel/fuzzel.ini" ".config/ags/scss/_material.scss" ".config/Kvantum/MaterialAdw/MaterialAdw.kvconfig" ".config/Kvantum/MaterialAdw/MaterialAdw.svg")
+excludes=(".config/ags/user_options.jsonc" ".config/fish/fish_variables" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/qt6ct/qt6ct.conf" ".config/hypr/hyprland/colors.conf" ".config/hypr/custom/general.conf" ".config/fuzzel/fuzzel.ini" ".config/ags/scss/_material.scss" ".config/Kvantum/MaterialAdw/MaterialAdw.kvconfig" ".config/Kvantum/MaterialAdw/MaterialAdw.svg")
 
 get_checksum() {
 	# Get the checksum of a specific file

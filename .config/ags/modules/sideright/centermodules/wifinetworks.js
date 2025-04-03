@@ -1,7 +1,8 @@
 const { Pango } = imports.gi;
 import App from 'resource:///com/github/Aylur/ags/app.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Network from "resource:///com/github/Aylur/ags/service/network.js";
+import Variable from 'resource:///com/github/Aylur/ags/variable.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 const { Box, Button, Entry, Icon, Label, Revealer, Scrollable, Slider, Stack, Overlay } = Widget;
 const { execAsync, exec } = Utils;
@@ -100,7 +101,7 @@ const NetResource = (icon, command) => {
 }
 
 const CurrentNetwork = () => {
-    let passwordVisible = false;
+    const passwordVisible = Variable(false);
     let authLock = false;
     let timeoutId = null;
 
@@ -160,8 +161,7 @@ const CurrentNetwork = () => {
         label: getString('Cancel'),
         hpack: 'end',
         onClicked: () => {
-            passwordVisible = false;
-            authEntry.visibility = false;
+            passwordVisible.value = false;
             networkAuth.revealChild = false;
             authFailed.revealChild = false;
             networkAuthSSID.label = '';
@@ -184,11 +184,14 @@ const CurrentNetwork = () => {
         child: MaterialIcon('visibility', 'large'),
         className: 'txt sidebar-wifinetworks-auth-visible',
         onClicked: (self) => {
-            passwordVisible = !passwordVisible;
-            authEntry.visibility = passwordVisible;
-            self.child.label = passwordVisible ? 'visibility_off' : 'visibility';
+            passwordVisible.value = !passwordVisible.value;
         },
-        setup: setupCursorHover,
+        setup: (self) => {
+            setupCursorHover(self)
+            self.hook(passwordVisible, (self) => {
+                self.child.label = passwordVisible.value ? 'visibility_off' : 'visibility';
+            })
+        },
     });
     const authFailed = Revealer({
         revealChild: false,
@@ -213,8 +216,7 @@ const CurrentNetwork = () => {
                     networkAuth.revealChild = false; // Hide input if successful
                     authFailed.revealChild = false; // Hide failed message if successful
                     self.text = ''; // Empty input for retry
-                    passwordVisible = false;
-                    authEntry.visibility = false;
+                    passwordVisible.value = false;
                 })
                 .catch(() => {
                     // Connection failed, show password input again
@@ -222,6 +224,9 @@ const CurrentNetwork = () => {
                     authFailed.revealChild = true;
                 });
         },
+        setup: (self) => self.hook(passwordVisible, (self) => {
+            self.visibility = passwordVisible.value
+        }),
         placeholderText: getString('Enter network password'),
     });
     const authBox = Box({
@@ -317,8 +322,7 @@ const CurrentNetwork = () => {
                         }
                         timeoutId = setTimeout(() => {
                             authLock = false;
-                            passwordVisible = false;
-                            authEntry.visibility = false;
+                            passwordVisible.value = false;
                             self.revealChild = false;
                             authFailed.revealChild = false;
                             Network.wifi.state = 'activated';

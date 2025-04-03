@@ -179,20 +179,20 @@ esac
 
 # For AGS
 case $SKIP_AGS in
-true) sleep 0 ;;
-*)
-	v rsync -av --delete --exclude '/user_options.js' .config/ags/ "$XDG_CONFIG_HOME"/ags/
-	t="$XDG_CONFIG_HOME/ags/user_options.js"
-	if [ -f $t ]; then
-		echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
-		# v cp -f .config/ags/user_options.js $t.new
-		existed_ags_opt=y
-	else
-		echo -e "\e[33m[$0]: \"$t\" does not exist yet.\e[0m"
-		v cp .config/ags/user_options.js $t
-		existed_ags_opt=n
-	fi
-	;;
+  true) sleep 0;;
+  *)
+    v rsync -av --delete --exclude '/user_options.jsonc' .config/ags/ "$XDG_CONFIG_HOME"/ags/
+    t="$XDG_CONFIG_HOME/ags/user_options.jsonc"
+    if [ -f $t ];then
+      echo -e "\e[34m[$0]: \"$t\" already exists.\e[0m"
+      # v cp -f .config/ags/user_options.jsonc $t.new
+      existed_ags_opt=y
+    else
+      echo -e "\e[33m[$0]: \"$t\" does not exist yet.\e[0m"
+      v cp .config/ags/user_options.jsonc $t
+      existed_ags_opt=n
+    fi
+    ;;
 esac
 
 # For Hyprland
@@ -293,10 +293,9 @@ printf "\e[36mPress \e[30m\e[46m Super+/ \e[0m\e[36m for a list of keybinds\e[0m
 printf "\n"
 
 case $existed_ags_opt in
-y)
-	printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/ags/user_options.js\" already existed before and we didn't overwrite it. \e[0m\n"
-	#    printf "\e[33mPlease use \"$XDG_CONFIG_HOME/ags/user_options.js.new\" as a reference for a proper format.\e[0m\n"
-	;;esac
+  y) printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/ags/user_options.jsonc\" already existed before and we didn't overwrite it. \e[0m\n"
+#    printf "\e[33mPlease use \"$XDG_CONFIG_HOME/ags/user_options.jsonc.new\" as a reference for a proper format.\e[0m\n"
+;;esac
 case $existed_hypr_conf_firstrun in
   y) printf "\n\e[33m[$0]: Warning: \"$XDG_CONFIG_HOME/hypr/hyprland.conf\" already existed before. As it seems it is your firstrun, we replaced it with a new one. \e[0m\n"
      printf "\e[33mAs it seems it is your first run, we replaced it with a new one. The old one has been renamed to \"$XDG_CONFIG_HOME/hypr/hyprland.conf.old\".\e[0m\n"
