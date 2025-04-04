@@ -148,7 +148,7 @@ export const SearchAndWindows = () => {
             // Fallbacks
             // if the first word is an actual command
             if (userOptions.search.enableFeatures.commands && !isAction && !hasUnterminatedBackslash(text) && exec(`bash -c "command -v ${text.split(' ')[0]}"`) != '') {
-                resultsBox.add(ExecuteCommandButton({ command: entry.text, terminal: entry.text.startsWith('sudo') }));
+                resultsBox.add(ExecuteCommandButton({ command: entry.text, terminal: entry.text }));
             }
 
             // Add fallback: search
