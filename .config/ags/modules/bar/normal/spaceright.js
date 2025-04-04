@@ -91,7 +91,8 @@ export default (monitor = 0) => {
             if (!Audio.speaker) return;
             let _;
             [_, scrollCursorX, scrollCursorY] = event.get_coords();
-            if (Audio.speaker.volume <= 0.09) Audio.speaker.volume += 0.01;
+            if (Audio.speaker.volume >= 0.97) return;
+            else if (Audio.speaker.volume <= 0.09) Audio.speaker.volume += 0.01;
             else Audio.speaker.volume += 0.03;
             Indicator.popup(1);
         },
