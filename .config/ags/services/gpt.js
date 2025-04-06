@@ -7,14 +7,15 @@ import Soup from 'gi://Soup?version=3.0';
 import { fileExists } from '../modules/.miscutils/files.js';
 
 const PROVIDERS = Object.assign({
-    "ollama": {
-        "name": "Ollama - Llama 3",
+    "ollama_llama_3_2": {
+        "name": "Ollama - Llama 3.2",
         "logo_name": "ollama-symbolic",
-        "description": getString('Ollama - Llama-3'),
+        "description": getString('Ollama - Llama-3.2'),
         "base_url": 'http://localhost:11434/v1/chat/completions',
         "key_get_url": "",
+        "requires_key": false,
         "key_file": "ollama_key.txt",
-        "model": "llama3:instruct",
+        "model": "llama3.2",
     },
     "ollama_deepseek_r1": {
         "name": "Ollama - DeepSeek R1",
@@ -23,6 +24,7 @@ const PROVIDERS = Object.assign({
         "base_url": "http://localhost:11434/v1/chat/completions",
         "key_get_url": "",
         "key_file": "ollama_key.txt",
+        "requires_key": false,
         "model": "deepseek-r1",
     },
     "ollama_gemma3": {
@@ -32,6 +34,7 @@ const PROVIDERS = Object.assign({
         "base_url": "http://localhost:11434/v1/chat/completions",
         "key_get_url": "",
         "key_file": "ollama_key.txt",
+        "requires_key": false,
         "model": "gemma3",
     },
     "openrouter": {
@@ -40,6 +43,7 @@ const PROVIDERS = Object.assign({
         "description": getString('A unified interface for LLMs'),
         "base_url": "https://openrouter.ai/api/v1/chat/completions",
         "key_get_url": "https://openrouter.ai/keys",
+        "requires_key": true,
         "key_file": "openrouter_key.txt",
         "model": "meta-llama/llama-3-70b-instruct",
     },
@@ -49,6 +53,7 @@ const PROVIDERS = Object.assign({
         "description": getString('Official OpenAI API.\nPricing: Free for the first $5 or 3 months, whichever is less.'),
         "base_url": "https://api.openai.com/v1/chat/completions",
         "key_get_url": "https://platform.openai.com/api-keys",
+        "requires_key": true,
         "key_file": "openai_key.txt",
         "model": "gpt-3.5-turbo",
     },
@@ -86,6 +91,7 @@ class GPTMessage extends Service {
 
     _role = '';
     _content = '';
+    _lastContentLength = 0;
     _thinking;
     _done = false;
 
@@ -106,8 +112,11 @@ class GPTMessage extends Service {
     get content() { return this._content }
     set content(content) {
         this._content = content;
-        this.notify('content')
-        this.emit('changed')
+        if (this._content.length - this._lastContentLength >= userOptions.ai.charsEachUpdate) {
+            this.notify('content')
+            this.emit('changed')
+            this._lastContentLength = this._content.length;
+        }
     }
 
     get label() { return this._parserState.parsed + this._parserState.stack.join('') }
