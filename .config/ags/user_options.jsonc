@@ -17,16 +17,16 @@
 {
   "appearance": {
     "fakeScreenRounding": 0,
-    "onHoverTray": { // Appears the tray only on mouse hover
+    "onHoverTray": {
       "enabled": false,
-      "delay": 1500 // Delay, in milliseconds, before the tray disappears again
+      "delay": 1500
     }
   },
   "apps": {
     "imageViewer": "eog",
     "settings": "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center",
     "taskManager": "htop",
-    "terminal": "foot" // This is only for shell actions
+    "terminal": "foot"
   },
   "cheatsheet": {
     "keybinds": {
@@ -49,22 +49,19 @@
       "vesktop",
       "libreoffice-writer"
     ],
-    "monitorExclusivity": true, // Dock will move to other monitor along with focus if enabled
-    "trigger": [] // client_added, client_move, workspace_active, client_active
+    "monitorExclusivity": true,
+    "trigger": []
   },
   "sidebar": {
     "image": {
       "allowNsfw": true
     },
     "pages": {
-      "order": [
-        "apis",
-        "tools"
-      ],
       "apis": {
         "order": [
           "gpt"
-        ] // To get anime back, revert 5264ec3
+        ],
+        "defaultPage": "gpt"
       }
     }
   },
