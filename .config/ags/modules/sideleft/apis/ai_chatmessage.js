@@ -3,11 +3,12 @@ import GtkSource from "gi://GtkSource?version=3.0";
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
-const { Box, Button, Label, Icon, Scrollable, Stack } = Widget;
+const { Box, Button, Label, Icon, Revealer, Scrollable, Stack } = Widget;
 const { execAsync, exec } = Utils;
 import { MaterialIcon } from '../../.commonwidgets/materialicon.js';
 import md2pango, { replaceInlineLatexWithCodeBlocks } from '../../.miscutils/md2pango.js';
 import { darkMode } from "../../.miscutils/system.js";
+import { setupCursorHover } from "../../.widgetutils/cursorhover.js";
 
 const LATEX_DIR = `${GLib.get_user_cache_dir()}/ags/media/latex`;
 const USERNAME = GLib.get_user_name();
@@ -46,12 +47,14 @@ const HighlightedCode = (content, lang) => {
 }
 
 const TextBlock = (content = '') => {
-    const item = Label({
+    const widget = Label({
         attribute: {
-            'updateText': (text) => {
-                item.label = text;
+            'updateTextPlain': (text) => {
+                widget.label = text;
             },
-            type: 'text'
+            'updateText': (text) => {
+                widget.attribute.updateTextPlain(md2pango(text));
+            }
         },
         hpack: 'fill',
         className: 'txt sidebar-chat-txtblock sidebar-chat-txt',
@@ -61,14 +64,89 @@ const TextBlock = (content = '') => {
         selectable: true,
         label: content,
         wrapMode: Pango.WrapMode.WORD_CHAR,
+    });
+    return widget;
+}
+
+const ThinkBlock = (content = '', revealChild = true) => {
+    const revealThought = Variable(revealChild);
+    const mainText = Label({
+        hpack: 'fill',
+        className: `txt sidebar-chat-txtblock-think sidebar-chat-txt`,
+        useMarkup: true,
+        xalign: 0,
+        wrap: true,
+        selectable: true,
+        label: content,
+        wrapMode: Pango.WrapMode.WORD_CHAR,
+    });
+    const mainTextRevealer = Revealer({
+        transition: 'slide_down',
+        revealChild: revealThought.value,
+        child: mainText,
+        setup: (self) => self.hook(revealThought, (self) => {
+            self.revealChild = revealThought.value;
+        })
     })
-    return item;
-};
+    const expandIcon = MaterialIcon(revealThought.value ? 'expand_less' : 'expand_more', 'norm', {
+        setup: (self) => self.hook(revealThought, (self) => {
+            self.label = revealThought.value ? 'expand_less' : 'expand_more';
+        })
+    });
+    const widget = Box({
+        attribute: {
+            'updateTextPlain': (text) => {
+                mainText.label = text;
+            },
+            'updateText': (text) => {
+                widget.attribute.updateTextPlain(md2pango(text));
+            },
+            'done': () => {
+                revealThought.value = false;
+            }
+        },
+        className: 'sidebar-chat-thinkblock',
+        vertical: true,
+        children: [
+            Button({
+                onClicked: (self) => {
+                    revealThought.value = !revealThought.value;
+                },
+                child: Box({
+                    className: 'spacing-h-10 padding-10',
+                    children: [
+                        Box({
+                            homogeneous: true,
+                            valign: 'center',
+                            className: 'sidebar-chat-thinkblock-icon',
+                            children: [MaterialIcon('neurology', 'large')]
+                        }),
+                        Label({
+                            valign: 'center',
+                            hexpand: true,
+                            xalign: 0,
+                            label: 'Chain of Thought',
+                            className: 'txt sidebar-chat-thinkblock-txt',
+                        }),
+                        Box({
+                            className: 'sidebar-chat-thinkblock-btn-arrow',
+                            homogeneous: true,
+                            children: [expandIcon],
+                        }),
+                    ]
+                }),
+                setup: setupCursorHover,
+            }),
+            mainTextRevealer,
+        ]
+    });
+    return widget;
+}
 
 Utils.execAsync(['bash', '-c', `rm -rf ${LATEX_DIR}`])
     .then(() => Utils.execAsync(['bash', '-c', `mkdir -p ${LATEX_DIR}`]))
     .catch(print);
-const Latex = (content = '') => {
+const LatexBlock = (content = '') => {
     const latexViewArea = Box({
         // vscroll: 'never',
         // hscroll: 'automatic',
@@ -132,7 +210,7 @@ sed -i 's/stroke="rgb(0%, 0%, 0%)"/stroke="${darkMode.value ? '#ffffff' : '#0000
 
 const CodeBlock = (content = '', lang = 'txt') => {
     if (lang == 'tex' || lang == 'latex') {
-        return Latex(content);
+        return LatexBlock(content);
     }
     const topBar = Box({
         className: 'sidebar-chat-codeblock-topbar',
@@ -253,30 +331,36 @@ const MessageContent = (content) => {
                         const kids = self.get_children();
                         //const currentLabel = kids.length < i ? kids[i] : undefined;
                         const blockContent = lines.slice(lastProcessed, index).join('\n');
-                        if (blockContent) {
-                            if (!inCode) {
-                                // '```XXX ' <- line
-                                const _line = line.trim()
-                                if (_line.length <= 3) { lang = 'txt'; }
-                                else { lang = _line.substr(3).trim(); }
-                                // add text block with prev data, bcz we will create code block
-                                // blockContent contains the prev content
-                                if (blockContent) {
-                                    const text = md2pango(blockContent);
-                                    updateContentAndBlockType(contentBox, i, 'text', TextBlock, text);
-                                    //contentBox.add(CodeBlock('', codeBlockRegex.exec(line)[1]));
-                                }
-                            }
-                            else {
-                                updateContentAndBlockType(contentBox, i, 'code', LangCodeBlock, blockContent);
-                            }
-
-                            // next element
-                            i++;
+                        if (!inCode) {
+                            lastLabel.attribute.updateText(blockContent);
+                            if (lastLabel.label == '') lastLabel.destroy();
+                            contentBox.add(CodeBlock('', codeBlockRegex.exec(line)[1]));
+                        }
+                        else {
+                            lastLabel.attribute.updateText(blockContent);
+                            contentBox.add(TextBlock());
                         }
 
                         lastProcessed = index + 1;
                         inCode = !inCode;
+                    }
+                    // Think block
+                    const thinkBlockStartRegex = /^\s*<think>/; // Start: <think>
+                    const thinkBlockEndRegex = /<\/think>\s*$/; // End: </think>
+                    if (!inCode && (thinkBlockStartRegex.test(line) || thinkBlockEndRegex.test(line))) {
+                        const kids = self.get_children();
+                        const lastLabel = kids[kids.length - 1];
+                        const blockContent = lines.slice(lastProcessed, index).join('\n');
+
+                        lastLabel.attribute.updateTextPlain(blockContent);
+                        if (lastLabel.label == '') lastLabel.destroy();
+                        if (thinkBlockStartRegex.test(line)) contentBox.add(ThinkBlock());
+                        else {
+                            // lastLabel.attribute.done();
+                            contentBox.add(TextBlock());
+                        }
+
+                        lastProcessed = index + 1;
                     }
                     // Breaks
                     const dividerRegex = /^\s*---/;
@@ -284,8 +368,7 @@ const MessageContent = (content) => {
                         const kids = self.get_children();
                         //const currentLabel = kids.length < i ? kids[i] : undefined;
                         const blockContent = lines.slice(lastProcessed, index).join('\n');
-                        const text = md2pango(blockContent);
-                        updateContentAndBlockType(contentBox, i, 'text', TextBlock, text);
+                        lastLabel.attribute.updateTextPlain(blockContent);
                         contentBox.add(Divider());
                         lastProcessed = index + 1;
 
@@ -297,7 +380,7 @@ const MessageContent = (content) => {
                     // const lastLabel = kids[kids.length - 1];
                     let blockContent = lines.slice(lastProcessed, lines.length).join('\n');
                     if (!inCode)
-                        updateContentAndBlockType(contentBox, i, 'text', TextBlock, `${md2pango(blockContent)}${useCursor ? userOptions.ai.writingCursor : ''}`);
+                        lastLabel.attribute.updateTextPlain(`${md2pango(blockContent)}${useCursor ? userOptions.ai.writingCursor : ''}`);
                     else
                         updateContentAndBlockType(contentBox, i, 'code', LangCodeBlock, blockContent);
 
