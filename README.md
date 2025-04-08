@@ -33,7 +33,7 @@
 
 
    - **Prerequisite**: Your system works. That's it. You don't have to reinstall your system!
-   - **Manual** installation:
+   - Installation:
     
    ```bash
    t=~/.cache/dots-hyprland   # Let's not trash your home folder
