@@ -16,17 +16,20 @@
 //
 {
   "appearance": {
-    "fakeScreenRounding": 0,
-    "onHoverTray": {
-      "enabled": false,
-      "delay": 1500
-    }
+    "fakeScreenRounding": 0
   },
   "apps": {
     "imageViewer": "eog",
-    "settings": "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center",
-    "taskManager": "htop",
+    "taskManager": "gnome-system-monitor",
     "terminal": "foot"
+  },
+  "bar": {
+    "utilities": [
+      "snip",
+      "picker",
+      "keyboard",
+      "lock"
+    ]
   },
   "cheatsheet": {
     "keybinds": {
@@ -47,7 +50,9 @@
       "spotify-launcher",
       "com.obsproject.Studio",
       "vesktop",
-      "libreoffice-writer"
+      "libreoffice-writer",
+      "nekoray",
+      "systemd-boot-to-windows"
     ],
     "monitorExclusivity": true,
     "trigger": []
@@ -83,13 +88,5 @@
       "nextTab": "Ctrl+End",
       "prevTab": "Ctrl+Home"
     }
-  },
-  "bar": {
-    "utilities": [
-      "snip",
-      "picker",
-      "keyboard",
-      "lock"
-    ]
   }
 }

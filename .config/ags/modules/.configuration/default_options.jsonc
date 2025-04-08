@@ -41,7 +41,11 @@
         "layerSmoke": false,
         "layerSmokeStrength": 0.2,
         "barRoundCorners": 1, // 0: No, 1: Yes
-        "fakeScreenRounding": 2 // 0: None | 1: Always | 2: When not fullscreen
+        "fakeScreenRounding": 2, // 0: None | 1: Always | 2: When not fullscreen
+        "onHoverTray": {
+            "enabled": false,
+            "delay": 1500
+        }
     },
     "apps": {
         "bluetooth": "blueberry",
