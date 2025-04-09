@@ -17,8 +17,8 @@ if test -f ~/.cache/ags/user/generated/terminal/sequences.txt
     cat ~/.cache/ags/user/generated/terminal/sequences.txt
 end
 
-
 abbr --add pamcan pacman
+abbr --add gti git
 
 abbr yain 'yay -S'
 abbr yaind 'yay -S --asdeps'
@@ -37,5 +37,5 @@ abbr yaupg 'yay -Syu'
 abbr yarmorph 'yay -Rns (yay -Qdtq)'
 abbr yalist 'yay -Qe'
 
-abbr ls 'ls -ll'
+abbr ls 'ls -l'
 abbr sz 'du -ah'
