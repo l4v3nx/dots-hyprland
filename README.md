@@ -36,7 +36,7 @@
     
    ```bash
    t=~/.cache/dots-hyprland   # Let's not trash your home folder
-   git clone https://github.com/l4v3nx/dots-hyprland.git "$t" --filter=blob:none
+   git clone https://github.com/l4v3nx/dots-hyprland.git "$t" --filter=blob:none --recurse-submodules
    "$t"/install.sh
    ```
    
