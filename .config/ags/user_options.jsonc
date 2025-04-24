@@ -2,7 +2,7 @@
 //     ~/.config/ags/modules/.configuration/default_options.jsonc
 //
 // vscode: ctrl+click this: file://./modules/.configuration/default_options.jsonc
-// vim : `:vsp` to split window, move cursor to the path, press `gf`. 
+// vim: `:vsp` to split window, move cursor to the path, press `gf`. 
 //      `Ctrl-w` twice to switch between the files
 //
 // Limitations of this file:
@@ -15,75 +15,81 @@
 // "workspaces": {"shown": 8 }
 //
 {
-  "appearance": {
-    "fakeScreenRounding": 0
-  },
-  "apps": {
-    "imageViewer": "eog",
-    "taskManager": "gnome-system-monitor",
-    "terminal": "foot"
-  },
-  "bar": {
-    "utilities": [
-      "snip",
-      "picker",
-      "keyboard",
-      "lock"
-    ]
-  },
-  "cheatsheet": {
-    "keybinds": {
-      "configPath": "~/.config/hypr/custom/keybinds.conf"
-    }
-  },
-  "dock": {
-    "enabled": true,
-    "pinnedApps": [
-      "org.gnome.Nautilus",
-      "firefox",
-      "foot",
-      "steam-runtime",
-      "code",
-      "ayugram-desktop",
-      "telegram-desktop",
-      "materialgram",
-      "spotify-launcher",
-      "com.obsproject.Studio",
-      "vesktop",
-      "libreoffice-writer",
-      "nekoray",
-      "systemd-boot-to-windows"
-    ],
-    "monitorExclusivity": true,
-    "trigger": []
-  },
-  "sidebar": {
-    "image": {
-      "allowNsfw": true
+    "appearance": {
+        "fakeScreenRounding": 0
     },
-    "pages": {
-      "apis": {
-        "defaultPage": "gpt"
-      }
-    }
-  },
-  "search": {
-    "enableFeatures": {
-      "directorySearch": false,
-      "aiSearch": false
-    }
-  },
-  "weather": {
-    "city": "Moscow"
-  },
-  "keybinds": {
+    "apps": {
+        "imageViewer": "eog",
+        "taskManager": "gnome-system-monitor",
+        "terminal": "foot"
+    },
+    "bar": {
+        "utilities": [
+            "snip",
+            "picker",
+            "keyboard",
+            "lock"
+        ]
+    },
     "cheatsheet": {
-      "keybinds": {
-        "nextTab": "End",
-        "prevTab": "Home"
-      },
-      "nextTab": "Ctrl+End",
-      "prevTab": "Ctrl+Home"
+        "keybinds": {
+            "configPath": "~/.config/hypr/custom/keybinds.conf"
+        }
+    },
+    "dock": {
+        "enabled": true,
+        "pinnedApps": [
+            "org.gnome.Nautilus",
+            "firefox",
+            "foot",
+            "steam-runtime",
+            "code",
+            "ayugram-desktop",
+            "telegram-desktop",
+            "materialgram",
+            "spotify-launcher",
+            "com.obsproject.Studio",
+            "vesktop",
+            "libreoffice-writer",
+            "nekoray",
+            "systemd-boot-to-windows"
+        ],
+        "monitorExclusivity": true,
+        "trigger": []
+    },
+    "sidebar": {
+        "image": {
+            "allowNsfw": true
+        },
+        "pages": {
+            "apis": {
+                "defaultPage": "gpt"
+            },
+            "defaultPage": "apis"
+        }
+    },
+    "search": {
+        "enableFeatures": {
+            "directorySearch": false,
+            "aiSearch": false
+        }
+    },
+    "weather": {
+        "city": "Moscow"
+    },
+    "icons": {
+        "substitutions": {
+            "org.pulseaudio.pavucontrol": "multimedia-volume-control"
+        }
+    },
+    "keybinds": {
+        "cheatsheet": {
+            "keybinds": {
+                "nextTab": "End",
+                "prevTab": "Home"
+            },
+            "nextTab": "Ctrl+End",
+            "prevTab": "Ctrl+Home"
+        }
     }
-  }
 }
