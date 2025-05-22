@@ -9,7 +9,6 @@ depends=(
 	gnome-keyring
 	gnome-control-center
 	gnome-system-monitor
-	blueberry
 	bluez-utils
 	networkmanager
 	wireless_tools

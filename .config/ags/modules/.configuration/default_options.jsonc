@@ -48,10 +48,10 @@
         }
     },
     "apps": {
-        "bluetooth": "blueberry",
+        "bluetooth": "better-control --bluetooth",
         "imageViewer": "loupe",
-        "network": "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center wifi",
-        "settings": "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center",
+        "network": "better-control --wifi",
+        "settings": "better-control",
         "taskManager": "gnome-usage",
         "terminal": "foot" // This is only for shell actions
     },
@@ -209,6 +209,7 @@
             "firefox",
             "org.gnome.Nautilus"
         ],
+        "ignoredAppsRegex": [],
         "layer": "top",
         "monitorExclusivity": true, // Dock will move to other monitor along with focus if enabled
         "searchPinnedAppIcons": false, // Try to search for the correct icon if the app class isn't an icon name
