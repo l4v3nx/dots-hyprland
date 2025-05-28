@@ -10,6 +10,7 @@ depends=(
 	gnome-control-center
 	gnome-system-monitor
 	bluez-utils
+	blueberry 
 	networkmanager
 	wireless_tools
 )
