@@ -31,7 +31,7 @@ const OsdValue = ({
             }
         },
         children: [
-            MaterialIcon(icon, 'hugeass', {vpack: 'center'}),
+            MaterialIcon(icon, 'hugeass', { vpack: 'center' }),
             Box({
                 vertical: true,
                 className: 'spacing-v-5',
@@ -107,13 +107,7 @@ export default (monitor = 0) => {
                 }
             }
             volumeIndicator.attribute.device = newDevice;
-            if (updateValue === 0) {
-                label.className = 'osd-value-icon icon-material';
-                label.label = 'volume_off';
-            } else {
-                label.className = "osd-value-txt";
-                label.label = `${updateValue}`;
-            }
+            label.label = `${updateValue}`;
         }),
         progressSetup: (self) => self.hook(Audio, (progress) => {
             const updateValue = Audio.speaker?.volume;
