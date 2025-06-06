@@ -67,9 +67,8 @@
 <details> 
   <summary>Help improve these dotfiles</summary>
 
-   - New: Try the [Quickshell](https://quickshell.outfoxxed.me/)-powered version at [`ii-qs` branch](https://github.com/end-4/dots-hyprland/tree/ii-qs)
-   - Join the [discussions](https://github.com/end-4/dots-hyprland/discussions)
-   - If you'd like to suggest fixes or a new widget, feel free to [open an issue](https://github.com/end-4/dots-hyprland/issues/new/choose) in these dots' base repo
+   - You can give feedback/suggestions for the [`ii-qs` branch](https://github.com/end-4/dots-hyprland/tree/ii-qs) in [#1276](https://github.com/end-4/dots-hyprland/pull/1276)
+   
 </details>
 
 <div align="center">
@@ -78,6 +77,8 @@
 </div>
 
 ## Main branch (*illogical-impulse*)
+
+**Note**: Expect minimal maintenance for the main branch, as I'm already working on and using the new Quickshell version of illogical-impulse at the ii-qs branch. See [#1276](https://github.com/end-4/dots-hyprland/pull/1276).
 
 ### AI
 ![image](https://github.com/user-attachments/assets/9d7af13f-89ef-470d-ba78-d2288b79cf60)
