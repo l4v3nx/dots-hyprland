@@ -19,7 +19,7 @@ RESET="\033[0m"
 
 # Define paths to update
 folders=(".config" ".local/bin")
-excludes=(".config/ags/user_options.jsonc" ".config/fish/fish_variables" ".config/mpv/mpv.conf" ".config/qt5ct/qt5ct.conf" ".config/qt6ct/qt6ct.conf" ".config/hypr/custom/general.conf")
+excludes=(".config/ags/user_options.jsonc" ".config/fish/fish_variables" ".config/qt5ct/qt5ct.conf" ".config/qt6ct/qt6ct.conf" ".config/hypr/custom/general.conf")
 
 get_checksum() {
 	# Get the checksum of a specific file
