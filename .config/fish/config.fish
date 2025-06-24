@@ -20,7 +20,29 @@ end
 alias pamcan pacman
 alias ls 'eza --icons'
 alias clear "printf '\033[2J\033[3J\033[1;1H'"
-    
+
+abbr --add pamcan pacman
+abbr --add gti git
+
+abbr yain 'yay -S'
+abbr yaind 'yay -S --asdeps'
+abbr yainloc 'yay -U'
+abbr yarep 'yay -Sii'
+abbr yareps 'yay -Ss'
+abbr yaloc 'yay -Qii'
+abbr yalocs 'yay -Qs'
+abbr yals 'yay -Ql'
+abbr yamir 'yay -Syy'
+abbr yaown 'yay -Qo'
+abbr yare 'yay -Rn'
+abbr yarem 'yay -Rns'
+abbr yasu 'yay -Syu --noconfirm'
+abbr yaupg 'yay -Syu'
+abbr yarmorph 'yay -Rns (yay -Qdtq)'
+abbr yalist 'yay -Qe'
+
+# abbr ls 'ls -l'
+abbr sz 'du -ah'
 
 # function fish_prompt
 #   set_color cyan; echo (pwd)

@@ -140,10 +140,10 @@ XftHintStyle=hintslight
 TerminalApplication=kitty -1
 XftSubPixel=none
 fixed=JetBrainsMono Nerd Font,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-font=Rubik,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-menuFont=Rubik,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-smallestReadableFont=Rubik,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-toolBarFont=Rubik,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+font=Lexend,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+menuFont=Lexend,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+smallestReadableFont=Lexend,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+toolBarFont=Lexend,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 
 [Icons]
 Theme=breeze-dark

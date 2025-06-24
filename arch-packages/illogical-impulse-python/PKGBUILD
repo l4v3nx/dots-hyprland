@@ -11,6 +11,7 @@ depends=(
   libadwaita
   libsoup3
   libportal-gtk4
+  python-pywayland
   gobject-introspection
   sassc
   python-opencv

@@ -162,8 +162,8 @@ Singleton {
 
     font: QtObject {
         property QtObject family: QtObject {
-            property string main: "Rubik"
-            property string title: "Gabarito"
+            property string main: "Lexend"
+            property string title: "Lexend"
             property string iconMaterial: "Material Symbols Rounded"
             property string iconNerd: "SpaceMono NF"
             property string monospace: "JetBrains Mono NF"
