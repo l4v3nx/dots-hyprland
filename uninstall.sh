@@ -23,11 +23,11 @@ set -e
 # Undo Step 1: Removing copied config and local folders
 printf '\e[36mRemoving copied config and local folders...\n\e[97m'
 
-for i in ags fish fontconfig foot fuzzel hypr mpv nvim wlogout "starship.toml"; do
+for i in ags fontconfig foot fuzzel hypr sway waybar wlogout "starship.toml"; do
 	v rm -rf "$XDG_CONFIG_HOME/$i"
 done
-for i in "glib-2.0/schemas/com.github.GradienceTeam.Gradience.Devel.gschema.xml" "gradience"
-  do v rm -rf "$XDG_DATA_HOME/$i"
+for i in "glib-2.0/schemas/com.github.GradienceTeam.Gradience.Devel.gschema.xml" "gradience"; do
+	v rm -rf "$XDG_DATA_HOME/$i"
 done
 v rm -rf "$XDG_BIN_HOME/fuzzel-emoji"
 v rm -rf "$XDG_BIN_HOME/rubyshot"
@@ -48,6 +48,6 @@ v sudo rm /etc/modules-load.d/i2c-dev.conf
 read -p "Do you want to uninstall packages used by the dotfiles?\nCtrl+C to exit, or press Enter to proceed"
 
 # Undo Step 3: Remove yay packages
-v yay -Rns hyprland-git illogical-impulse-{agsv1,audio,backlight,basic,fonts-themes,gnome,gtk,microtex-git,portal,python,screencapture,sway,widgets} plasma-browser-integration
+v yay -Rns illogical-impulse-{agsv1-git,audio,backlight,basic,bibata-modern-classic-bin,fonts-themes,gnome,gtk,hyprland,microtex-git,portal,python,screencapture,sway,widgets} plasma-browser-integration
 
 printf '\e[36mUninstall Complete.\n\e[97m'
