@@ -83,7 +83,7 @@ fi
 # End of Greetings
 printf "Pulling Git submodules...\n"
 git submodule update --remote
-current_branch=main
+current_branch=ii-ags
 
 # fetch the latest version of the repository
 if ! git fetch; then
