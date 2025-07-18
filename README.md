@@ -108,43 +108,6 @@ Widget system: AGS | Support: Limited, no new features
 | Window management | Weeb power |
 | ![image](https://github.com/user-attachments/assets/02983b9b-79ba-4c25-8717-90bef2357ae5) | ![image](https://github.com/user-attachments/assets/bbb332ec-962a-4e88-a95b-486d0bd8ce76) |
 
-### Very old stuff
-
-- Source code not likely to work but still available in the [`archive`](https://github.com/end-4/dots-hyprland/tree/archive) branch. Extremely spaghetti.
-- Click image for a presentation video
-
-#### m3ww
-
-   Widget system: EWW | Support: No, dead
-
-   <a href="https://streamable.com/85ch8x">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/09533e64-b6d7-47eb-a840-ee90c6776adf" alt="Material Eww!">
-   </a>
-
-#### NovelKnock
-
-   Widget system: EWW | Support: No, dead
-
-   <a href="https://streamable.com/7vo61k">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/42903d03-bf6f-49d4-be7f-dd77e6cb389d" alt="Desktop Preview">
-   </a>
-
-#### Hybrid
-
-   Widget system: EWW | Support: No, dead
-   
-   <a href="https://streamable.com/4oogot">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/190deb1e-f6f5-46ce-8cf0-9b39944c079d" alt="click the circles!">
-   </a>
-
-#### Windoes
-
-   Widget system: EWW | Support: No, dead
-   
-   <a href="https://streamable.com/5qx614">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/b15317b1-f295-49f5-b90c-fb6328b8d886" alt="Desktop Preview">
-   </a>
-
 <div align="center">
     <h2>• thank you •</h2>
     <h3></h3>
