@@ -101,6 +101,25 @@ Scope { // Scope
                             spacing: 3
                             property real padding: 5
 
+                            DockButton {
+                                Layout.fillHeight: true
+                                onClicked: GlobalStates.overviewOpen = !GlobalStates.overviewOpen
+                                topInset: Appearance.sizes.hyprlandGapsOut + dockRow.padding
+                                bottomInset: Appearance.sizes.hyprlandGapsOut + dockRow.padding
+                                contentItem: MaterialSymbol {
+                                    anchors.fill: parent
+                                    horizontalAlignment: Text.AlignHCenter
+                                    font.pixelSize: parent.width / 2
+                                    text: "apps"
+                                    color: Appearance.colors.colOnLayer0
+                                }
+                            }
+                            DockSeparator {}
+                            DockApps {
+                                id: dockApps
+                                buttonPadding: dockRow.padding
+                            }
+                            DockSeparator {}
                             VerticalButtonGroup {
                                 Layout.topMargin: Appearance.sizes.hyprlandGapsOut // why does this work
                                 GroupButton {
@@ -118,25 +137,6 @@ Scope { // Scope
                                         iconSize: Appearance.font.pixelSize.larger
                                         color: root.pinned ? Appearance.m3colors.m3onPrimary : Appearance.colors.colOnLayer0
                                     }
-                                }
-                            }
-                            DockSeparator {}
-                            DockApps {
-                                id: dockApps
-                                buttonPadding: dockRow.padding
-                            }
-                            DockSeparator {}
-                            DockButton {
-                                Layout.fillHeight: true
-                                onClicked: GlobalStates.overviewOpen = !GlobalStates.overviewOpen
-                                topInset: Appearance.sizes.hyprlandGapsOut + dockRow.padding
-                                bottomInset: Appearance.sizes.hyprlandGapsOut + dockRow.padding
-                                contentItem: MaterialSymbol {
-                                    anchors.fill: parent
-                                    horizontalAlignment: Text.AlignHCenter
-                                    font.pixelSize: parent.width / 2
-                                    text: "apps"
-                                    color: Appearance.colors.colOnLayer0
                                 }
                             }
                         }

@@ -9,7 +9,7 @@ depends=(
   glib2
   imagemagick
   hypridle
-  hyprlock
+  hyprutils
   hyprpicker
   songrec
   translate-shell
