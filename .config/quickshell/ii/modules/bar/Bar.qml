@@ -132,6 +132,8 @@ Scope {
                         onPressed: event => {
                             if (event.button === Qt.LeftButton) {
                                 Hyprland.dispatch('global quickshell:sidebarLeftOpen');
+                            } else if (event.button === Qt.RightButton) {
+                                MprisController.activePlayer.previous();
                             }
                         }
                         // Scroll to change brightness
