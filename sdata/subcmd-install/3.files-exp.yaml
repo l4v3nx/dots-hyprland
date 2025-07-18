@@ -9,7 +9,7 @@
 version: "1.0"
 user_preferences:
   shell: "fish" # fish | zsh
-  terminal: "foot" # kitty | foot
+  terminal: "kitty" # kitty | foot
   keybindings: "default" # default | vim
 patterns:
   # Always install these files
@@ -42,7 +42,7 @@ patterns:
     condition:
       type: "terminal"
       value: "kitty"
-  # Hyprland    
+  # Hyprland
   - from: "dots/.config/hypr"
     to: "$XDG_CONFIG_HOME/hypr"
     mode: "sync"
@@ -59,7 +59,7 @@ patterns:
     mode: "soft-backup"
   - from: "dots/.config/hypr/custom"
     to: "$XDG_CONFIG_HOME/hypr/custom"
-    mode: "skip-if-exists"
+    mode: "sync"
   - from: "dots/.local/share/icons"
     to: "$XDG_DATA_HOME/icons"
     mode: "soft"
@@ -83,9 +83,6 @@ patterns:
   - from: "dots/.config/matugen"
     to: "$XDG_CONFIG_HOME/matugen"
     mode: "sync"
-  - from: "dots/.config/mpv"
-    to: "$XDG_CONFIG_HOME/mpv"
-    mode: "sync"
   - from: "dots/.config/qt5ct"
     to: "$XDG_CONFIG_HOME/qt5ct"
     mode: "sync"
@@ -98,6 +95,9 @@ patterns:
   - from: "dots/.config/xdg-desktop-portal"
     to: "$XDG_CONFIG_HOME/xdg-desktop-portal"
     mode: "sync"
+  - from: "dots/.config/kanshi"
+    to: "$XDG_CONFIG_HOME/kanshi"
+    mode: "hard-backup"
   # MISC config files (individual files in .config)
   - from: "dots/.config/chrome-flags.conf"
     to: "$XDG_CONFIG_HOME/chrome-flags.conf"
