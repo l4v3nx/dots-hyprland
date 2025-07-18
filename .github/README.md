@@ -28,15 +28,13 @@
 <details> 
   <summary>Installation (illogical-impulse Quickshell)</summary>
 
-   - _If you're new to Linux and decide to use Hyprland, you're in for a tough ride._
-   - Just run `bash <(curl -s https://ii.clsty.link/get)`
-     - Or, clone this repo and run `./setup install`
+   - Clone this repo and run `./setup install`
      - See [document](https://ii.clsty.link/en/ii-qs/01setup/) for details.
    - **Default keybinds**: Should be somewhat familiar to Windows or GNOME users. Important ones:
      - `Super`+`/` = keybind list
      - `Super`+`Enter` = terminal
      - If for whatever reason the keybind list widget does not work, here's an image:
-     <img width="1412" height="828" alt="image" src="https://github.com/user-attachments/assets/8f7bd216-9e03-47e3-8709-0008772a4133" />
+         <img width="1095" height="797" alt="image" src="https://github.com/user-attachments/assets/819fe184-87d2-4ce0-804e-a4cb4473a8be" />
 
 
 </details>
@@ -139,35 +137,38 @@ Widget system: AGS | Support: No
 | Window management | Weeb power |
 | ![image](https://github.com/user-attachments/assets/02983b9b-79ba-4c25-8717-90bef2357ae5) | ![image](https://github.com/user-attachments/assets/bbb332ec-962a-4e88-a95b-486d0bd8ce76) |
 
-#### m3ww
+<div align="center">
+    <h2>• thank you •</h2>
+    <h3></h3>
+</div>
 
-   Widget system: EWW | Support: No, dead
+ - [@clsty](https://github.com/clsty) for making my work accessible by taking care of the install script and many other things
+ - [@midn8hustlr](https://github.com/midn8hustlr) for greatly improving the color generation system
+ - [@outfoxxed](https://github.com/outfoxxed/) for being extremely supportive in my Quickshell journey
+ - Quickshell: [Soramane](https://github.com/caelestia-dots/shell/), [FridayFaerie](https://github.com/FridayFaerie/quickshell), [nydragon](https://github.com/nydragon/nysh)
+ - AGS: [Aylur's config](https://github.com/Aylur/dotfiles/tree/ags-pre-ts), [kotontrion's config](https://github.com/kotontrion/dotfiles)
+ - EWW: [fufexan's config](https://github.com/fufexan/dotfiles) (he thanks more people there btw)
+ - AI bots for providing useful examples
 
-   <a href="https://streamable.com/85ch8x">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/09533e64-b6d7-47eb-a840-ee90c6776adf" alt="Material Eww!">
-   </a>
+ <sup><sup><sup><sup><sup>[@tokyobot](https://github.com/tokyob0t) for saying hi</sup></sup></sup></sup></sup>
 
-#### NovelKnock
+<div align="center">
+    <h2>• stonks •</h2>
+    <h3></h3>
+</div>
 
-   Widget system: EWW | Support: No
+- Funny useful number: https://github.com/sponsors/end-4
+- Funny useless number:
 
-   <a href="https://streamable.com/7vo61k">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/42903d03-bf6f-49d4-be7f-dd77e6cb389d" alt="Desktop Preview">
-   </a>
+[![Stargazers over time](https://starchart.cc/end-4/dots-hyprland.svg?variant=adaptive)](https://starchart.cc/end-4/dots-hyprland)
 
-#### Hybrid
+- *Jokes aside i do appreciate both*
 
-   Widget system: EWW | Support: No
-   
-   <a href="https://streamable.com/4oogot">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/190deb1e-f6f5-46ce-8cf0-9b39944c079d" alt="click the circles!">
-   </a>
 
-#### Windoes
+<div align="center">
+    <h2>• inspirations/copying •</h2>
+    <h3></h3>
+</div>
 
-   Widget system: EWW | Support: No
-   
-   <a href="https://streamable.com/5qx614">
-    <img src="https://github.com/end-4/dots-hyprland/assets/97237370/b15317b1-f295-49f5-b90c-fb6328b8d886" alt="Desktop Preview">
-   </a>
-
+ - Inspiration: osu!lazer, Windows 11, Material Design 3, AvdanOS (concept)
+ - Copying: The license allows you to. Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (unless you do weird stuff and violate the license). (this note is here because some people actually asked)
