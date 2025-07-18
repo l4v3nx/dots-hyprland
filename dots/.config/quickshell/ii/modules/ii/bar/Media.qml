@@ -30,11 +30,9 @@ Item {
         anchors.fill: parent
         acceptedButtons: Qt.MiddleButton | Qt.BackButton | Qt.ForwardButton | Qt.RightButton | Qt.LeftButton
         onPressed: (event) => {
-            if (event.button === Qt.MiddleButton) {
-                activePlayer.togglePlaying();
-            } else if (event.button === Qt.BackButton) {
+            if (event.button === Qt.ForwardButton || event.button === Qt.MiddleButton) {
                 activePlayer.previous();
-            } else if (event.button === Qt.ForwardButton || event.button === Qt.RightButton) {
+            } else if (event.button === Qt.BackButton || event.button === Qt.RightButton) {
                 activePlayer.next();
             } else if (event.button === Qt.LeftButton) {
                 GlobalStates.mediaControlsOpen = !GlobalStates.mediaControlsOpen

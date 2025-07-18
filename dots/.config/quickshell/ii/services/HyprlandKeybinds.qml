@@ -21,7 +21,7 @@ Singleton {
     property var userKeybinds: {"children": []}
     property var keybinds: ({
         children: [
-            ...(defaultKeybinds.children ?? []),
+            // ...(defaultKeybinds.children ?? []),
             ...(userKeybinds.children ?? []),
         ]
     })

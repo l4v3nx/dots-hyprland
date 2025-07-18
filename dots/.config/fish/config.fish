@@ -18,9 +18,26 @@ if status is-interactive # Commands to run in interactive sessions can go here
     end
 
     # Aliases
-    alias pamcan pacman
+    abbr --add pamcan pacman
+    abbr --add gti git
+    abbr yain 'yay -S'
+    abbr yaind 'yay -S --asdeps'
+    abbr yainloc 'yay -U'
+    abbr yarep 'yay -Sii'
+    abbr yareps 'yay -Ss'
+    abbr yaloc 'yay -Qii'
+    abbr yalocs 'yay -Qs'
+    abbr yals 'yay -Ql'
+    abbr yamir 'yay -Syy'
+    abbr yaown 'yay -Qo'
+    abbr yare 'yay -Rn'
+    abbr yarem 'yay -Rns'
+    abbr yasu 'yay -Syu --noconfirm'
+    abbr yaupg 'yay -Syu'
+    abbr yarmorph 'yay -Rns (yay -Qdtq)'
+    abbr yalist 'yay -Qe'
     alias ls 'eza --icons'
     alias clear "printf '\033[2J\033[3J\033[1;1H'"
     alias q 'qs -c ii'
-    
+
 end
