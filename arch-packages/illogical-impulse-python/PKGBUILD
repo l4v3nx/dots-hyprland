@@ -5,13 +5,14 @@ pkgdesc='Illogical Impulse Python Dependencies'
 arch=(any)
 license=(None)
 depends=(
-  clang
-  uv
-  gtk4
-  libadwaita
-  libsoup3
-  libportal-gtk4
-  gobject-introspection
-  sassc
-  python-opencv
+	clang
+	uv
+	gtk4
+	libadwaita
+	libsoup3
+	libportal-gtk4
+	gobject-introspection
+	sassc
+	python-pywayland
+	python-opencv
 )
