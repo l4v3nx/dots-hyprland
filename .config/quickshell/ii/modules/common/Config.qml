@@ -8,6 +8,7 @@ Singleton {
     id: root
     property string filePath: Directories.shellConfigPath
     property alias options: configOptionsJsonAdapter
+    property bool ready: false
 
     function setNestedValue(nestedKey, value) {
         let keys = nestedKey.split(".");
@@ -41,10 +42,10 @@ Singleton {
 
     FileView {
         path: root.filePath
-
         watchChanges: true
         onFileChanged: reload()
         onAdapterUpdated: writeAdapter()
+        onLoaded: root.ready = true
         onLoadFailed: error => {
             if (error == FileViewError.FileNotFound) {
                 writeAdapter();
@@ -124,6 +125,7 @@ Singleton {
                     property bool showMicToggle: false
                     property bool showKeyboardToggle: true
                     property bool showDarkModeToggle: true
+                    property bool showPerformanceProfileToggle: false
                 }
                 property JsonObject tray: JsonObject {
                     property bool monochromeIcons: true
@@ -160,6 +162,7 @@ Singleton {
                 property bool hoverToReveal: true // When false, only reveals on empty workspace
                 property list<string> pinnedApps: [ // IDs of pinned entries
                     "org.kde.dolphin", "kitty",]
+                property list<string> ignoredAppRegexes: []
             }
 
             property JsonObject language: JsonObject {
@@ -167,6 +170,15 @@ Singleton {
                     property string engine: "auto" // Run `trans -list-engines` for available engines. auto should use google
                     property string targetLanguage: "auto" // Run `trans -list-all` for available languages
                     property string sourceLanguage: "auto"
+                }
+            }
+
+            property JsonObject light: JsonObject {
+                property JsonObject night: JsonObject {
+                    property bool automatic: true
+                    property string from: "19:00" // Format: "HH:mm", 24-hour time
+                    property string to: "06:30"   // Format: "HH:mm", 24-hour time
+                    property int colorTemperature: 5000
                 }
             }
 

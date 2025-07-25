@@ -10,6 +10,7 @@ import "./modules/background/"
 import "./modules/bar/"
 import "./modules/cheatsheet/"
 import "./modules/dock/"
+import "./modules/lock/"
 import "./modules/mediaControls/"
 import "./modules/notificationPopup/"
 import "./modules/onScreenDisplay/"
@@ -33,6 +34,7 @@ ShellRoot {
     property bool enableBackground: true
     property bool enableCheatsheet: true
     property bool enableDock: true
+    property bool enableLock: true
     property bool enableMediaControls: true
     property bool enableNotificationPopup: true
     property bool enableOnScreenDisplayBrightness: true
@@ -47,15 +49,17 @@ ShellRoot {
 
     // Force initialization of some singletons
     Component.onCompleted: {
-        MaterialThemeLoader.reapplyTheme()
         Cliphist.refresh()
         FirstRunExperience.load()
+        Hyprsunset.load()
+        MaterialThemeLoader.reapplyTheme()
     }
 
     LazyLoader { active: enableBar; component: Bar {} }
     LazyLoader { active: enableBackground; component: Background {} }
     LazyLoader { active: enableCheatsheet; component: Cheatsheet {} }
     LazyLoader { active: enableDock && Config.options.dock.enable; component: Dock {} }
+    LazyLoader { active: enableLock; component: Lock {} }
     LazyLoader { active: enableMediaControls; component: MediaControls {} }
     LazyLoader { active: enableNotificationPopup; component: NotificationPopup {} }
     LazyLoader { active: enableOnScreenDisplayBrightness; component: OnScreenDisplayBrightness {} }

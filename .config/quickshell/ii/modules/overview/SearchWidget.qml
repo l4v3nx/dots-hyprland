@@ -58,7 +58,7 @@ Item { // Wrapper
         {
             action: "konachanwall",
             execute: () => {
-                Quickshell.execDetached([Quickshell.configPath("scripts/colors/random_konachan_wall.sh")]);
+                Quickshell.execDetached([Quickshell.shellPath("scripts/colors/random_konachan_wall.sh")]);
             }
         },
         {
@@ -75,9 +75,8 @@ Item { // Wrapper
         },
     ]
 
-    function focusFirstItemIfNeeded() {
-        if (searchInput.focus)
-            appResults.currentIndex = 0; // Focus the first item
+    function focusFirstItem() {
+        appResults.currentIndex = 0;
     }
 
     Timer {
@@ -99,7 +98,7 @@ Item { // Wrapper
         stdout: SplitParser {
             onRead: data => {
                 root.mathResult = data;
-                root.focusFirstItemIfNeeded();
+                root.focusFirstItem();
             }
         }
     }
@@ -277,6 +276,9 @@ Item { // Wrapper
 
                 model: ScriptModel {
                     id: model
+                    onValuesChanged: {
+                        root.focusFirstItem();
+                    }
                     values: {
                         // Search results are handled here
                         ////////////////// Skip? //////////////////
@@ -404,8 +406,6 @@ Item { // Wrapper
                         return result;
                     }
                 }
-
-                onModelChanged: root.focusFirstItemIfNeeded()
 
                 delegate: SearchItem {
                     // The selectable item for each search result
