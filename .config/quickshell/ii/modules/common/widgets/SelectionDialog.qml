@@ -63,7 +63,7 @@ Item {
                 Layout.rightMargin: dialogPadding
             }
 
-            ListView {
+            StyledListView {
                 id: choiceListView
                 Layout.fillWidth: true
                 Layout.fillHeight: true

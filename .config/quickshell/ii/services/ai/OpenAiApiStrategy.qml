@@ -4,11 +4,11 @@ ApiStrategy {
     property bool isReasoning: false
     
     function buildEndpoint(model: AiModel): string {
-        console.log("[AI] Endpoint: " + model.endpoint);
+        // console.log("[AI] Endpoint: " + model.endpoint);
         return model.endpoint;
     }
 
-    function buildRequestData(model: AiModel, messages, systemPrompt: string, temperature: real) {
+    function buildRequestData(model: AiModel, messages, systemPrompt: string, temperature: real, tools: list<var>) {
         let baseData = {
             "model": model.model,
             "messages": [
@@ -71,6 +71,17 @@ ApiStrategy {
 
             message.content += newContent;
             message.rawContent += newContent;
+
+            // Usage metadata
+            if (dataJson.usage) {
+                return {
+                    tokenUsage: {
+                        input: dataJson.usage.prompt_tokens ?? -1,
+                        output: dataJson.usage.completion_tokens ?? -1,
+                        total: dataJson.usage.total_tokens ?? -1
+                    }
+                };
+            }
 
             if (dataJson.done) {
                 return { finished: true };

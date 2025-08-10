@@ -214,13 +214,13 @@ Item { // Notification item area
 
                     onLinkActivated: (link) => {
                         Qt.openUrlExternally(link)
-                        Hyprland.dispatch("global quickshell:sidebarRightClose")
+                        GlobalStates.sidebarRightOpen = false
                     }
                     
                     PointingHandLinkHover {}
                 }
 
-                Flickable { // Notification actions
+                StyledFlickable { // Notification actions
                     id: actionsFlickable
                     Layout.fillWidth: true
                     implicitHeight: actionRowLayout.implicitHeight
