@@ -127,6 +127,7 @@ Singleton {
                     property bool enableSidebar: true
                 }
                 property string mantra: ""
+                property bool hideWhenFullscreen: true
             }
 
             property JsonObject bar: JsonObject {
@@ -265,6 +266,9 @@ Singleton {
                     property string action: "/"
                     property string clipboard: ";"
                     property string emojis: ":"
+                    property string math: "="
+                    property string shellCommand: "$"
+                    property string webSearch: "?"
                 }
             }
 
