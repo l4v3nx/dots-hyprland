@@ -103,13 +103,13 @@ Singleton {
                     // Prevent sudden bangs
                     property bool enable: true
                     property real maxAllowedIncrease: 10
-                    property real maxAllowed: 90 // Realistically should already provide some protection when it's 99...
+                    property real maxAllowed: 99
                 }
             }
 
             property JsonObject apps: JsonObject {
                 property string bluetooth: "kcmshell6 kcm_bluetooth"
-                property string network: "plasmawindowed org.kde.plasma.networkmanagement"
+                property string network: "kitty -1 fish -c nmtui"
                 property string networkEthernet: "kcmshell6 kcm_networkmanagement"
                 property string taskManager: "plasma-systemmonitor --page-name Processes"
                 property string terminal: "kitty -1" // This is only for shell actions
@@ -122,11 +122,12 @@ Singleton {
                 property string wallpaperPath: ""
                 property string thumbnailPath: ""
                 property JsonObject parallax: JsonObject {
+                    property bool vertical: false
                     property bool enableWorkspace: true
                     property real workspaceZoom: 1.07 // Relative to your screen, not wallpaper size
                     property bool enableSidebar: true
                 }
-                property string mantra: ""
+                property string quote: ""
                 property bool hideWhenFullscreen: true
             }
 
@@ -149,6 +150,9 @@ Singleton {
                 property JsonObject resources: JsonObject {
                     property bool alwaysShowSwap: true
                     property bool alwaysShowCpu: false
+                    property int memoryWarningThreshold: 95
+                    property int swapWarningThreshold: 85
+                    property int cpuWarningThreshold: 90
                 }
                 property list<string> screenList: [] // List of names, like "eDP-1", find out with 'hyprctl monitors' command
                 property JsonObject utilButtons: JsonObject {
@@ -161,6 +165,8 @@ Singleton {
                 }
                 property JsonObject tray: JsonObject {
                     property bool monochromeIcons: true
+                    property bool invertPinnedItems: false // Makes the below a whitelist for the tray and blacklist for the pinned area
+                    property list<string> pinnedItems: [ "Fcitx" ]
                 }
                 property JsonObject workspaces: JsonObject {
                     property bool monochromeIcons: true
@@ -212,6 +218,7 @@ Singleton {
             }
 
             property JsonObject language: JsonObject {
+                property string ui: "auto" // UI language. "auto" for system locale, or specific language code like "zh_CN", "en_US"
                 property JsonObject translator: JsonObject {
                     property string engine: "auto" // Run `trans -list-engines` for available engines. auto should use google
                     property string targetLanguage: "auto" // Run `trans -list-all` for available languages
@@ -263,6 +270,7 @@ Singleton {
                 property list<string> excludedSites: ["quora.com"]
                 property bool sloppy: false // Uses levenshtein distance based scoring instead of fuzzy sort. Very weird.
                 property JsonObject prefix: JsonObject {
+                    property bool showDefaultActionsWithoutPrefix: true
                     property string action: "/"
                     property string clipboard: ";"
                     property string emojis: ":"
@@ -284,6 +292,15 @@ Singleton {
                     property JsonObject zerochan: JsonObject {
                         property string username: "[unset]"
                     }
+                }
+                property JsonObject cornerOpen: JsonObject {
+                    property bool enable: true
+                    property bool bottom: false
+                    property bool valueScroll: true
+                    property bool clickless: false
+                    property real cornerRegionWidth: 60
+                    property real cornerRegionHeight: 2
+                    property bool visualize: false
                 }
             }
 
