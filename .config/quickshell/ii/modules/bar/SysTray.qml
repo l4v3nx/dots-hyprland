@@ -12,13 +12,16 @@ Item {
     property bool vertical: false
     property bool invertSide: false
     property bool trayOverflowOpen: false
+    property bool showSeparator: true
+    property bool showOverflowMenu: true
 
-    property list<var> itemsInUserList: SystemTray.items.values.filter(i => Config.options.bar.tray.pinnedItems.includes(i.id))
-    property list<var> itemsNotInUserList: SystemTray.items.values.filter(i => !Config.options.bar.tray.pinnedItems.includes(i.id))
+    property list<var> itemsInUserList: SystemTray.items.values.filter(i => (Config.options.bar.tray.pinnedItems.includes(i.id) && i.status !== Status.Passive))
+    property list<var> itemsNotInUserList: SystemTray.items.values.filter(i => (!Config.options.bar.tray.pinnedItems.includes(i.id) && i.status !== Status.Passive))
     property bool invertPins: Config.options.bar.tray.invertPinnedItems
     property list<var> pinnedItems: invertPins ? itemsNotInUserList : itemsInUserList
     property list<var> unpinnedItems: invertPins ? itemsInUserList : itemsNotInUserList
-    onUnpinnedItemsChanged: if (unpinnedItems.length == 0) root.trayOverflowOpen = false;
+    onUnpinnedItemsChanged: if (unpinnedItems.length == 0)
+        root.trayOverflowOpen = false
 
     GridLayout {
         id: gridLayout
@@ -29,7 +32,7 @@ Item {
 
         RippleButton {
             id: trayOverflowButton
-            visible: root.unpinnedItems.length > 0
+            visible: root.showOverflowMenu && root.unpinnedItems.length > 0
             toggled: root.trayOverflowOpen
             property bool containsMouse: hovered
 
@@ -60,7 +63,7 @@ Item {
                 hoverTarget: trayOverflowButton
                 active: root.trayOverflowOpen
                 popupBackgroundMargin: 300 // This should be plenty... makes sure tooltips don't get cutoff (easily)
-                
+
                 GridLayout {
                     id: trayOverflowLayout
                     anchors.centerIn: parent
@@ -93,7 +96,6 @@ Item {
                 Layout.fillHeight: !root.vertical
                 Layout.fillWidth: root.vertical
             }
-
         }
 
         StyledText {
@@ -101,11 +103,7 @@ Item {
             font.pixelSize: Appearance.font.pixelSize.larger
             color: Appearance.colors.colSubtext
             text: "•"
-            visible: {
-                SystemTray.items.values.length > 0
-            }
+            visible: root.showSeparator && SystemTray.items.values.length > 0
         }
-
     }
-
 }

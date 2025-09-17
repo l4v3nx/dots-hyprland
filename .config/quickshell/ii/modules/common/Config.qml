@@ -91,6 +91,12 @@ Singleton {
                     property bool enableAppsAndShell: true
                     property bool enableQtApps: true
                     property bool enableTerminal: true
+                    property JsonObject terminalGenerationProps: JsonObject {
+                        property real harmony: 0.6
+                        property real harmonizeThreshold: 100
+                        property real termFgBoost: 0.35
+                        property bool forceDarkMode: false
+                    }
                 }
                 property JsonObject palette: JsonObject {
                     property string type: "auto" // Allowed: auto, scheme-content, scheme-expressive, scheme-fidelity, scheme-fruit-salad, scheme-monochrome, scheme-neutral, scheme-rainbow, scheme-tonal-spot
@@ -101,7 +107,7 @@ Singleton {
                 // Values in %
                 property JsonObject protection: JsonObject {
                     // Prevent sudden bangs
-                    property bool enable: true
+                    property bool enable: false
                     property real maxAllowedIncrease: 10
                     property real maxAllowed: 99
                 }
@@ -128,6 +134,13 @@ Singleton {
                     property bool enableWorkspace: true
                     property real workspaceZoom: 1.07 // Relative to your screen, not wallpaper size
                     property bool enableSidebar: true
+                }
+                property JsonObject blur: JsonObject {
+                    property bool enable: true
+                    property int radius: 100
+                    property bool centerClock: true
+                    property bool showLockedText: true
+                    property real extraZoom: 1.1
                 }
                 property string quote: ""
                 property bool hideWhenFullscreen: true
@@ -167,8 +180,9 @@ Singleton {
                 }
                 property JsonObject tray: JsonObject {
                     property bool monochromeIcons: true
-                    property bool invertPinnedItems: false // Makes the below a whitelist for the tray and blacklist for the pinned area
-                    property list<string> pinnedItems: [ "Fcitx" ]
+                    property bool showItemId: false
+                    property bool invertPinnedItems: true // Makes the below a whitelist for the tray and blacklist for the pinned area
+                    property list<string> pinnedItems: [ ]
                 }
                 property JsonObject workspaces: JsonObject {
                     property bool monochromeIcons: true
@@ -218,6 +232,9 @@ Singleton {
                     property int mouseScrollDeltaThreshold: 120 // delta >= this then it gets detected as mouse scroll rather than touchpad
                     property int mouseScrollFactor: 120
                     property int touchpadScrollFactor: 450
+                }
+                property JsonObject deadPixelWorkaround: JsonObject { // Hyprland leaves out 1 pixel on the right for interactions
+                    property bool enable: false
                 }
             }
 
@@ -321,7 +338,11 @@ Singleton {
                     property int longBreak: 900
                 }
             }
-
+            
+            property JsonObject wallpaperSelector: JsonObject {
+                property bool useSystemFileDialog: false
+            }
+            
             property JsonObject windows: JsonObject {
                 property bool showTitlebar: true // Client-side decoration for shell apps
                 property bool centerTitle: true
