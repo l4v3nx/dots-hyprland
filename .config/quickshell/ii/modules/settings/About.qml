@@ -96,7 +96,7 @@ ContentPage {
                 Layout.alignment: Qt.AlignVCenter
                 // spacing: 10
                 StyledText {
-                    text: Translation.tr("illogical-impulse")
+                    text: Translation.tr("illogical-impulse (forked)")
                     font.pixelSize: Appearance.font.pixelSize.title
                 }
                 StyledText {
