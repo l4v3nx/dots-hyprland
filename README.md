@@ -47,8 +47,8 @@
   | [Hyprland](https://github.com/hyprwm/hyprland) | The compositor (manages and renders windows) |
   | [Quickshell](https://quickshell.outfoxxed.me/) | A QtQuick-based widget system, used for the status bar, sidebars, etc. |
 
-  - THERE IS NO WAYBAR
-  - For the full list of dependencies, see the [arch-packages folder](https://github.com/end-4/dots-hyprland/tree/main/arch-packages)
+  - For the full list of dependencies, see the [dist-arch folder](https://github.com/end-4/dots-hyprland/tree/main/dist-arch)
+  - THERE IS NO WAYBAR STOP FUCKING CALLING EVERY BAR WAYBAR
 </details>
 
 <details>
@@ -62,19 +62,13 @@
     <h3></h3>
 </div>
 
-<table style="border-collapse: collapse;">
-  <tr>
-    <td width="25%">
-      <img src=".github/assets/illogical-impulse.svg" alt="illogical-impulse logo" style="float:left; width:100%;">
-    </td>
-    <td width="75%">
-      <i>latest and only style that I actively use. Other past styles are still there for your viewing pleasure and not actual use, but code is still available, see below.</i>
-    </td>
-  </tr>
-</table>
-
+<div align="center">
+    <img src=".github/assets/illogical-impulse.svg" alt="illogical-impulse logo" style="float:left; width:400;">
+</div>
 
 ### illogical-impulse<sup>Quickshell</sup>
+
+This is the latest and only supported style. Other stuff are still there mostly for viewing pleasure and not actual use, but code is still available, see below.
 
 Widget system: Quickshell | Support: Yes
 
@@ -125,4 +119,6 @@ Widget system: AGS | Support: No
 </div>
 
  - Inspiration: osu!lazer, Windows 11, Material Design 3, AvdanOS (concept)
- - Copying: The license allows you to. Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (unless you do weird stuff and violate the license). <sub>(this note is here because some people actually asked)</sub>
+ - Copying: The license allows you to. Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (maybe unless you loudly do weird stuff and violate the license) <sub>(some people actually had to ask smh)</sub>
+
+---

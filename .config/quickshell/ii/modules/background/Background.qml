@@ -3,6 +3,7 @@ pragma ComponentBehavior: Bound
 import qs
 import qs.services
 import qs.modules.common
+import qs.modules.common.models
 import qs.modules.common.widgets
 import qs.modules.common.functions as CF
 import QtQuick
@@ -41,7 +42,12 @@ Variants {
         // Wallpaper
         property bool wallpaperIsVideo: Config.options.background.wallpaperPath.endsWith(".mp4") || Config.options.background.wallpaperPath.endsWith(".webm") || Config.options.background.wallpaperPath.endsWith(".mkv") || Config.options.background.wallpaperPath.endsWith(".avi") || Config.options.background.wallpaperPath.endsWith(".mov")
         property string wallpaperPath: wallpaperIsVideo ? Config.options.background.thumbnailPath : Config.options.background.wallpaperPath
-        property bool wallpaperSafetyTriggered: Config.options.background.wallpaperSafety.enable && (CF.StringUtils.stringListContainsSubstring(wallpaperPath.toLowerCase(), Config.options.background.wallpaperSafety.triggerCondition.wallpaperKeywords) && CF.StringUtils.stringListContainsSubstring(Network.networkName.toLowerCase(), Config.options.background.wallpaperSafety.triggerCondition.networkNameKeywords))
+        property bool wallpaperSafetyTriggered: {
+            const enabled = Config.options.workSafety.enable.wallpaper
+            const sensitiveWallpaper = (CF.StringUtils.stringListContainsSubstring(wallpaperPath.toLowerCase(), Config.options.workSafety.triggerCondition.fileKeywords))
+            const sensitiveNetwork = (CF.StringUtils.stringListContainsSubstring(Network.networkName.toLowerCase(), Config.options.workSafety.triggerCondition.networkNameKeywords))
+            return enabled && sensitiveWallpaper && sensitiveNetwork;
+        }
         property real wallpaperToScreenRatio: Math.min(wallpaperWidth / screen.width, wallpaperHeight / screen.height)
         property real preferredWallpaperScale: Config.options.background.parallax.workspaceZoom
         property real effectiveWallpaperScale: 1 // Some reasonable init value, to be updated
@@ -64,7 +70,7 @@ Variants {
         }
         // Colors
         property bool shouldBlur: (GlobalStates.screenLocked && Config.options.lock.blur.enable)
-        property color dominantColor: Appearance.colors.colPrimary
+        property color dominantColor: Appearance.colors.colPrimary // Default, to be changed
         property bool dominantColorIsDark: dominantColor.hslLightness < 0.5
         property color colText: {
             if (wallpaperSafetyTriggered)
@@ -169,16 +175,10 @@ Variants {
             anchors.fill: parent
             clip: true
 
-            Image {
+            StyledImage {
                 id: wallpaper
                 visible: opacity > 0 && !blurLoader.active
-                opacity: (status === Image.Ready && !bgRoot.wallpaperIsVideo) ? 1 : 0
-                Behavior on opacity {
-                    animation: Appearance.animation.elementMoveEnter.numberAnimation.createObject(this)
-                }
                 cache: false
-                asynchronous: true
-                retainWhileLoading: true
                 smooth: false
                 // Range = groups that workspaces span on
                 property int chunkSize: Config?.options.bar.workspaces.shown ?? 10
@@ -265,11 +265,7 @@ Variants {
                     horizontalCenter: undefined
                     verticalCenter: undefined
                     leftMargin: bgRoot.movableXSpace + ((root.fixedClockPosition ? root.fixedClockX : bgRoot.clockX * bgRoot.effectiveWallpaperScale) - implicitWidth / 2)
-                    topMargin: {
-                        if (bgRoot.shouldBlur)
-                            return bgRoot.modelData.height / 3;
-                        return bgRoot.movableYSpace + ((root.fixedClockPosition ? root.fixedClockY : bgRoot.clockY * bgRoot.effectiveWallpaperScale) - implicitHeight / 2);
-                    }
+                    topMargin: bgRoot.movableYSpace + ((root.fixedClockPosition ? root.fixedClockY : bgRoot.clockY * bgRoot.effectiveWallpaperScale) - implicitHeight / 2)
                     Behavior on leftMargin {
                         animation: Appearance.animation.elementMove.numberAnimation.createObject(this)
                     }
@@ -298,10 +294,7 @@ Variants {
                         easing.bezierCurve: Appearance.animation.elementMove.bezierCurve
                     }
                 }
-                sourceComponent: ColumnLayout {
-                    id: clock
-                    spacing: 8
-
+                sourceComponent: Column {
                     Loader {
                         id: digitalClockLoader
                         visible: root.clockStyle === "digital"
@@ -339,73 +332,75 @@ Variants {
 
                     Loader {
                         id: cookieClockLoader
-                        Layout.alignment: Qt.AlignHCenter
                         visible: root.clockStyle === "cookie"
                         active: visible
                         sourceComponent: CookieClock {}
                     }
+                }
 
-                    Item {
-                        Layout.alignment: {
-                            if (bgRoot.textHorizontalAlignment === Text.AlignHCenter || root.clockStyle === "cookie")
-                                return Qt.AlignHCenter;
-                            return (bgRoot.textHorizontalAlignment === Text.AlignLeft ? Qt.AlignLeft : Qt.AlignRight)
+                Item {
+                    anchors {
+                        top: clockLoader.bottom
+                        topMargin: 8
+                        horizontalCenter: (bgRoot.textHorizontalAlignment === Text.AlignHCenter || root.clockStyle === "cookie") ? clockLoader.horizontalCenter : undefined
+                        left: (bgRoot.textHorizontalAlignment === Text.AlignLeft) ? clockLoader.left : undefined
+                        right: (bgRoot.textHorizontalAlignment === Text.AlignRight) ? clockLoader.right : undefined
+                        leftMargin: -26
+                        rightMargin: -26
+                    }
+                    implicitWidth: statusTextBg.implicitWidth
+                    implicitHeight: statusTextBg.implicitHeight
+
+                    StyledRectangularShadow {
+                        target: statusTextBg
+                        visible: statusTextBg.visible && root.clockStyle === "cookie"
+                        opacity: statusTextBg.opacity
+                    }
+
+                    Rectangle {
+                        id: statusTextBg
+                        anchors.centerIn: parent
+                        clip: true
+                        opacity: (safetyStatusText.shown || lockStatusText.shown) ? 1 : 0
+                        visible: opacity > 0
+                        implicitHeight: statusTextRow.implicitHeight + 5 * 2
+                        implicitWidth: statusTextRow.implicitWidth + 5 * 2
+                        radius: Appearance.rounding.small
+                        color: CF.ColorUtils.transparentize(Appearance.colors.colSecondaryContainer, root.clockStyle === "cookie" ? 0 : 1)
+
+                        Behavior on implicitWidth {
+                            animation: Appearance.animation.elementResize.numberAnimation.createObject(this)
                         }
-                        Layout.leftMargin: -26
-                        Layout.rightMargin: -26
-                        implicitWidth: statusTextBg.implicitWidth
-                        implicitHeight: statusTextBg.implicitHeight
-
-                        StyledRectangularShadow {
-                            target: statusTextBg
-                            visible: statusTextBg.visible && cookieClockLoader.active
-                            opacity: statusTextBg.opacity
+                        Behavior on implicitHeight {
+                            animation: Appearance.animation.elementResize.numberAnimation.createObject(this)
+                        }
+                        Behavior on opacity {
+                            animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
                         }
 
-                        Rectangle {
-                            id: statusTextBg
-                            clip: true
-                            opacity: (safetyStatusText.shown || lockStatusText.shown) ? 1 : 0
-                            visible: opacity > 0
-                            implicitHeight: statusTextRow.implicitHeight + 5 * 2
-                            implicitWidth: statusTextRow.implicitWidth + 5 * 2
-                            radius: Appearance.rounding.small
-                            color: CF.ColorUtils.transparentize(Appearance.colors.colSecondaryContainer, cookieClockLoader.active ? 0 : 1)
-
-                            Behavior on implicitWidth {
-                                animation: Appearance.animation.elementResize.numberAnimation.createObject(this)
+                        RowLayout {
+                            id: statusTextRow
+                            anchors.centerIn: parent
+                            spacing: 14
+                            Item {
+                                Layout.fillWidth: bgRoot.textHorizontalAlignment !== Text.AlignLeft
+                                implicitWidth: 1
                             }
-                            Behavior on implicitHeight {
-                                animation: Appearance.animation.elementResize.numberAnimation.createObject(this)
+                            ClockStatusText {
+                                id: safetyStatusText
+                                shown: bgRoot.wallpaperSafetyTriggered
+                                statusIcon: "hide_image"
+                                statusText: qsTr("Wallpaper safety enforced")
                             }
-                            Behavior on opacity {
-                                animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
+                            ClockStatusText {
+                                id: lockStatusText
+                                shown: GlobalStates.screenLocked && Config.options.lock.showLockedText
+                                statusIcon: "lock"
+                                statusText: qsTr("Locked")
                             }
-
-                            RowLayout {
-                                id: statusTextRow
-                                anchors.centerIn: parent
-                                spacing: 14
-                                Item {
-                                    Layout.fillWidth: bgRoot.textHorizontalAlignment !== Text.AlignLeft
-                                    implicitWidth: 1
-                                }
-                                ClockStatusText {
-                                    id: safetyStatusText
-                                    shown: bgRoot.wallpaperSafetyTriggered
-                                    statusIcon: "hide_image"
-                                    statusText: qsTr("Wallpaper safety enforced")
-                                }
-                                ClockStatusText {
-                                    id: lockStatusText
-                                    shown: GlobalStates.screenLocked && Config.options.lock.showLockedText
-                                    statusIcon: "lock"
-                                    statusText: qsTr("Locked")
-                                }
-                                Item {
-                                    Layout.fillWidth: bgRoot.textHorizontalAlignment !== Text.AlignRight
-                                    implicitWidth: 1
-                                }
+                            Item {
+                                Layout.fillWidth: bgRoot.textHorizontalAlignment !== Text.AlignRight
+                                implicitWidth: 1
                             }
                         }
                     }
@@ -428,7 +423,7 @@ Variants {
         styleColor: Appearance.colors.colShadow
         animateChange: true
     }
-    component ClockStatusText: RowLayout {
+    component ClockStatusText: Row {
         id: statusTextRow
         property alias statusIcon: statusIconWidget.text
         property alias statusText: statusTextWidget.text
@@ -439,10 +434,10 @@ Variants {
         Behavior on opacity {
             animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
         }
-        Layout.fillWidth: false
+        spacing: 4
         MaterialSymbol {
             id: statusIconWidget
-            Layout.fillWidth: false
+            anchors.verticalCenter: statusTextRow.verticalCenter
             iconSize: Appearance.font.pixelSize.huge
             color: statusTextRow.textColor
             style: Text.Raised
@@ -450,8 +445,8 @@ Variants {
         }
         ClockText {
             id: statusTextWidget
-            Layout.fillWidth: false
             color: statusTextRow.textColor
+            anchors.verticalCenter: statusTextRow.verticalCenter
             font {
                 family: Appearance.font.family.main
                 pixelSize: Appearance.font.pixelSize.large
