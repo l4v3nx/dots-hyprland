@@ -10,7 +10,6 @@ depends=(
   imagemagick
   hypridle
   hyprutils
-  hyprlock
   hyprpicker
   nm-connection-editor
   translate-shell
