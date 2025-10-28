@@ -34,7 +34,7 @@
      - `Super`+`/` = keybind list
      - `Super`+`Enter` = terminal
      - If for whatever reason the keybind list widget does not work, here's an image:
-     <img width="1412" height="828" alt="image" src="https://github.com/user-attachments/assets/8f7bd216-9e03-47e3-8709-0008772a4133" />
+         <img width="1095" height="797" alt="image" src="https://github.com/user-attachments/assets/819fe184-87d2-4ce0-804e-a4cb4473a8be" />
 
 
 </details>
