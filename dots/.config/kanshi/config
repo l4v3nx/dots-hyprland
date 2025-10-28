@@ -1,7 +1,7 @@
 profile {
     output eDP-1 disable
     output "Xiaomi Corporation Mi Monitor 6730110022349" {
-        mode 2560x1440@59.95Hz
+        mode 1920x1080@120.00Hz
         scale 1
         transform normal
       }
