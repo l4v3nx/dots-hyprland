@@ -164,6 +164,10 @@ Singleton {
                         property bool hourMarks: false
                         property bool dateInClock: true
                         property bool constantlyRotate: false
+                        property bool useSineCookie: false
+                    }
+                    property JsonObject digital: JsonObject {
+                        property bool animateChange: true
                     }
                     
                 }
@@ -194,6 +198,7 @@ Singleton {
                 }
                 property bool bottom: false // Instead of top
                 property int cornerStyle: 0 // 0: Hug | 1: Float | 2: Plain rectangle
+                property bool floatStyleShadow: true // Show shadow behind bar when cornerStyle == 1 (Float)
                 property bool borderless: false // true for no grouping of items
                 property string topLeftIcon: "spark" // Options: "distro" or any icon name in ~/.config/quickshell/ii/assets/icons
                 property bool showBackground: true
@@ -323,6 +328,7 @@ Singleton {
                     property bool unlockKeyring: true
                     property bool requirePasswordToPower: false
                 }
+                property bool materialShapeChars: true
             }
 
             property JsonObject media: JsonObject {
@@ -409,7 +415,7 @@ Singleton {
                     property int delay: 300 // Delay before sending request. Reduces (potential) rate limits and lag.
                 }
                 property JsonObject ai: JsonObject {
-                    property bool textFadeIn: true
+                    property bool textFadeIn: false
                 }
                 property JsonObject booru: JsonObject {
                     property bool allowNsfw: false
@@ -424,10 +430,11 @@ Singleton {
                     property bool bottom: false
                     property bool valueScroll: true
                     property bool clickless: false
-                    property real cornerRegionWidth: 250
-                    property real cornerRegionHeight: 2
+                    property int cornerRegionWidth: 250
+                    property int cornerRegionHeight: 5
                     property bool visualize: false
                     property bool clicklessCornerEnd: true
+                    property int clicklessCornerVerticalOffset: 1
                 }
 
                 property JsonObject quickToggles: JsonObject {
