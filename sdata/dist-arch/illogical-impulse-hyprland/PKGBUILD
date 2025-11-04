@@ -5,17 +5,11 @@ pkgdesc='Illogical Impulse Hyprland relatated packages'
 arch=(any)
 license=(None)
 depends=(
-	kanshi
-	hypridle
-	hyprcursor
-	hyprland
-	hyprland-qtutils
-	hyprland-qt-support
-	hyprlang
-	hyprpicker
-	hyprsunset
-	hyprutils
-	hyprwayland-scanner
-	xdg-desktop-portal-hyprland
-	wl-clipboard
+  kanshi
+  hypridle
+  hyprland
+  hyprpicker
+  hyprsunset
+  xdg-desktop-portal-hyprland
+  wl-clipboard
 )
