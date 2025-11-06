@@ -22,6 +22,7 @@ fontconfig/
 foot/
 fuzzel/
 hypr/
+kanshi/
 kde-material-you-colors/
 kitty/
 matugen/
