@@ -1,15 +1,12 @@
 pkgname=illogical-impulse-hyprland
 pkgver=1.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Illogical Impulse Hyprland relatated packages'
 arch=(any)
 license=(None)
 depends=(
   kanshi
-  hypridle
   hyprland
-  hyprpicker
   hyprsunset
-  xdg-desktop-portal-hyprland
   wl-clipboard
 )
